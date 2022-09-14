@@ -1,0 +1,124 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1f017f3a-5476-4920-baa5-0d6fc630c803}</ProjectGuid>
+    <SubObjectsSortedByName>True</SubObjectsSortedByName>
+    <DownloadApplicationInfo>true</DownloadApplicationInfo>
+    <WriteProductVersion>true</WriteProductVersion>
+    <GenerateTpy>false</GenerateTpy>
+    <Name>ExamplePlc</Name>
+    <ProgramVersion>3.1.4023.0</ProgramVersion>
+    <Application>{89a90d4f-ef9c-4ae1-a1ec-c405d1a9da85}</Application>
+    <TypeSystem>{c3518231-c0ba-4663-a995-667e8211f4af}</TypeSystem>
+    <Implicit_Task_Info>{686fb30e-b7ca-4e75-98a3-b3ca94364f67}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{11ee144c-1621-4bd6-b60a-034e7b95b07f}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{f19a557d-4ff1-4399-bae0-5e2080a82dec}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{11f7a711-6257-412d-abfd-16335ee59cee}</LibraryReferences>
+    <Released>false</Released>
+  </PropertyGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="Sensata_Common">
+      <DefaultResolution>Sensata_Common, * (Sensata Technologies)</DefaultResolution>
+      <Namespace>Sensata_Common</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Sensata_Utilities">
+      <DefaultResolution>Sensata_Utilities, * (Sensata Technologies)</DefaultResolution>
+      <Namespace>Sensata_Utilities</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Standard">
+      <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_System">
+      <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Utilities">
+      <DefaultResolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Utilities</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="0 Program" />
+    <Folder Include="1 Module" />
+    <Folder Include="1 Module\0 Machines" />
+    <Folder Include="1 Module\1 Stations" />
+    <Folder Include="1 Module\2 Devices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="0 Program\PRG_Main.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="1 Module\0 Machines\FB_ExampleMachine.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="1 Module\1 Stations\FB_ExampleStation.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="1 Module\2 Devices\FB_ExampleDevice.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TASK_Main.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ExamplePlc.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderResolution Include="Sensata_Common">
+      <Resolution>Sensata_Common, * (Sensata Technologies)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Standard">
+      <Resolution>Tc2_Standard, * (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_Standard">
+      <Resolution>Tc2_Standard, * (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_System">
+      <Resolution>Tc2_System, * (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_Utilities">
+      <Resolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_JsonXml">
+      <Resolution>Tc3_JsonXml, * (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_Module">
+      <Resolution>Tc3_Module, * (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="UML State Chart Types">
+      <Resolution>UML Statechart Types, * (3S - Smart Software Solutions GmbH)</Resolution>
+    </PlaceholderResolution>
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryReference Include="Sensata_LaserMarker,newest,Sensata Technologies">
+      <Namespace>Sensata_LaserMarker</Namespace>
+    </LibraryReference>
+  </ItemGroup>
+  <ProjectExtensions>
+    <PlcProjectOptions>
+      <XmlArchive>
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
+      <v n="Name">"&lt;ProjectRoot&gt;"</v>
+      <d n="SubKeys" t="Hashtable" />
+      <d n="Values" t="Hashtable" />
+    </o>
+        </Data>
+        <TypeList>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
+    </PlcProjectOptions>
+  </ProjectExtensions>
+</Project>

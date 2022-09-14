@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <POU Name="FB_ExampleStation" Id="{77adcf09-04b1-4622-a2a1-1d174c99f352}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ExampleStation EXTENDS FB_Station
+VAR_INPUT
+	in_fbDevice : REFERENCE TO FB_Device;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[THIS^.A_StateMachine();]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ExampleStation">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
