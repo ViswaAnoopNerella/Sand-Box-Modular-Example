@@ -53,16 +53,18 @@ A_Machine();
 //bInterfaceTest := MyLaser1.fbApi.P_bDeviceInterfaceBusy;
 IF bConnectToLaserMarker THEN
 	bRes_LaserConnected := MyLaser1.M_Connect();
-//	IF bRes_LaserConnected THEN
-//	//Add some timer based logic to do error handling.
-//		bConnectToLaserMarker := FALSE;
-//	END_IF
-	bConnectToLaserMarker := FALSE;
-END_IF
-IF bRes_LaserConnected THEN
+	IF bRes_LaserConnected THEN
 	//Add some timer based logic to do error handling.
-//		bConnectToLaserMarker := FALSE;
+		bConnectToLaserMarker := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bConnectToLaserMarker := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
 END_IF
+//IF bRes_LaserConnected THEN
+//	//Add some timer based logic to do error handling.
+////		bConnectToLaserMarker := FALSE;
+//END_IF
 
 //IF bDisconnectFromLaserMarker THEN
 //	bRes_LaserDisconnected := MyLaser1.M_Disconnect();
@@ -293,7 +295,7 @@ END_IF
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">81L</v>
+                          <v n="Id">95L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems">
@@ -369,12 +371,12 @@ END_IF
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>in_strUniqueId</v>
-                            <v>fbApi</v>
+                            <v>in_fbApi</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>T_MaxString</v>
-                            <v>REFERENCE TO FB_DeviceAPI</v>
+                            <v>REFERENCE TO FB_CommandRouter</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
@@ -391,7 +393,7 @@ END_IF
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">82L</v>
+                        <v n="Id">96L</v>
                       </o>
                     </l2>
                     <l2 n="Connectors" />
@@ -1518,8 +1520,8 @@ END_IF
       <LineId Id="64" Count="0" />
       <LineId Id="66" Count="0" />
       <LineId Id="330" Count="2" />
+      <LineId Id="376" Count="2" />
       <LineId Id="329" Count="0" />
-      <LineId Id="273" Count="0" />
       <LineId Id="67" Count="0" />
       <LineId Id="275" Count="0" />
       <LineId Id="277" Count="0" />
