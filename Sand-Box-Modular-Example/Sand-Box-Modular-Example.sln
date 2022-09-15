@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # TcXaeShell Solution File, Format Version 11.00
 VisualStudioVersion = 15.0.28307.1300
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{B1E792BE-AA5F-4E3C-8C82-674BF9C0715B}") = "Sand-Box-Modular-Example", "LunchAndLearn\Sand-Box-Modular-Example.tsproj", "{3FED0A82-30E7-416F-A24B-F240C98358EB}"
+Project("{B1E792BE-AA5F-4E3C-8C82-674BF9C0715B}") = "Sand-Box-Modular-Example", "Sand-Box-Modular-Example\Sand-Box-Modular-Example.tsproj", "{3FED0A82-30E7-416F-A24B-F240C98358EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

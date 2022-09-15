@@ -16,6 +16,7 @@
     <Implicit_Jitter_Distribution>{f19a557d-4ff1-4399-bae0-5e2080a82dec}</Implicit_Jitter_Distribution>
     <LibraryReferences>{11f7a711-6257-412d-abfd-16335ee59cee}</LibraryReferences>
     <Released>false</Released>
+    <Company>Sensata Technologies Mechanization</Company>
   </PropertyGroup>
   <ItemGroup>
     <PlaceholderReference Include="Sensata_Common">
