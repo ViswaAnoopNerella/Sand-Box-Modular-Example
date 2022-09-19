@@ -40,6 +40,20 @@ VAR
 	bRes_SendProgramtoLaser: BOOL;
 	filepath : STRING;
 	LaserMemoryLocation : INT;
+	bSaveCurrentLaserProgramtoPC : BOOL;
+	bRes_SaveCurrentLaserProgramtoPC: BOOL;
+	LaserProgramFolderPath: STRING;
+	bStartMarking: BOOL;
+	bRes_StartMarking: BOOL;
+	bStopMarking: BOOL;
+	bRes_StopMarking: BOOL;
+	bClearLaserErrors: BOOL;
+	bRes_ClearLaserErrors: BOOL;
+	bUpdateProgramBlockInTheLaser: BOOL;
+	bRes_UpdateProgramBlockInTheLaser: BOOL;
+	_blockNumber: INT;
+	_blockData: STRING;
+	_blockType : INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -61,40 +75,89 @@ IF bConnectToLaserMarker THEN
 		MyLaser1.M_ClearError();
 	END_IF
 END_IF
-//IF bRes_LaserConnected THEN
-//	//Add some timer based logic to do error handling.
-////		bConnectToLaserMarker := FALSE;
-//END_IF
 
-//IF bDisconnectFromLaserMarker THEN
-//	bRes_LaserDisconnected := MyLaser1.M_Disconnect();
-//	bDisconnectFromLaserMarker := FALSE;
-//END_IF
-//IF bRes_LaserDisconnected THEN
-////		bDisconnectFromLaserMarker := FALSE;
-//END_IF
 
-//IF bPeakCurrentProgramInLaser THEN
-//	bRes_PeakCurrentProgramInLaser := MyLaser1.M_PeakCurrentProgram();
-//	bPeakCurrentProgramInLaser := FALSE;
-//END_IF
+IF bDisconnectFromLaserMarker THEN
+	bRes_LaserDisconnected := MyLaser1.M_Disconnect();
+	IF bRes_LaserDisconnected THEN
+		bDisconnectFromLaserMarker := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bDisconnectFromLaserMarker := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
 
-//IF bRes_PeakCurrentProgramInLaser THEN
-////		bPeakCurrentProgramInLaser := FALSE;
-//END_IF
 
-//IF bSendProgramToLaser THEN
-//	bRes_SendProgramtoLaser := MyLaser1.M_SendProgramtoLaser(filepath,LaserMemoryLocation);
-//	bSendProgramToLaser := FALSE;
-////	IF bRes_SendProgramtoLaser THEN
-////		bSendProgramToLaser := FALSE;
-////	END_IF
-//END_IF
+IF bPeakCurrentProgramInLaser THEN
+	bRes_PeakCurrentProgramInLaser := MyLaser1.M_PeakCurrentProgram();
+	IF bRes_PeakCurrentProgramInLaser THEN
+		bPeakCurrentProgramInLaser := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bPeakCurrentProgramInLaser := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
 
-//IF bRes_SendProgramtoLaser THEN
-//		bSendProgramToLaser := FALSE;
-//END_IF
-]]></ST>
+
+IF bSendProgramToLaser THEN
+	bRes_SendProgramtoLaser := MyLaser1.M_SendProgramtoLaser(filepath,LaserMemoryLocation);
+	IF bRes_SendProgramtoLaser THEN
+		bSendProgramToLaser := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bSendProgramToLaser := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bSaveCurrentLaserProgramtoPC THEN
+	bRes_SaveCurrentLaserProgramtoPC := MyLaser1.M_SaveCurrentLaserProgramtoPC(LaserProgramFolderPath);
+	IF bRes_SaveCurrentLaserProgramtoPC THEN
+		bSaveCurrentLaserProgramtoPC := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bSaveCurrentLaserProgramtoPC := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bStartMarking THEN
+	bRes_StartMarking := MyLaser1.M_StartMarking();
+	IF bRes_StartMarking THEN
+		bStartMarking := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bStartMarking := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bStopMarking THEN
+	bRes_StopMarking := MyLaser1.M_StopMarking();
+	IF bRes_StopMarking THEN
+		bStopMarking := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bStopMarking := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bClearLaserErrors THEN
+	bRes_ClearLaserErrors := MyLaser1.M_ClearLaserErrors();
+	IF bRes_ClearLaserErrors THEN
+		bClearLaserErrors := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bClearLaserErrors := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bUpdateProgramBlockInTheLaser THEN
+	bRes_UpdateProgramBlockInTheLaser := MyLaser1.M_UpdateProgramBlockInTheLaser(LaserMemoryLocation, _blockNumber, _blockData, _blockType);
+	IF bRes_UpdateProgramBlockInTheLaser THEN
+		bUpdateProgramBlockInTheLaser := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bUpdateProgramBlockInTheLaser := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF]]></ST>
     </Implementation>
     <Action Name="A_Machine" Id="{f2ef6f5c-8a40-4c62-8311-b3186050d362}">
       <Implementation>
@@ -1523,35 +1586,37 @@ END_IF
       <LineId Id="376" Count="2" />
       <LineId Id="329" Count="0" />
       <LineId Id="67" Count="0" />
-      <LineId Id="275" Count="0" />
-      <LineId Id="277" Count="0" />
-      <LineId Id="276" Count="0" />
       <LineId Id="274" Count="0" />
       <LineId Id="176" Count="0" />
       <LineId Id="175" Count="0" />
       <LineId Id="177" Count="0" />
-      <LineId Id="183" Count="0" />
-      <LineId Id="178" Count="0" />
-      <LineId Id="279" Count="1" />
+      <LineId Id="423" Count="4" />
+      <LineId Id="422" Count="0" />
+      <LineId Id="419" Count="0" />
       <LineId Id="278" Count="0" />
       <LineId Id="62" Count="1" />
       <LineId Id="219" Count="0" />
+      <LineId Id="428" Count="4" />
       <LineId Id="224" Count="0" />
       <LineId Id="220" Count="0" />
       <LineId Id="284" Count="0" />
-      <LineId Id="282" Count="1" />
-      <LineId Id="281" Count="0" />
       <LineId Id="226" Count="0" />
       <LineId Id="225" Count="0" />
       <LineId Id="227" Count="0" />
-      <LineId Id="289" Count="0" />
       <LineId Id="334" Count="1" />
+      <LineId Id="433" Count="2" />
       <LineId Id="333" Count="0" />
       <LineId Id="228" Count="0" />
-      <LineId Id="288" Count="0" />
-      <LineId Id="286" Count="1" />
-      <LineId Id="285" Count="0" />
+      <LineId Id="437" Count="8" />
+      <LineId Id="436" Count="0" />
+      <LineId Id="451" Count="8" />
+      <LineId Id="450" Count="0" />
+      <LineId Id="463" Count="8" />
+      <LineId Id="462" Count="0" />
+      <LineId Id="474" Count="8" />
       <LineId Id="39" Count="0" />
+      <LineId Id="486" Count="8" />
+      <LineId Id="485" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
