@@ -54,6 +54,26 @@ VAR
 	_blockNumber: INT;
 	_blockData: STRING;
 	_blockType : INT;
+	bGetLaserStatus: BOOL;
+	bRes_GetLaserStatus: BOOL;
+	_string_laserstatus : STRING;
+	bGetLaserErrorStatus: BOOL;
+	bRes_GetLaserErrorStatus: BOOL;
+	bGetLaserActivatedStatus: BOOL;
+	bRes_GetLaserActivatedStatus: BOOL;
+	bGetLaserMarkingStatus: BOOL;
+	bRes_GetLaserMarkingStatus: BOOL;
+	bRes_Reset: BOOL;
+	bResetErrors: BOOL;
+	bUpdateProgramBlockMarkEnabledInTheLaser: BOOL;
+	bRes_UpdateProgramBlockMarkEnabledInTheLaser: BOOL;
+	_markenabled : BOOL;
+	UpdateSingleBlockMarkEnabledIntheLaser_Success: BOOL;
+	_bIsLaserActivated : BOOL;
+	_bIsLaserError : BOOL;
+	_bIsLaserMarking : BOOL;
+	_bUpdateSingleBlockDataSuccess : BOOL;
+	_bUpdateSingleBlockMarkEnabled_Success : BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -110,8 +130,9 @@ IF bSendProgramToLaser THEN
 END_IF
 
 IF bSaveCurrentLaserProgramtoPC THEN
-	bRes_SaveCurrentLaserProgramtoPC := MyLaser1.M_SaveCurrentLaserProgramtoPC(LaserProgramFolderPath);
+	bRes_SaveCurrentLaserProgramtoPC := MyLaser1.M_SaveCurrentLaserProgramtoPC(LaserProgramFolderPath, out_bool_SaveProgramToPC_Success => SaveCurrentLaserProgramToPCSuccess);
 	IF bRes_SaveCurrentLaserProgramtoPC THEN
+//		SaveCurrentLaserProgramToPCSuccess := MyLaser1
 		bSaveCurrentLaserProgramtoPC := FALSE;
 	ELSIF MyLaser1.P_bError THEN
 		bSaveCurrentLaserProgramtoPC := FALSE;
@@ -149,12 +170,72 @@ IF bClearLaserErrors THEN
 	END_IF
 END_IF
 
+IF bResetErrors THEN
+	bRes_Reset := MyLaser1.M_Reset();
+	IF bRes_Reset THEN
+		bResetErrors := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bResetErrors := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
 IF bUpdateProgramBlockInTheLaser THEN
-	bRes_UpdateProgramBlockInTheLaser := MyLaser1.M_UpdateProgramBlockInTheLaser(LaserMemoryLocation, _blockNumber, _blockData, _blockType);
+	bRes_UpdateProgramBlockInTheLaser := MyLaser1.M_UpdateSingleProgramBlockData(LaserMemoryLocation, _blockNumber, _blockData, _blockType, out_bool_UpdateData_Success => _bUpdateSingleBlockDataSuccess);
 	IF bRes_UpdateProgramBlockInTheLaser THEN
 		bUpdateProgramBlockInTheLaser := FALSE;
 	ELSIF MyLaser1.P_bError THEN
 		bUpdateProgramBlockInTheLaser := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bUpdateProgramBlockMarkEnabledInTheLaser THEN
+	bRes_UpdateProgramBlockMarkEnabledInTheLaser := MyLaser1.M_UpdateSingleProgramBlockMarkEnabled( LaserProgramMemoryLocation := LaserMemoryLocation, BlockNumber := _blockNumber, BlockType := _blockType ,MarkEnabled := _markenabled, out_bool_MarkEnabled_Success => _bUpdateSingleBlockMarkEnabled_Success);
+	IF bRes_UpdateProgramBlockMarkEnabledInTheLaser THEN
+		bUpdateProgramBlockMarkEnabledInTheLaser := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bUpdateProgramBlockMarkEnabledInTheLaser := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bGetLaserStatus THEN
+	bRes_GetLaserStatus := MyLaser1.M_GetLaserStatus( _out_string_laserStatus => _string_laserstatus);
+	IF bRes_GetLaserStatus THEN
+		bGetLaserStatus := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bGetLaserStatus := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bGetLaserErrorStatus THEN
+	bRes_GetLaserErrorStatus := MyLaser1.M_GetLaserErrorStatus( out_bool_IsLaserError => _bIsLaserError);
+	IF bRes_GetLaserErrorStatus THEN
+		bGetLaserErrorStatus := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bGetLaserErrorStatus := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bGetLaserActivatedStatus THEN
+	bRes_GetLaserActivatedStatus := MyLaser1.M_GetLaserActivatedStatus( out_IsLaserActivated => _bIsLaserActivated);
+	IF bRes_GetLaserActivatedStatus THEN
+		bGetLaserActivatedStatus := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bGetLaserActivatedStatus := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bGetLaserMarkingStatus THEN
+	bRes_GetLaserMarkingStatus := MyLaser1.M_GetLaserMarkingStatus( out_bool_IsLaserMarking => _bIsLaserMarking);
+	IF bRes_GetLaserMarkingStatus THEN
+		bGetLaserMarkingStatus := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bGetLaserMarkingStatus := FALSE;
 		MyLaser1.M_ClearError();
 	END_IF
 END_IF]]></ST>
@@ -1575,48 +1656,8 @@ END_IF]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="PRG_Main">
-      <LineId Id="5" Count="0" />
-      <LineId Id="15" Count="0" />
-      <LineId Id="6" Count="0" />
-      <LineId Id="16" Count="3" />
-      <LineId Id="143" Count="0" />
-      <LineId Id="64" Count="0" />
-      <LineId Id="66" Count="0" />
-      <LineId Id="330" Count="2" />
-      <LineId Id="376" Count="2" />
-      <LineId Id="329" Count="0" />
-      <LineId Id="67" Count="0" />
-      <LineId Id="274" Count="0" />
-      <LineId Id="176" Count="0" />
-      <LineId Id="175" Count="0" />
-      <LineId Id="177" Count="0" />
-      <LineId Id="423" Count="4" />
-      <LineId Id="422" Count="0" />
-      <LineId Id="419" Count="0" />
-      <LineId Id="278" Count="0" />
-      <LineId Id="62" Count="1" />
-      <LineId Id="219" Count="0" />
-      <LineId Id="428" Count="4" />
-      <LineId Id="224" Count="0" />
-      <LineId Id="220" Count="0" />
-      <LineId Id="284" Count="0" />
-      <LineId Id="226" Count="0" />
-      <LineId Id="225" Count="0" />
-      <LineId Id="227" Count="0" />
-      <LineId Id="334" Count="1" />
-      <LineId Id="433" Count="2" />
-      <LineId Id="333" Count="0" />
-      <LineId Id="228" Count="0" />
-      <LineId Id="437" Count="8" />
-      <LineId Id="436" Count="0" />
-      <LineId Id="451" Count="8" />
-      <LineId Id="450" Count="0" />
-      <LineId Id="463" Count="8" />
-      <LineId Id="462" Count="0" />
-      <LineId Id="474" Count="8" />
-      <LineId Id="39" Count="0" />
-      <LineId Id="486" Count="8" />
-      <LineId Id="485" Count="0" />
+      <LineId Id="946" Count="160" />
+      <LineId Id="585" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
