@@ -53,7 +53,7 @@ VAR
 	bRes_UpdateProgramBlockInTheLaser: BOOL;
 	_blockNumber: INT;
 	_blockData: STRING;
-	_blockType : INT;
+	_blockType : BlockTypes;
 	bGetLaserStatus: BOOL;
 	bRes_GetLaserStatus: BOOL;
 	_string_laserstatus : STRING;
@@ -68,6 +68,7 @@ VAR
 	bUpdateProgramBlockMarkEnabledInTheLaser: BOOL;
 	bRes_UpdateProgramBlockMarkEnabledInTheLaser: BOOL;
 	_markenabled : BOOL;
+	_blockType_enum : BlockTypes;
 	UpdateSingleBlockMarkEnabledIntheLaser_Success: BOOL;
 	_bIsLaserActivated : BOOL;
 	_bIsLaserError : BOOL;
@@ -160,16 +161,6 @@ IF bStopMarking THEN
 	END_IF
 END_IF
 
-IF bClearLaserErrors THEN
-	bRes_ClearLaserErrors := MyLaser1.M_ClearLaserErrors();
-	IF bRes_ClearLaserErrors THEN
-		bClearLaserErrors := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bClearLaserErrors := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
-
 IF bResetErrors THEN
 	bRes_Reset := MyLaser1.M_Reset();
 	IF bRes_Reset THEN
@@ -191,7 +182,7 @@ IF bUpdateProgramBlockInTheLaser THEN
 END_IF
 
 IF bUpdateProgramBlockMarkEnabledInTheLaser THEN
-	bRes_UpdateProgramBlockMarkEnabledInTheLaser := MyLaser1.M_UpdateSingleProgramBlockMarkEnabled( LaserProgramMemoryLocation := LaserMemoryLocation, BlockNumber := _blockNumber, BlockType := _blockType ,MarkEnabled := _markenabled, out_bool_MarkEnabled_Success => _bUpdateSingleBlockMarkEnabled_Success);
+	bRes_UpdateProgramBlockMarkEnabledInTheLaser := MyLaser1.M_UpdateSingleProgramBlockMarkEnabled( LaserProgramMemoryLocation := LaserMemoryLocation, BlockNumber := _blockNumber, BlockType := _blockType ,MarkEnabled := _markenabled ,out_bool_MarkEnabled_Success => _bUpdateSingleBlockMarkEnabled_Success);
 	IF bRes_UpdateProgramBlockMarkEnabledInTheLaser THEN
 		bUpdateProgramBlockMarkEnabledInTheLaser := FALSE;
 	ELSIF MyLaser1.P_bError THEN
@@ -1656,7 +1647,8 @@ END_IF]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="PRG_Main">
-      <LineId Id="946" Count="160" />
+      <LineId Id="946" Count="81" />
+      <LineId Id="1038" Count="68" />
       <LineId Id="585" Count="0" />
     </LineIds>
   </POU>
