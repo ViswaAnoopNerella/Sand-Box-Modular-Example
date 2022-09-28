@@ -67,7 +67,7 @@ VAR
 	bResetErrors: BOOL;
 	bUpdateProgramBlockMarkEnabledInTheLaser: BOOL;
 	bRes_UpdateProgramBlockMarkEnabledInTheLaser: BOOL;
-	_markenabled : BOOL;
+	_bool_markenabled : BOOL;
 	_blockType_enum : BlockTypes;
 	UpdateSingleBlockMarkEnabledIntheLaser_Success: BOOL;
 	_bIsLaserActivated : BOOL;
@@ -171,8 +171,18 @@ IF bResetErrors THEN
 	END_IF
 END_IF
 
+//IF bUpdateProgramBlockInTheLaser THEN
+//	bRes_UpdateProgramBlockInTheLaser := MyLaser1.M_UpdateSingleProgramBlockData(LaserMemoryLocation, _blockNumber, _blockData, _blockType, out_bool_UpdateData_Success => _bUpdateSingleBlockDataSuccess);
+//	IF bRes_UpdateProgramBlockInTheLaser THEN
+//		bUpdateProgramBlockInTheLaser := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bUpdateProgramBlockInTheLaser := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
+
 IF bUpdateProgramBlockInTheLaser THEN
-	bRes_UpdateProgramBlockInTheLaser := MyLaser1.M_UpdateSingleProgramBlockData(LaserMemoryLocation, _blockNumber, _blockData, _blockType, out_bool_UpdateData_Success => _bUpdateSingleBlockDataSuccess);
+	bRes_UpdateProgramBlockInTheLaser := MyLaser1.M_UpdateSingleBlockMarkingInformation(_blockNumber, _blockData, _bool_markenabled);
 	IF bRes_UpdateProgramBlockInTheLaser THEN
 		bUpdateProgramBlockInTheLaser := FALSE;
 	ELSIF MyLaser1.P_bError THEN
@@ -182,7 +192,7 @@ IF bUpdateProgramBlockInTheLaser THEN
 END_IF
 
 IF bUpdateProgramBlockMarkEnabledInTheLaser THEN
-	bRes_UpdateProgramBlockMarkEnabledInTheLaser := MyLaser1.M_UpdateSingleProgramBlockMarkEnabled( LaserProgramMemoryLocation := LaserMemoryLocation, BlockNumber := _blockNumber, BlockType := _blockType ,MarkEnabled := _markenabled ,out_bool_MarkEnabled_Success => _bUpdateSingleBlockMarkEnabled_Success);
+	bRes_UpdateProgramBlockMarkEnabledInTheLaser := MyLaser1.M_UpdateSingleProgramBlockMarkEnabled( LaserProgramMemoryLocation := LaserMemoryLocation, BlockNumber := _blockNumber, BlockType := _blockType ,MarkEnabled := _bool_markenabled ,out_bool_MarkEnabled_Success => _bUpdateSingleBlockMarkEnabled_Success);
 	IF bRes_UpdateProgramBlockMarkEnabledInTheLaser THEN
 		bUpdateProgramBlockMarkEnabledInTheLaser := FALSE;
 	ELSIF MyLaser1.P_bError THEN
@@ -192,7 +202,7 @@ IF bUpdateProgramBlockMarkEnabledInTheLaser THEN
 END_IF
 
 IF bGetLaserStatus THEN
-	bRes_GetLaserStatus := MyLaser1.M_GetLaserStatus( _out_string_laserStatus => _string_laserstatus);
+	bRes_GetLaserStatus := MyLaser1.M_GetLaserStatus( out_string_laserStatus => _string_laserstatus);
 	IF bRes_GetLaserStatus THEN
 		bGetLaserStatus := FALSE;
 	ELSIF MyLaser1.P_bError THEN
@@ -1647,8 +1657,7 @@ END_IF]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="PRG_Main">
-      <LineId Id="946" Count="81" />
-      <LineId Id="1038" Count="68" />
+      <LineId Id="1267" Count="160" />
       <LineId Id="585" Count="0" />
     </LineIds>
   </POU>
