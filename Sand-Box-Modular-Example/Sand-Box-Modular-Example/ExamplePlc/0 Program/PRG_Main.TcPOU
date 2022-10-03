@@ -43,6 +43,9 @@ VAR
 	bSaveCurrentLaserProgramtoPC : BOOL;
 	bRes_SaveCurrentLaserProgramtoPC: BOOL;
 	LaserProgramFolderPath: STRING;
+	bGetCurrentProgram : BOOL;
+	bRes_GetCurrentProgram : BOOL;
+	CurrentProgramName : T_MaxString;
 	bStartMarking: BOOL;
 	bRes_StartMarking: BOOL;
 	bStopMarking: BOOL;
@@ -59,10 +62,13 @@ VAR
 	_string_laserstatus : STRING;
 	bGetLaserErrorStatus: BOOL;
 	bRes_GetLaserErrorStatus: BOOL;
+	_bIsLaserError : BOOL;
 	bGetLaserActivatedStatus: BOOL;
 	bRes_GetLaserActivatedStatus: BOOL;
+	_bIsLaserActivated : BOOL;
 	bGetLaserMarkingStatus: BOOL;
 	bRes_GetLaserMarkingStatus: BOOL;
+	_bIsLaserMarking : BOOL;
 	bRes_Reset: BOOL;
 	bResetErrors: BOOL;
 	bUpdateProgramBlockMarkEnabledInTheLaser: BOOL;
@@ -70,11 +76,20 @@ VAR
 	_bool_markenabled : BOOL;
 	_blockType_enum : BlockTypes;
 	UpdateSingleBlockMarkEnabledIntheLaser_Success: BOOL;
-	_bIsLaserActivated : BOOL;
-	_bIsLaserError : BOOL;
-	_bIsLaserMarking : BOOL;
 	_bUpdateSingleBlockDataSuccess : BOOL;
 	_bUpdateSingleBlockMarkEnabled_Success : BOOL;
+	bUpdateAllMarkingInfo: BOOL;
+	LastBlockToMark : INT;
+	_OneTimeArrayBuild : BOOL := TRUE;
+	BlockInfoArray : ARRAY [0..255] OF OneBlockInfo;
+	bRes_UpdateAllMarkingInfo: BOOL;
+	intIndex: INT;
+	intIndex2 : INT;
+	inst_intStep: INT := 0;
+	_tempString : STRING;
+	bRes_UpdateAllMarkInfo : ARRAY [0..255] OF BOOL;
+	bUpdateAllMarkingInfo_MethodCall: BOOL;
+	bRes_UpdateAllMarkingInfo_MethodCall: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -137,6 +152,16 @@ IF bSaveCurrentLaserProgramtoPC THEN
 		bSaveCurrentLaserProgramtoPC := FALSE;
 	ELSIF MyLaser1.P_bError THEN
 		bSaveCurrentLaserProgramtoPC := FALSE;
+		MyLaser1.M_ClearError();
+	END_IF
+END_IF
+
+IF bGetCurrentProgram THEN
+	bRes_GetCurrentProgram := MyLaser1.M_GetCurrentProgram(strCurrentProgram => CurrentProgramName);
+	IF bRes_GetCurrentProgram THEN
+		bGetCurrentProgram := FALSE;
+	ELSIF MyLaser1.P_bError THEN
+		bGetCurrentProgram := FALSE;
 		MyLaser1.M_ClearError();
 	END_IF
 END_IF
@@ -239,6 +264,62 @@ IF bGetLaserMarkingStatus THEN
 		bGetLaserMarkingStatus := FALSE;
 		MyLaser1.M_ClearError();
 	END_IF
+END_IF
+
+IF _OneTimeArrayBuild THEN
+	FOR intIndex2 := 0 TO 255 DO
+		IF intIndex2 <= LastBlockToMark THEN
+			BlockInfoArray[intIndex2].MarkEnabled := TRUE;
+			_tempString := CONCAT('Block', INT_TO_STRING(intIndex2));
+			BlockInfoArray[intIndex2].BlockText := _tempString;
+		ELSE
+			BlockInfoArray[intIndex2].MarkEnabled := FALSE;	
+			BlockInfoArray[intIndex2].BlockText := '';
+		END_IF
+	END_FOR
+	_OneTimeArrayBuild := FALSE;
+END_IF
+
+IF bUpdateAllMarkingInfo_MethodCall THEN
+	bRes_UpdateAllMarkingInfo_MethodCall := MyLaser1.M_UpdateAllMarkingInformation(LastBlockToMark, BlockInfoArray);
+	bUpdateAllMarkingInfo_MethodCall := FALSE;
+END_IF
+IF MyLaser1.P_bError THEN
+	bUpdateAllMarkingInfo_MethodCall := FALSE;
+	MyLaser1.M_ClearError();
+END_IF
+
+IF bUpdateAllMarkingInfo THEN
+	CASE inst_intStep OF
+		0: //Check for errors and Integer value which we are gonna run the update single block information
+				IF MyLaser1.P_bError THEN
+					inst_intStep := 0;
+					bUpdateAllMarkingInfo := FALSE;
+				ELSE
+					inst_intStep := 10;
+				END_IF
+		10: // Run the M_UpdateSingleBlockMarkingInformation Command
+				bRes_UpdateAllMarkInfo[intIndex] := MyLaser1.M_UpdateSingleBlockMarkingInformation(intIndex ,BlockInfoArray[intIndex].BlockText, BlockInfoArray[intIndex].MarkEnabled);
+				IF bRes_UpdateAllMarkInfo[intIndex] THEN 
+					inst_intStep := 20;
+				ELSIF MyLaser1.P_bError THEN
+					inst_intStep := 0;
+					intIndex :=0;
+					bUpdateAllMarkingInfo := FALSE;
+				END_IF
+		20: // Check if the M_UpdateSingleBlockMarkingInformation command failed or passed
+				IF bRes_UpdateAllMarkInfo[LastBlockToMark] OR NOT bRes_UpdateAllMarkInfo[intIndex] OR (intIndex = LastBlockToMark) THEN //This means we reached the final element update
+					bUpdateAllMarkingInfo := FALSE;
+					intIndex :=0;
+					inst_intStep := 0;
+				ELSIF bRes_UpdateAllMarkInfo[intIndex] THEN
+					inst_intStep := 0;
+					intIndex := intIndex + 1;
+				ELSIF MyLaser1.P_bError THEN
+					bUpdateAllMarkingInfo := FALSE;
+					MyLaser1.M_ClearError();	
+				END_IF			
+	END_CASE
 END_IF]]></ST>
     </Implementation>
     <Action Name="A_Machine" Id="{f2ef6f5c-8a40-4c62-8311-b3186050d362}">
@@ -1657,8 +1738,44 @@ END_IF]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="PRG_Main">
-      <LineId Id="1267" Count="160" />
-      <LineId Id="585" Count="0" />
+      <LineId Id="1707" Count="61" />
+      <LineId Id="2054" Count="3" />
+      <LineId Id="2059" Count="4" />
+      <LineId Id="2053" Count="0" />
+      <LineId Id="1769" Count="99" />
+      <LineId Id="1870" Count="2" />
+      <LineId Id="1874" Count="1" />
+      <LineId Id="2048" Count="0" />
+      <LineId Id="2037" Count="0" />
+      <LineId Id="1876" Count="1" />
+      <LineId Id="2038" Count="0" />
+      <LineId Id="1878" Count="6" />
+      <LineId Id="2160" Count="0" />
+      <LineId Id="1891" Count="0" />
+      <LineId Id="2157" Count="2" />
+      <LineId Id="2154" Count="0" />
+      <LineId Id="1892" Count="1" />
+      <LineId Id="1904" Count="0" />
+      <LineId Id="1907" Count="0" />
+      <LineId Id="1910" Count="0" />
+      <LineId Id="1940" Count="0" />
+      <LineId Id="1944" Count="0" />
+      <LineId Id="1942" Count="1" />
+      <LineId Id="1941" Count="0" />
+      <LineId Id="1909" Count="0" />
+      <LineId Id="1912" Count="0" />
+      <LineId Id="1937" Count="1" />
+      <LineId Id="1949" Count="3" />
+      <LineId Id="1939" Count="0" />
+      <LineId Id="1911" Count="0" />
+      <LineId Id="1930" Count="1" />
+      <LineId Id="1953" Count="0" />
+      <LineId Id="1948" Count="0" />
+      <LineId Id="1945" Count="2" />
+      <LineId Id="1932" Count="2" />
+      <LineId Id="1914" Count="0" />
+      <LineId Id="1906" Count="0" />
+      <LineId Id="1903" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
