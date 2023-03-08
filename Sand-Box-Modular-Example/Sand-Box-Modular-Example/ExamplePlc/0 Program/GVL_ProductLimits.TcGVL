@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <GVL Name="GVL_ProductLimits" Id="{8265411d-e48f-4fc5-a4bc-dcb212e06359}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	strPart_Num : STRING := 'GV354-006'; // := 'GXV600-009';
+	strToolingBarcodeRequired : STRING;
+	intBarcodeLocation : INT;
+	
+	
+	//Conditioner Station
+	bEnableConditioner : BOOL;
+	intNumberOfCyclesToRun : INT := 500;
+	intOperateTime : INT := 8;
+	intReleaseTime : INT := 18;
+	
+	//CR Station
+	bEnableCR : BOOL;
+	bAuxPresent : BOOL;
+	bEnableDipTest : BOOL;
+	bEnableEMFTest : BOOL;
+	bEndTestInRange : BOOL;
+	intInitialWaitTime : INT;
+	intMaxTestPulseTime : INT;
+	intNumberofContResToCheck : INT;
+	intNumberofPulses : INT;//Currently for rivian only
+	intPulseOFFTime : INT;
+	lrealInAuxResistanceMin : LREAL; 
+	lrealInAuxResistanceMax : LREAL;
+	lrealInCoilResistanceMin : LREAL; 
+	lrealInCoilResistanceMax : LREAL; 
+	lrealInMainsResistanceMin : LREAL;
+	lrealInMainsResistanceMax : LREAL;
+	lrealInMainsResistanceRangeMax : LREAL;
+	lrealInMainsResistanceLastPointMax : LREAL;	
+	lrealSetCurrentCoil : LREAL;
+	lrealSetVoltageCoil : LREAL;
+	lrealSetCloseTestCurrentMain : LREAL;
+	lrealSetCloseTestVoltageMain : LREAL;
+	lrealSetTestingCurrentMain : LREAL;
+	lrealSetTestingVoltageMain : LREAL;
+	lrealMainsCurrentErrorPct : LREAL;
+
+	bEnableHP:BOOL;
+	bDBParamsAux2APresent:BOOL:=TRUE;
+	bDBParamsAux2BPresent:BOOL;
+	udintEquipmentCountCycle:UDINT;
+	lrealTestVoltageHP:LREAL;
+	lrealDwellTime:LREAL;
+	lrealRampTime:LREAL;
+	lrealMinCurrentHP:LREAL;
+	lrealMaxCurrentHP:LREAL;
+	lrealTestVoltageIR:LREAL;
+	lrealMinResistanceIR:LREAL;
+	lrealMaxResistanceIR:LREAL;
+	strDUT_HP:STRING;
+	
+	//TestVoltage for Aux test
+	lrTestVoltageAuxHP: LREAL;
+	//DwellTime for Aux-Aux HP test
+	lrTestDwellTimeAuxHP:LREAL;
+	//RampTime for Aux-Aux HP test
+	lrTestRampTimeAuxHP :LREAL;
+	//MinAcceptable current for Aux-Aux HP test
+	lrMinCurrentAuxHP :LREAL;
+	//MaxAcceptable current for Aux-Aux HP test
+	lrMaxCurrentAuxHP :LREAL;
+	
+	//PUVDOV Station
+	bEnablePUV:BOOL;
+	bBinarySearchEnabled: BOOL; 	
+	bVoltageTest: BOOL;        	
+	udintBinarySearchPoints : UDINT;	
+	timeContactCloseCheck : UINT; 	
+	timePowerFailCheck: UINT;
+	timePowerSupplyStabilize: UINT;	
+	lrealDefaultErrValue : LREAL;
+	lrealPickUpUSLVoltage: LREAL;	
+	lrealPickUpLSLVoltage: LREAL; 
+	lrealPickUpBufferVoltage: LREAL;
+	lrealPickUpUSLCurrent: LREAL;
+	lrealPickUpLSLCurrent: LREAL;
+	lrealPickUpBufferCurrent: LREAL;
+	lrealCoilNominalVoltage: LREAL; 
+	lrealCoilNominalCurrent: LREAL;
+	lrealDropOutUSLVoltage: LREAL; 
+	lrealDropOutLSLVoltage: LREAL;
+	lrealDropOutBufferVoltage: LREAL;	
+	lrealDropOutUSLCurrent: LREAL;	
+	lrealDropOutLSLCurrent: LREAL;
+	lrealDropOutBufferCurrent: LREAL;
+	lrealMaxCurrentSet: LREAL;
+	lrealMaxVoltageSet: LREAL;
+	
+	//Laser Station
+	bEnableLaser:BOOL;
+	strLaserBlock_0:STRING;
+	strLaserBlock_1:STRING;
+	strLaserBlock_2:STRING;
+	strLaserBlock_3:STRING;
+	strLaserBlock_4:STRING;
+	strLaserBlock_5:STRING;
+	strLaserBlock_6:STRING;
+	strLaserBlock_7:STRING;
+	strLaserBlock_8:STRING;
+	strLaserBlock_9:STRING;
+	strLaserBlock_10:STRING;
+	
+	//FT Station
+	bEnableFT:BOOL;
+	realMainsOTMin : REAL;
+	realMainsOTMax : REAL;
+	realAuxOTMin : REAL;
+	realAuxOTMax : REAL;
+	realMainsRTMin : REAL;
+	realMainsRTMax : REAL;
+	realAuxRTMin : REAL;
+	realAuxRTMax : REAL;
+	realRSimMin :REAL;
+	realRSimMax:REAL;
+	
+	//Tooling Barcode
+	strExpectedToolingBarcode: Tc2_System.T_MaxString;//Remove after db update 
+	
+	//Pallet Barcode
+	strExpectedPalletBarcode : Tc2_System.T_MaxString;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

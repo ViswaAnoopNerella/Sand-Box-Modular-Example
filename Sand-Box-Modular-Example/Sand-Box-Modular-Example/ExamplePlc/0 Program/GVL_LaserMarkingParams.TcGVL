@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <GVL Name="GVL_LaserMarkingParams" Id="{5ab02a97-ed17-4800-b204-ff8242233316}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	strHousingCode_L1 : STRING;	
+
+	strCustomerDeviceID_L1 : STRING;
+	strBlock0_L1 : STRING;
+	strBlock1_L1 : STRING;
+	strBlock2_L1 : STRING;
+	strBlock3_L1 : STRING;
+	strBlock4_L1 : STRING;
+	strBlock5_L1 : STRING;
+	strBlock6_L1 : STRING;
+	strBlock7_L1 : STRING;
+	strBlock8_L1 : STRING;
+	strBlock9_L1 : STRING;
+	strBlock10_L1 : STRING;
+	
+	strHousingCode_L2 : STRING;	
+	
+	strCustomerDeviceID_L2 : STRING;
+	strBlock0_L2 : STRING;
+	strBlock1_L2 : STRING;
+	strBlock2_L2 : STRING;
+	strBlock3_L2 : STRING;
+	strBlock4_L2 : STRING;
+	strBlock5_L2 : STRING;
+	strBlock6_L2 : STRING;
+	strBlock7_L2 : STRING;
+	strBlock8_L2 : STRING;
+	strBlock9_L2  : STRING;
+	strBlock10_L2 : STRING;
+
+	strHousingCode_R1 : STRING;	
+	
+	strCustomerDeviceID_R1 : STRING;
+	strBlock0_R1 : STRING;
+	strBlock1_R1 : STRING;
+	strBlock2_R1 : STRING;
+	strBlock3_R1 : STRING;
+	strBlock4_R1 : STRING;
+	strBlock5_R1 : STRING;
+	strBlock6_R1 : STRING;
+	strBlock7_R1 : STRING;
+	strBlock8_R1 : STRING;
+	strBlock9_R1 : STRING;
+	strBlock10_R1 : STRING;
+	
+	strHousingCode_R2 : STRING;	
+	
+	strCustomerDeviceID_R2 : STRING;
+	strBlock0_R2 : STRING;
+	strBlock1_R2 : STRING;
+	strBlock2_R2 : STRING;
+	strBlock3_R2 : STRING;
+	strBlock4_R2 : STRING;
+	strBlock5_R2 : STRING;
+	strBlock6_R2 : STRING;
+	strBlock7_R2 : STRING;
+	strBlock8_R2 : STRING;
+	strBlock9_R2 : STRING;
+	strBlock10_R2 : STRING;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
