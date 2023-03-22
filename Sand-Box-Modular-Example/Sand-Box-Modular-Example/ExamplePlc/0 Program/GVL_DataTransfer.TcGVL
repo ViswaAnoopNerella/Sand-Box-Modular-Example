@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <GVL Name="GVL_DataTransfer" Id="{9c4d8ac0-a637-4154-83ac-3be5729b4935}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+//InsertLotHistory
+	dintEquipment_Id : DINT;//int
+	
+	strLot_ID : STRING;//varchar
+	strDeviceID :STRING := 'ZSE3230';//varchar
+	strAsicType:UDINT := 43;//int
+	
+//	strTestTime_L1: STRING:='2023/01/27 10:12:11.000';//datetime
+//	udintfixture_L1: UDINT:=1;//tinyint
+//	bTestStatus_L1 : STRING:='Good';//varchar
+//	udintErrorcode_L1 : UDINT:=0;//bigint
+//	SerialNumber_L1:UDINT:=180000;//bigint
+//	PressureOut_L1:REAL:=1688653;//float
+//	TemperatureOut_L1:REAL:=4592369;//float
+	
+//	bTestStatus_L2 : STRING;//varchar
+//	strTestTime_L2: STRING:='2023/01/25 10:12:11.000';//datetime
+//	udintErrorcode_L2 : UDINT;
+//	udintfixture_L2: UDINT;//tinyint
+//	SerialNumber_L2:UDINT;
+//	PressureOut_L2:REAL;
+//	TemperatureOut_L2:REAL;
+//	dintEquipment_Id : DINT;
+	
+//	strLot_ID : STRING;
+//	strDeviceID :STRING;
+//	strAsicType:UDINT;//int
+	//****************************//
+	strTestTime_L1: STRING;//datetime
+	udintfixture_L1: UDINT;//tinyint
+	bTestStatus_L1 : STRING:='Good';//varchar
+	udintErrorcode_L1 : UDINT:=0;//bigint
+	SerialNumber_L1:UDINT;//bigint
+	PressureOut_L1:REAL;//float
+	TemperatureOut_L1:REAL;//float
+	FFTPriorOPstatus_L1: STRING;
+	CalT1PriorOPstatus_L1:STRING;
+	CalT2PriorOPstatus_L1:STRING;
+	ErrorCode_L1:UDINT;
+	
+	bTestStatus_L2 : STRING;//varchar
+	strTestTime_L2: STRING;//datetime
+	udintErrorcode_L2 : UDINT;
+	udintfixture_L2: UDINT;//tinyint
+	SerialNumber_L2:UDINT;
+	PressureOut_L2:REAL;
+	TemperatureOut_L2:REAL;
+	FFTPriorOPstatus_L2: STRING;
+	CalT1PriorOPstatus_L2:STRING;
+	CalT2PriorOPstatus_L2:STRING;
+	ErrorCode_L2:UDINT;//01- prior Op, 02- Invalid SN, 03-Cohap Communication fail
+	
+	//prior OP 
+	
+	SerialNumber_temp:UDINT := 989;
+	PriorOpTestmode: STRING := 'CalNoBlow';
+	PriorOpTestStatus:STRING;
+	priorOpResult: STRING;
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

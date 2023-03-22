@@ -56,6 +56,10 @@
     <Folder Include="1 Module\2 Devices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="0 Program\GVL_DataTransfer.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="0 Program\GVL_LaserMarkingParams.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>

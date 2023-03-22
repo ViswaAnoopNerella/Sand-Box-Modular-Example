@@ -93,6 +93,7 @@ VAR
 	bUpdateAllMarkingInfo_MethodCall: BOOL;
 	bRes_UpdateAllMarkingInfo_MethodCall: BOOL;
 	fbDataHandler: FB_DataTracker;
+	fbDataHandler2: FB_DataTracker;
 	fbDatabaseCommandRouter: FB_AdsCommandRouter;
 	_inst_bDataTransferred: BOOL;
 	// (* Name of the parameters database transfer ID. *)
@@ -110,6 +111,9 @@ VAR
 	bGetLaserParamsFromDB_L2 : BOOL;
 	bGetLaserParamsFromDB_R1 : BOOL;
 	bGetLaserParamsFromDB_R2 : BOOL;
+	bPerformPriorOp_Smart: BOOL;
+	in_strParametersDBName_SmartWater : T_MaxString := 'GetPriorOPA';
+	_inst_bPriorOp_Smart: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -389,6 +393,16 @@ IF bGetLaserParamsFromDB_R2 THEN
 		ELSIF fbDataHandler.P_bError THEN
 			bGetLaserParamsFromDB_R2 := FALSE;
 			fbDataHandler.M_ClearError();
+	END_IF
+END_IF
+
+IF bPerformPriorOp_Smart THEN
+	_inst_bPriorOp_Smart := fbDataHandler2.M_TransferData(in_strParametersDBName_SmartWater);
+	IF _inst_bPriorOp_Smart THEN
+		bPerformPriorOp_Smart := FALSE;
+	ELSIF fbDataHandler2.P_bError THEN 
+		bPerformPriorOp_Smart := FALSE;
+		fbDataHandler2.M_ClearError();
 	END_IF
 END_IF]]></ST>
     </Implementation>
@@ -1017,6 +1031,157 @@ END_IF]]></ST>
                     </l2>
                     <l2 n="Connectors" />
                     <v n="Id">97L</v>
+                  </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeBox">
+                      <o>
+                        <v n="BoxType">"FB_DataTracker"</v>
+                        <o n="Instance" t="Operand">
+                          <v n="Operand">"fbDataHandler2"</v>
+                          <v n="Type">"FB_DataTracker"</v>
+                          <v n="Comment">""</v>
+                          <v n="SymbolComment">""</v>
+                          <v n="Address">"Constant_Address_Serialization_Value"</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <v n="LValue">false</v>
+                          <v n="Boolean">false</v>
+                          <v n="IsInstance">true</v>
+                          <v n="Id">129L</v>
+                        </o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems">
+                            <n />
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">true</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <n n="InputFlags" />
+                        <l2 n="InputItems" cet="BoxTreeOperand">
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"TRUE"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">true</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">132L</v>
+                            </o>
+                            <v n="Id">131L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"'DataTracker_2'"</v>
+                              <v n="Type">"STRING(INT#13)"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">134L</v>
+                            </o>
+                            <v n="Id">133L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"FALSE"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">136L</v>
+                            </o>
+                            <v n="Id">135L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"fbDatabaseCommandRouter"</v>
+                              <v n="Type">"FB_AdsCommandRouter"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">138L</v>
+                            </o>
+                            <v n="Id">137L</v>
+                          </o>
+                        </l2>
+                        <o n="InputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>EN</v>
+                            <v>in_strUniqueId</v>
+                            <v>in_bDisableLogging</v>
+                            <v>in_fbApi</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>T_MaxString</v>
+                            <v>BOOL</v>
+                            <v>REFERENCE TO FB_CommandRouter</v>
+                          </l2>
+                        </o>
+                        <o n="OutputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>ENO</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                          </l2>
+                        </o>
+                        <v n="CallType" t="Operator">FunctionBlock</v>
+                        <v n="EN">true</v>
+                        <v n="ENO">true</v>
+                        <n n="STSnippet" />
+                        <v n="ContainsExtensibleInputs">false</v>
+                        <v n="ProvidesSTSnippet">false</v>
+                        <v n="Id">130L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">128L</v>
                   </o>
                 </l2>
                 <v n="BranchCounter">0</v>
@@ -2188,6 +2353,13 @@ END_IF]]></ST>
       <LineId Id="2406" Count="0" />
       <LineId Id="2417" Count="8" />
       <LineId Id="2416" Count="0" />
+      <LineId Id="2537" Count="0" />
+      <LineId Id="2536" Count="0" />
+      <LineId Id="2538" Count="0" />
+      <LineId Id="2543" Count="1" />
+      <LineId Id="2546" Count="2" />
+      <LineId Id="2545" Count="0" />
+      <LineId Id="2539" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
