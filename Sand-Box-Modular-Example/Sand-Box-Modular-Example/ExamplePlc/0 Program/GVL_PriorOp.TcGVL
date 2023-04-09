@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <GVL Name="GVL_PriorOp" Id="{5c3c19e6-31a8-468e-9d1b-6d67235ea746}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	strHousingCode_L1 : STRING;
+	bLaserMarked_L1 : BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

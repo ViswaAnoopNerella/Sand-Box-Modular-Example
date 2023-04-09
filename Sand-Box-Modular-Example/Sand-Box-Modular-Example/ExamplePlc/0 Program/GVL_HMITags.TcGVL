@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <GVL Name="GVL_HMITags" Id="{17a3a0c6-0ed8-4edd-a9bd-66fbf36679ee}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	//machine status 
+	//*******
+	//Add this line of code to a Program : GVL_HMI.intMachine_State := GVL_Main.fbMachine.P_enumState;
+	//*******
+	intMachine_State :INT;
+	
+	// ---------------------------------------------------------------------------
+	// Config Screen
+	// ---------------------------------------------------------------------------		
+	strEngineerPassword: T_MaxString;
+	bEngineerAccessAllowed: BOOL;
+	strEngineerSetPassword: T_MaxString := 'password';
+	bEngineerLogout: BOOL;
+	
+	//machine overview
+	intGood_Parts : INT;
+	intBad_Parts : INT;
+	intTotal_Parts: INT;
+	rYield : REAL;
+	dintEquipment_Id : DINT := 191135;
+	strSoftware_Rev : STRING := '1.0.0';
+	strHMI_Rev : STRING := '1.0';
+	bStartBtn : BOOL;
+	bStopBtn : BOOL;
+	bResetBtn : BOOL;
+	bClearBtn : BOOL;
+	bUser_Active : BOOL;
+	udintPromptMessage : UDINT;
+	strUser_Prompt : T_MaxString;
+	bLoadDirection: BOOL;
+	bDirectionIndicator: BOOL;
+	bUserRetryBtn : BOOL;
+	bUserAbortBtn : BOOL;
+	intStationStatus: INT;
+	
+	bSetPartIdExternal : BOOL;
+	bSetJobIdExternal : BOOL;
+	bSetLotIdExternal : BOOL;
+	
+	strExternalPartId : STRING;
+	strExternalJobId : STRING;
+	strExternalLotId : STRING;
+			
+	//Lot Control
+	bStart_Lot :BOOL;
+	bEnd_Lot : BOOL;
+	bLot_Active :BOOL;
+	strLot_Num : STRING;
+	strJob_Num : STRING;
+	strPart_Num : STRING;
+	bLimits_Loaded : Bool;
+	
+	//load unload
+	strL1_HCode_Unload : STRING;
+	strL2_HCode_Unload : STRING;
+	strR1_HCode_Unload : STRING;
+	strR2_HCode_Unload : STRING;
+	bL1_State_Unload : BOOL;
+	bL2_State_Unload : BOOL;
+	bR1_State_Unload : BOOL;
+	bR2_State_Unload : BOOL;
+	
+	//conditioner
+	intNum_Cycles : INT;
+	intOn_Time : INT;
+	intOff_Time : INT;
+	intCycles_Run :INT;
+	bL1_Cond_State : BOOL;
+	bL2_Cond_State : BOOL;
+	bR1_Cond_State : BOOL;
+	bR2_Cond_State : BOOL;
+	strL1_Cond_HCode : STRING;
+	strL2_Cond_HCode : STRING;
+	strR1_Cond_HCode : STRING;
+	strR2_Cond_HCode : STRING;
+		
+	//contact resistance	
+	strCR_L1_HCode : STRING;
+	rCR_L1_CR : REAL;
+	rCR_L1_M1R : REAL;
+	rCR_L1_M1V : REAL;
+	rCR_L1_M1C : REAL;
+	rCR_L1_M2R : REAL;
+	rCR_L1_M2V : REAL;
+	rCR_L1_M2C : REAL;
+	rCR_L1_A1R : REAL;
+	rCR_L1_A1V : REAL;
+	rCR_L1_A1C : REAL;
+	rCR_L1_A2R : REAL;
+	rCR_L1_A2V : REAL;
+	rCR_L1_A2C : REAL;
+	bL1_CR_State : BOOL;
+	
+	strCR_L2_HCode : STRING;
+	rCR_L2_CR : REAL;
+	rCR_L2_M1R : REAL;
+	rCR_L2_M1V : REAL;
+	rCR_L2_M1C : REAL;
+	rCR_L2_M2R : REAL;
+	rCR_L2_M2V : REAL;
+	rCR_L2_M2C : REAL;
+	rCR_L2_A1R : REAL;
+	rCR_L2_A1V : REAL;
+	rCR_L2_A1C : REAL;
+	rCR_L2_A2R : REAL;
+	rCR_L2_A2V : REAL;
+	rCR_L2_A2C : REAL;
+	bL2_CR_State : BOOL;
+	
+	strCR_R1_HCode : STRING;
+	rCR_R1_CR : REAL;
+	rCR_R1_M1R : REAL;
+	rCR_R1_M1V : REAL;
+	rCR_R1_M1C : REAL;
+	rCR_R1_M2R : REAL;
+	rCR_R1_M2V : REAL;
+	rCR_R1_M2C : REAL;
+	rCR_R1_A1R : REAL;
+	rCR_R1_A1V : REAL;
+	rCR_R1_A1C : REAL;
+	rCR_R1_A2R : REAL;
+	rCR_R1_A2V : REAL;
+	rCR_R1_A2C : REAL;	
+	bR1_CR_State : BOOL;
+	
+	strCR_R2_HCode : STRING;
+	rCR_R2_CR : REAL;
+	rCR_R2_M1R : REAL;
+	rCR_R2_M1V : REAL;
+	rCR_R2_M1C : REAL;
+	rCR_R2_M2R : REAL;
+	rCR_R2_M2V : REAL;
+	rCR_R2_M2C : REAL;
+	rCR_R2_A1R : REAL;
+	rCR_R2_A1V : REAL;
+	rCR_R2_A1C : REAL;
+	rCR_R2_A2R : REAL;
+	rCR_R2_A2V : REAL;
+	rCR_R2_A2C : REAL;
+	bR2_CR_State : BOOL;
+		
+	//hipot	
+	strHp_L1_HCode : STRING;
+	strHp_L2_HCode : STRING;
+	strHp_R1_HCode : STRING;
+	strHp_R2_HCode : STRING;
+	//to be deleted
+	bL1_Hp_State : BOOL;
+	bL2_Hp_State : BOOL;
+	bR1_Hp_State : BOOL;	
+	bR2_Hp_State : BOOL;
+	
+	rHp_FT_L1 : REAL;
+	rHp_FT_L2 : REAL;
+	rHp_FT_R1 : REAL;
+	rHp_FT_R2 : REAL;
+
+	rHp_Res_L1 : REAL;
+	rHp_Res_L2 : REAL;
+	rHp_Res_R1 : REAL;
+	rHp_Res_R2 : REAL;
+	
+	strHp_Msg_L1 : STRING;
+	strHp_Msg_L2 : STRING;
+	strHp_Msg_R1 : STRING;
+	strHp_Msg_R2 : STRING;
+	
+	HP_testName : STRING;
+	//not used on HMI
+	rHp_BDC_L1 : REAL;
+	rHp_ARC_L1 : REAL;
+	rHp_Result_L1 : REAL;
+	rHp_BDC_L2 : REAL;
+	rHp_ARC_L2 : REAL;
+	rHp_Result_L2 : REAL;
+	rHp_BDC_R1 : REAL;
+	rHp_ARC_R1 : REAL;
+	rHp_Result_R1 : REAL;
+	rHp_BDC_R2 : REAL;
+	rHp_ARC_R2 : REAL;
+	rHp_Result_R2 : REAL;
+	//AB proposed new Tags
+	strNestAErrorMsg:STRING;
+	strNestBErrorMsg:STRING;
+	strNestCErrorMsg:STRING;
+	strNestDErrorMsg:STRING;
+	
+	rHPMeasured_MML1:REAL;
+	rHPMeasured_MML2:REAL;
+	rHPMeasured_MMR1:REAL;
+	rHPMeasured_MMR2:REAL;
+	
+	rHPMeasured_MMIRL1:REAL;
+	rHPMeasured_MMIRL2:REAL;
+	rHPMeasured_MMIRR1:REAL;
+	rHPMeasured_MMIRR2:REAL;
+	
+	rHPMeasured_AAL1:REAL;
+	rHPMeasured_AAL2:REAL;
+	rHPMeasured_AAR1:REAL;
+	rHPMeasured_AAR2:REAL;
+	
+	rHPMeasured_AuxIRL1:REAL;
+	rHPMeasured_AuxIRL2:REAL;
+	rHPMeasured_AuxIRR1:REAL;
+	rHPMeasured_AuxIRR2:REAL;
+	
+	rHPMeasured_MainCoilopenL1:REAL;
+	rHPMeasured_MainCoilopenL2:REAL;
+	rHPMeasured_MainCoilopenR1:REAL;
+	rHPMeasured_MainCoilopenR2:REAL;
+	
+	rHPMeasured_MainCoilIRL1:REAL;
+	rHPMeasured_MainCoilIRL2:REAL;
+	rHPMeasured_MainCoilIRR1:REAL;
+	rHPMeasured_MainCoilIRR2:REAL;
+	
+	rHPMeasured_MainCoilClosedL1:REAL;
+	rHPMeasured_MainCoilClosedL2:REAL;
+	rHPMeasured_MainCoilClosedR1:REAL;
+	rHPMeasured_MainCoilClosedR2:REAL;
+	
+	
+	//PUV_DOV
+	strPUV_L1_HCode : STRING;
+	strPUV_L2_HCode : STRING;
+	strPUV_R1_HCode : STRING;
+	strPUV_R2_HCode : STRING;
+	
+	bL1_puv_State : BOOL;
+	bL2_puv_State : BOOL;
+	bR1_puv_State : BOOL;
+	bR2_puv_State : BOOL;
+	
+	rPuv_L1 : REAL;
+	rDov_L1 : REAL;	
+	rPuc_L1 : REAL;
+	rDoc_L1 : REAL;
+	rPuv_L2 : REAL;
+	rDov_L2 : REAL;	
+	rPuc_L2 : REAL;
+	rDoc_L2 : REAL;
+	rPuv_R1 : REAL;
+	rDov_R1 : REAL;	
+	rPuc_R1 : REAL;
+	rDoc_R1 : REAL;
+	rPuv_R2 : REAL;
+	rDov_R2 : REAL;	
+	rPuc_R2 : REAL;
+	rDoc_R2 : REAL;
+	
+	arrCoilPUV: ARRAY[1..4] OF LREAL;
+	arrCoilDOV: ARRAY[1..4] OF LREAL;
+	arrCoilResistance: ARRAY[1..4] OF LREAL;
+		
+	//functional test	
+	strFT_L1_HCode : STRING;
+	strFT_L2_HCode : STRING;
+	strFT_R1_HCode : STRING;
+	strFT_R2_HCode : STRING;
+	
+	bL1_ft_State : BOOL;
+	bL2_ft_State : BOOL;
+	bR1_ft_State : BOOL;
+	bR2_ft_State : BOOL;
+	
+	MainOperatTime_L1 : REAL;
+	MainReleaseTime_L1 : REAL;	
+	AuxOperateTime_L1 : REAL;
+	AuxReleaseTime_L1 : REAL;
+	RSim_L1 : REAL;
+	MainOperatTime_L2 : REAL;
+	MainReleaseTime_L2 : REAL;	
+	AuxOperateTime_L2 : REAL;
+	AuxReleaseTime_L2 : REAL;
+	RSim_L2 : REAL;
+	MainOperatTime_R1 : REAL;
+	MainReleaseTime_R1 : REAL;	
+	AuxOperateTime_R1 : REAL;
+	AuxReleaseTime_R1 : REAL;
+	RSim_R1 : REAL;
+	MainOperatTime_R2 : REAL;
+	MainReleaseTime_R2 : REAL;	
+	AuxOperateTime_R2 : REAL;
+	AuxReleaseTime_R2 : REAL;
+	RSim_R2 : REAL;
+	
+	//laser mark	
+	bLaser_Connected_State : BOOL;
+	bLaser_Mark_Status : BOOL;
+	bLaser_Mark_Status_L1 : BOOL; //Marking Status of Part in Nest L1
+	bLaser_Mark_Status_L2 : BOOL; //Marking Status of Part in Nest L2
+	bLaser_Mark_Status_R1 : BOOL; //Marking Status of Part in Nest R1
+	bLaser_Mark_Status_R2 : BOOL; //Marking Status of Part in Nest R2
+	
+	//Station PBs
+	bDialTableRetry: BOOL;
+	bDialTableAbort: BOOL;
+	bCondRetry : BOOL;
+	bCondAbort : BOOL;
+	bCRRetry : BOOL;
+	bCRAbort : BOOL;
+	bHPRetry : BOOL;
+	bHPAbort : BOOL;
+	bPUVRetry : BOOL;
+	bPUVAbort : BOOL;
+	bFTRetry : BOOL;
+	bFTAbort : BOOL;
+	bLaserRetry: BOOL;
+	bLaserAbort: BOOL;
+	
+	//Station Messages
+	strLoadUserMsg : T_MaxString;
+	strCondUserMsg : T_MaxString;
+	strCRUserMsg : T_MaxString;
+	strHPUserMsg : T_MaxString;
+	strPUVUserMsg : T_MaxString;
+	strFTUserMsg : T_MaxString;
+	
+	//Disable stations from HMI
+	bDisableDialTable : BOOL;
+	bDisableLoadUnload : BOOL;
+	bDisableConditioner : BOOL;
+	bDisableCR : BOOL;
+	bDisableHiPot : BOOL;
+	bDisableLaserMark : BOOL;
+	bDisablePUVDOV : BOOL;
+	bDisableFunctionTest : BOOL;	
+	
+	udintDialTablePrompt: UDINT;
+	udintLoadUnloadPrompt: UDINT;
+	udintConditionerPrompt: UDINT;
+	udintContactResistancePrompt: UDINT;
+	udintHiPotPrompt: UDINT;
+	udintLaserPrompt: UDINT;
+	udintPUVDOVPrompt: UDINT;
+	udintFunctionTestPrompt: UDINT;
+	
+	bDialTablePromptActive: BOOL;
+	bLoadUnloadPromptActive: BOOL;
+	bConditionerPromptActive: BOOL;
+	bContactResistancePromptActive: BOOL;
+	bHiPotPromptActive: BOOL;
+	bLaserPromptActive: BOOL;
+	bPUVDOVPromptActive: BOOL;
+	bFunctionTestPromptActive: BOOL;
+	
+	udintDialTableFault: UDINT;
+	udintLoadUnloadFault: UDINT;
+	udintConditionerFault: UDINT;
+	udintContactResistanceFault: UDINT;
+	udintHiPotFault: UDINT;
+	udintLaserFault: UDINT;
+	udintPUVDOVFault: UDINT;
+	udintFunctionTestFault: UDINT;
+	
+	bDialTableFaulted: BOOL;
+	bLoadUnloadFaulted: BOOL;
+	bConditionerFaulted: BOOL;
+	bContactResistanceFaulted: BOOL;
+	bHiPotFaulted: BOOL;
+	bLaserFaulted: BOOL;
+	bPUVDOVFaulted: BOOL;
+	bFunctionTestFaulted: BOOL;
+
+	
+	intDialTableState: INT;
+	intLoadUnloadState: INT;
+	intConditionerState: INT;
+	intContactResistanceState: INT;
+	intHiPotState: INT;
+	intLaserState: INT;
+	intPUVDOVState: INT;
+	intFunctionTestState: INT;
+	
+	//Station and Nest failed consecutively 3 times
+	//intStationNumFailed: INT;
+	//intNestNumFailed: INT;
+	arrStationNestNumFailed: ARRAY[1..2] OF INT;
+	
+	//IO Screen
+	arrDigitalInputs: ARRAY[1..32] OF BOOL;
+	arrRemoteInputs: ARRAY[1..48] OF BOOL;
+	arrIOLinkInputs: ARRAY[1..4] OF BOOL;
+	arrDigitalOutputStatus: ARRAY[1..120] OF BOOL;
+	arrRelayOutputStatus: ARRAY[1..4] OF BOOL;
+	arrPneumaticOutputStatus: ARRAY[1..32] OF BOOL;
+	arrGuardDoors: ARRAY[1..16] OF BOOL;
+//	arrMultiTimestampInputs: ARRAY[1..8] OF ST_EL1258_Inputs_Channel;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

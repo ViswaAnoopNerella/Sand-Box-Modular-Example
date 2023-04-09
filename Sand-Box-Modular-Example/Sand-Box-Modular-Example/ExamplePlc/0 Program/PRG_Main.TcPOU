@@ -114,6 +114,14 @@ VAR
 	bPerformPriorOp_Smart: BOOL;
 	in_strParametersDBName_SmartWater : T_MaxString := 'GetPriorOPA';
 	_inst_bPriorOp_Smart: BOOL;
+	
+	bPerformPriorOp_FFT: BOOL;
+	in_strParametersDBName_FFTLaser_L1 : T_MaxString := 'LaserMarkCheckL1';
+	_inst_bPriorOp_FFT: BOOL;
+	
+	Temp_CR_LOOKUP_NestL1 : INT;
+	iLengthDataMatrixNestL1 : INT;
+	ParamsArrayNestA : STRING;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -404,7 +412,25 @@ IF bPerformPriorOp_Smart THEN
 		bPerformPriorOp_Smart := FALSE;
 		fbDataHandler2.M_ClearError();
 	END_IF
-END_IF]]></ST>
+END_IF
+
+IF bPerformPriorOp_FFT THEN
+	_inst_bPriorOp_FFT := fbDataHandler.M_TransferData(in_strParametersDBName_FFTLaser_L1);
+	IF _inst_bPriorOp_FFT THEN
+		bPerformPriorOp_FFT := FALSE;
+	ELSIF fbDataHandler.P_bError THEN 
+		bPerformPriorOp_FFT := FALSE;
+		fbDataHandler.M_ClearError();
+	END_IF
+END_IF
+
+Temp_CR_LOOKUP_NestL1 := FIND('GV354-006:220705-141019_CR','_CR');
+iLengthDataMatrixNestL1 := LEN('GV354-006:220705-141019_CR');
+IF  (Temp_CR_LOOKUP_NestL1 > 0) THEN
+	ParamsArrayNestA := REPLACE('GV354-006:220705-141019_CR', concat(' CR ' , '0.023456'),6,iLengthDataMatrixNestL1 - 2);
+END_IF 
+
+]]></ST>
     </Implementation>
     <Action Name="A_Machine" Id="{f2ef6f5c-8a40-4c62-8311-b3186050d362}">
       <Implementation>
@@ -2360,6 +2386,13 @@ END_IF]]></ST>
       <LineId Id="2546" Count="2" />
       <LineId Id="2545" Count="0" />
       <LineId Id="2539" Count="0" />
+      <LineId Id="2793" Count="8" />
+      <LineId Id="2792" Count="0" />
+      <LineId Id="2667" Count="0" />
+      <LineId Id="2670" Count="3" />
+      <LineId Id="2669" Count="0" />
+      <LineId Id="2668" Count="0" />
+      <LineId Id="2666" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

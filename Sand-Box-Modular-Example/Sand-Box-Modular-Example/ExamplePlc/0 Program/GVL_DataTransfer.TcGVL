@@ -31,6 +31,8 @@ VAR_GLOBAL
 //	strDeviceID :STRING;
 //	strAsicType:UDINT;//int
 	//****************************//
+	
+	
 	strTestTime_L1: STRING;//datetime
 	udintfixture_L1: UDINT;//tinyint
 	bTestStatus_L1 : STRING:='Good';//varchar
