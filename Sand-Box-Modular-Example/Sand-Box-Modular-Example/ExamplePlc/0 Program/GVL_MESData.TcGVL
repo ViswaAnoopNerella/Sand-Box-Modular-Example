@@ -4,7 +4,7 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	//Lot Information
-	LotBarcode : STRING;
+	LotBarcode : STRING := '80600600+57805702+23330166B+200';
 	
 	LotNo : STRING;
 	ProductNo : STRING;
@@ -15,7 +15,7 @@ VAR_GLOBAL
 	MachineID : STRING;
 	LotIdent : INT;
 	PiecesLeft : INT;
-	PecesOK : INT;
+	PiecesOK : INT;
 	PiecesNOK : INT;
 	LotInfoResponseMessages : ARRAY[1..100] OF STRING;
 	
@@ -25,6 +25,7 @@ VAR_GLOBAL
 	OperatorInfoResponseMessages : ARRAY[1..100] OF STRING;
 	
 	//Start Lot Information
+	StartLotResponse : STRING;
 	StartLotResponseMessages : ARRAY[1..100] OF STRING;
 	
 	//Prod Lot Components
@@ -54,6 +55,11 @@ VAR_GLOBAL
     Comp3_resultText: STRING;   // Equivalent to private string resultText;
     Comp3_actualQuan: INT;      // Equivalent to private int actualQuan;
     Comp3_item: STRING;         // Equivalent to private string item;
+	
+	//ComponentsValidation
+	ComponentValidation1Response : BOOL;
+	ComponentValidation2Response : BOOL;
+	ComponentValidation3Response : BOOL;
 	
 	//Get Machine Settings
 	MachineSettingStructure : STRING;
