@@ -154,6 +154,22 @@ VAR
 	_inst_bCompValidation3 : BOOL;
 	in_strParamDBName_Comp1Validation3 : T_MaxString := 'ComponentValidation3';
 	
+	bPerformGetMachineSettings : BOOL;
+	_inst_bGetMachineSettings : BOOL;
+	in_strParamDBName_GetMachSetting : T_MaxString := 'GetMachineSettings1';
+	
+	bPerformAddScrapCompByReason : BOOL;
+	_inst_bAddScrapCompByReason : BOOL;
+	in_strParamDBName_AddScrapCompByReason : T_MaxString := 'AddScrapComponentByReason1';
+	
+	bPerformEndLotComp : BOOL;
+	_inst_bEndLotComp : BOOL;
+	in_strParamDBName_EndLotComp : T_MaxString := 'EndLotComponent1';
+	
+	bPerformGetMachineDefects : BOOL;
+	_inst_bGetMachineDefects : BOOL;
+	in_strParamDBName_GetMachDefects : T_MaxString := 'GetMachineDefects1';
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -165,7 +181,123 @@ A_Machine();
 //A_Station3();
 //A_Station4();
 //bInterfaceTest := MyLaser1.fbApi.P_bDeviceInterfaceBusy;
-//IF bConnectToLaserMarker THEN
+
+
+
+IF bPerformGetLotInfoFromLotBarcode THEN
+	_inst_bGetLotInfo_LotBarcode := fbDataHandler3.M_TransferData(in_strParamDBName_GetLotInfo);
+	IF _inst_bGetLotInfo_LotBarcode THEN
+		bPerformGetLotInfoFromLotBarcode := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformGetLotInfoFromLotBarcode := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF
+
+IF bPerformGetOpInfoFromOpBarcode THEN
+	_inst_bGetOpInfo_OpBarcode := fbDataHandler3.M_TransferData(in_strParamDBName_GetOpInfo);
+	IF _inst_bGetOpInfo_OpBarcode THEN
+		bPerformGetOpInfoFromOpBarcode := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformGetOpInfoFromOpBarcode := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF
+
+IF bPerformStartLot THEN
+	_inst_bStartLot := fbDataHandler3.M_TransferData(in_strParamDBName_StartLot);
+	IF _inst_bStartLot THEN
+		bPerformStartLot := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformStartLot := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF
+
+IF bPerformGetProdLotComponents THEN
+	_inst_bGetProdLotComponents := fbDataHandler3.M_TransferData(in_strParamDBName_GetProdLotComps);
+	IF _inst_bGetProdLotComponents THEN
+		bPerformGetProdLotComponents := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformGetProdLotComponents := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF
+
+
+IF bPerformComponentValidation1 THEN
+	_inst_bCompValidation1 := fbDataHandler3.M_TransferData(in_strParamDBName_Comp1Validation1);
+	IF _inst_bCompValidation1 THEN
+		bPerformComponentValidation1 := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformComponentValidation1 := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF
+
+IF bPerformComponentValidation2 THEN
+	_inst_bCompValidation2 := fbDataHandler3.M_TransferData(in_strParamDBName_Comp1Validation2);
+	IF _inst_bCompValidation2 THEN
+		bPerformComponentValidation2 := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformComponentValidation2 := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF
+
+IF bPerformComponentValidation3 THEN
+	_inst_bCompValidation3 := fbDataHandler3.M_TransferData(in_strParamDBName_Comp1Validation3);
+	IF _inst_bCompValidation3 THEN
+		bPerformComponentValidation3 := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformComponentValidation3 := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF
+
+IF bPerformGetMachineSettings THEN
+	_inst_bGetMachineSettings := fbDataHandler3.M_TransferData(in_strParamDBName_GetMachSetting);
+	IF _inst_bGetMachineSettings THEN
+		bPerformGetMachineSettings := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformGetMachineSettings := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF
+
+IF bPerformAddScrapCompByReason THEN
+	_inst_bAddScrapCompByReason := fbDataHandler3.M_TransferData(in_strParamDBName_AddScrapCompByReason);
+	IF _inst_bAddScrapCompByReason THEN
+		bPerformAddScrapCompByReason := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformAddScrapCompByReason := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF
+
+IF bPerformEndLotComp THEN
+	_inst_bEndLotComp := fbDataHandler3.M_TransferData(in_strParamDBName_EndLotComp);
+	IF _inst_bEndLotComp THEN
+		bPerformEndLotComp := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformEndLotComp := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF
+
+IF bPerformGetMachineDefects THEN
+	_inst_bGetMachineDefects := fbDataHandler3.M_TransferData(in_strParamDBName_GetMachDefects);
+	IF _inst_bGetMachineDefects THEN
+		bPerformGetMachineDefects := FALSE;
+	ELSIF fbDataHandler3.P_bError THEN 
+		bPerformGetMachineDefects := FALSE;
+		fbDataHandler3.M_ClearError();
+	END_IF
+END_IF]]></ST>
+    </Implementation>
+    <Action Name="A_LaserMarkingParams" Id="{23cacb87-0a2e-4564-9710-85ba7dafd933}">
+      <Implementation>
+        <ST><![CDATA[//IF bConnectToLaserMarker THEN
 //	bRes_LaserConnected := MyLaser1.M_Connect();
 //	IF bRes_LaserConnected THEN
 //	//Add some timer based logic to do error handling.
@@ -460,80 +592,9 @@ A_Machine();
 //iLengthDataMatrixNestL1 := LEN('GV354-006:220705-141019_CR');
 //IF  (Temp_CR_LOOKUP_NestL1 > 0) THEN
 //	ParamsArrayNestA := REPLACE('GV354-006:220705-141019_CR', concat(' CR ' , '0.023456'),6,iLengthDataMatrixNestL1 - 2);
-//END_IF 
-
-
-IF bPerformGetLotInfoFromLotBarcode THEN
-	_inst_bGetLotInfo_LotBarcode := fbDataHandler3.M_TransferData(in_strParamDBName_GetLotInfo);
-	IF _inst_bGetLotInfo_LotBarcode THEN
-		bPerformGetLotInfoFromLotBarcode := FALSE;
-	ELSIF fbDataHandler3.P_bError THEN 
-		bPerformGetLotInfoFromLotBarcode := FALSE;
-		fbDataHandler3.M_ClearError();
-	END_IF
-END_IF
-
-IF bPerformGetOpInfoFromOpBarcode THEN
-	_inst_bGetOpInfo_OpBarcode := fbDataHandler3.M_TransferData(in_strParamDBName_GetOpInfo);
-	IF _inst_bGetOpInfo_OpBarcode THEN
-		bPerformGetOpInfoFromOpBarcode := FALSE;
-	ELSIF fbDataHandler3.P_bError THEN 
-		bPerformGetOpInfoFromOpBarcode := FALSE;
-		fbDataHandler3.M_ClearError();
-	END_IF
-END_IF
-
-IF bPerformStartLot THEN
-	_inst_bStartLot := fbDataHandler3.M_TransferData(in_strParamDBName_StartLot);
-	IF _inst_bStartLot THEN
-		bPerformStartLot := FALSE;
-	ELSIF fbDataHandler3.P_bError THEN 
-		bPerformStartLot := FALSE;
-		fbDataHandler3.M_ClearError();
-	END_IF
-END_IF
-
-IF bPerformGetProdLotComponents THEN
-	_inst_bGetProdLotComponents := fbDataHandler3.M_TransferData(in_strParamDBName_GetProdLotComps);
-	IF _inst_bGetProdLotComponents THEN
-		bPerformGetProdLotComponents := FALSE;
-	ELSIF fbDataHandler3.P_bError THEN 
-		bPerformGetProdLotComponents := FALSE;
-		fbDataHandler3.M_ClearError();
-	END_IF
-END_IF
-
-
-IF bPerformComponentValidation1 THEN
-	_inst_bCompValidation1 := fbDataHandler3.M_TransferData(in_strParamDBName_Comp1Validation1);
-	IF _inst_bCompValidation1 THEN
-		bPerformComponentValidation1 := FALSE;
-	ELSIF fbDataHandler3.P_bError THEN 
-		bPerformComponentValidation1 := FALSE;
-		fbDataHandler3.M_ClearError();
-	END_IF
-END_IF
-
-IF bPerformComponentValidation2 THEN
-	_inst_bCompValidation2 := fbDataHandler3.M_TransferData(in_strParamDBName_Comp1Validation2);
-	IF _inst_bCompValidation2 THEN
-		bPerformComponentValidation2 := FALSE;
-	ELSIF fbDataHandler3.P_bError THEN 
-		bPerformComponentValidation2 := FALSE;
-		fbDataHandler3.M_ClearError();
-	END_IF
-END_IF
-
-IF bPerformComponentValidation3 THEN
-	_inst_bCompValidation3 := fbDataHandler3.M_TransferData(in_strParamDBName_Comp1Validation3);
-	IF _inst_bCompValidation3 THEN
-		bPerformComponentValidation3 := FALSE;
-	ELSIF fbDataHandler3.P_bError THEN 
-		bPerformComponentValidation3 := FALSE;
-		fbDataHandler3.M_ClearError();
-	END_IF
-END_IF]]></ST>
-    </Implementation>
+//END_IF ]]></ST>
+      </Implementation>
+    </Action>
     <Action Name="A_Machine" Id="{f2ef6f5c-8a40-4c62-8311-b3186050d362}">
       <Implementation>
         <NWL>
