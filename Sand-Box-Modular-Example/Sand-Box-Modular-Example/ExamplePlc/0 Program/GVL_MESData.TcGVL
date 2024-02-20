@@ -89,6 +89,22 @@ VAR_GLOBAL
 	Scrap1_ScrapCount : INT;
 	Scrap1_ScrapCodeDescr : STRING;	
 	
+	//AddMESMachineEvent
+	MESMachineID : STRING;
+	MESStationID : INT;
+	MESEventCode : STRING;
+	MESEventMessage : STRING;
+	MESEventType : INT;
+	MESEventOperatorID : STRING;
+	
+	MESResponseEventID : LINT;
+	
+	//UpdateMESMachineEvent
+	MESIsResolvedStatus : BOOL;
+	MESResolutionNotes : STRING;
+	MESDateTimeResolved : DATE;
+	MESUpdateEventID : LINT;
+	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
