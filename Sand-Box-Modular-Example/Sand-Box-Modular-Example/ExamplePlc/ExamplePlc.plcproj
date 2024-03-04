@@ -27,6 +27,10 @@
       <DefaultResolution>Sensata_Data, * (Sensata Technologies)</DefaultResolution>
       <Namespace>Sensata_Data</Namespace>
     </PlaceholderReference>
+    <PlaceholderReference Include="Sensata_Device_Comm">
+      <DefaultResolution>Sensata_Device_Comm, * (Sensata Technologies)</DefaultResolution>
+      <Namespace>Sensata_Device_Comm</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Sensata_Utilities">
       <DefaultResolution>Sensata_Utilities, * (Sensata Technologies)</DefaultResolution>
       <Namespace>Sensata_Utilities</Namespace>
@@ -107,6 +111,9 @@
     </PlaceholderResolution>
     <PlaceholderResolution Include="Sensata_Data">
       <Resolution>Sensata_Data, * (Sensata Technologies)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Sensata_Device_Comm">
+      <Resolution>Sensata_Device_Comm, * (Sensata Technologies)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="Sensata_Utilities">
       <Resolution>Sensata_Utilities, * (Sensata Technologies)</Resolution>

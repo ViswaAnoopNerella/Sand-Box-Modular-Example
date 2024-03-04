@@ -124,8 +124,8 @@ VAR
 	iLengthDataMatrixNestL1 : INT;
 	ParamsArrayNestA : STRING;
 	
-	
-	fbDataHandler3: FB_MESDataTracking;
+	//MES Data Tracking Testing
+//	fbDataHandler3: FB_MESDataTracking;
 	bPerformGetLotInfoFromLotBarcode: BOOL;
 	_inst_bGetLotInfo_LotBarcode: BOOL;
 	in_strParamDBName_GetLotInfo: T_MaxString := 'GetLotInfo1';
@@ -169,13 +169,48 @@ VAR
 	bPerformGetMachineDefects : BOOL;
 	_inst_bGetMachineDefects : BOOL;
 	in_strParamDBName_GetMachDefects : T_MaxString := 'GetMachineDefects1';
+
+	//Testing Cohap Related Vars
+
+	//Initialize Only	
+	MyCohapTest : FB_COHAP;
+	bInitializeCohapSystem: BOOL;
+	bRes_CohapConnected: BOOL;
+
+	//Execute RunImpMethods Only	;
+	bExecuteRunImpMethods: BOOL;
+	bRes_RunImpMethods: BOOL;
+
+	//Set Current Device Instance
+	bSetCurrentDevice_Cohap : BOOL;
+	bRes_SetCurrentDevice : BOOL;
+	//Input Params
+	strDeviceName : STRING;
 	
+	//RunCommand
+	bRunCommandCohapSystem : BOOL;
+	bRes_RunCommand : BOOL;
+	//Input Params
+	strMethodName : STRING;
+	RunCom_InpuParams : T_CohapParameterList;
+	RunCom_ExpOutParamList : ARRAY[1..10] OF ReturnParamKVP;
+	//Output Params
+	RunCom_OutputParams : T_CohapParameterList;
+	
+	//DummyTest Dictionary Prep for RunCommand Execution
+	RC_DT_InpPar : T_CohapParameterList;
+	RC_DT_ExpOutPL : ARRAY[1..10] OF ReturnParamKVP;
+	
+//	fbCohapHandler1: FB_COHAP;
 END_VAR
+
+
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[bTestOutput := bTestInput;
 
 A_Machine();
+A_CohapLibraryTesting();
 //A_Station1();
 //A_Station2();
 //A_Station3();
@@ -295,105 +330,179 @@ A_Machine();
 //	END_IF
 //END_IF]]></ST>
     </Implementation>
+    <Action Name="A_CohapLibraryTesting" Id="{044fe8a4-3d4c-42ac-b64b-984c35c6fb2a}">
+      <Implementation>
+        <ST><![CDATA[IF bInitializeCohapSystem THEN
+	bRes_CohapConnected := MyCohapTest.M_init(1);
+	IF bRes_CohapConnected THEN
+	//Add some timer based logic to do error handling.
+		bInitializeCohapSystem := FALSE;
+	ELSIF MyCohapTest.P_bError THEN
+		bInitializeCohapSystem := FALSE;
+		MyCohapTest.M_ClearError();
+	END_IF
+END_IF
+
+IF bExecuteRunImpMethods THEN
+	bRes_RunImpMethods := MyCohapTest.M_RunImpMethods();
+	IF bRes_RunImpMethods THEN
+	//Add some timer based logic to do error handling.
+		bExecuteRunImpMethods := FALSE;
+	ELSIF MyCohapTest.P_bError THEN
+		bExecuteRunImpMethods := FALSE;
+		MyCohapTest.M_ClearError();
+	END_IF
+END_IF
+
+
+IF bSetCurrentDevice_Cohap THEN
+	bRes_SetCurrentDevice := MyCohapTest.M_SetCurrentDevice(strDeviceName);
+	IF bRes_SetCurrentDevice THEN
+	//Add some timer based logic to do error handling.
+		bSetCurrentDevice_Cohap := FALSE;
+	ELSIF MyCohapTest.P_bError THEN
+		bSetCurrentDevice_Cohap := FALSE;
+		MyCohapTest.M_ClearError();
+	END_IF
+END_IF
+
+
+RC_DT_InpPar[1].strKey := 'channel';
+RC_DT_InpPar[1].strValue := '123';
+
+//RC_DT_InpPar[1].strKey := '';
+//RC_DT_InpPar[1].strValue := '';
+
+RC_DT_ExpOutPL[1].VarName := 'serialno';
+RC_DT_ExpOutPL[1].DataType := E_DataType.DT_STRING;
+
+//RC_DT_ExpOutPL[1].VarName := '';
+//RC_DT_ExpOutPL[1].DataType := E_DataType.DT_BOOL;
+
+
+IF bRunCommandCohapSystem THEN
+	bRes_RunCommand := MyCohapTest.M_RunCommand(strMethodName, RunCom_InpuParams, RunCom_ExpOutParamList, aoutputParam => RunCom_OutputParams );
+	IF bRes_RunCommand THEN
+	//Add some timer based logic to do error handling.
+		bRunCommandCohapSystem := FALSE;
+	ELSIF MyCohapTest.P_bError THEN
+		bRunCommandCohapSystem := FALSE;
+		MyCohapTest.M_ClearError();
+	END_IF
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Action>
     <Action Name="A_LaserMarkingParams" Id="{23cacb87-0a2e-4564-9710-85ba7dafd933}">
       <Implementation>
-        <ST><![CDATA[IF bConnectToLaserMarker THEN
-	bRes_LaserConnected := MyLaser1.M_Connect();
-	IF bRes_LaserConnected THEN
-	//Add some timer based logic to do error handling.
-		bConnectToLaserMarker := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bConnectToLaserMarker := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+        <ST><![CDATA[//IF bConnectToLaserMarker THEN
+//	bRes_LaserConnected := MyLaser1.M_Connect();
+//	IF bRes_LaserConnected THEN
+//	//Add some timer based logic to do error handling.
+//		bConnectToLaserMarker := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bConnectToLaserMarker := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
 
-IF bDisconnectFromLaserMarker THEN
-	bRes_LaserDisconnected := MyLaser1.M_Disconnect();
-	IF bRes_LaserDisconnected THEN
-		bDisconnectFromLaserMarker := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bDisconnectFromLaserMarker := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bDisconnectFromLaserMarker THEN
+//	bRes_LaserDisconnected := MyLaser1.M_Disconnect();
+//	IF bRes_LaserDisconnected THEN
+//		bDisconnectFromLaserMarker := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bDisconnectFromLaserMarker := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
 
-IF bPeakCurrentProgramInLaser THEN
-	bRes_PeakCurrentProgramInLaser := MyLaser1.M_PeakCurrentProgram();
-	IF bRes_PeakCurrentProgramInLaser THEN
-		bPeakCurrentProgramInLaser := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bPeakCurrentProgramInLaser := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bPeakCurrentProgramInLaser THEN
+//	bRes_PeakCurrentProgramInLaser := MyLaser1.M_PeakCurrentProgram();
+//	IF bRes_PeakCurrentProgramInLaser THEN
+//		bPeakCurrentProgramInLaser := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bPeakCurrentProgramInLaser := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
 
-IF bSendProgramToLaser THEN
-	bRes_SendProgramtoLaser := MyLaser1.M_SendProgramtoLaser(filepath,LaserMemoryLocation);
-	IF bRes_SendProgramtoLaser THEN
-		bSendProgramToLaser := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bSendProgramToLaser := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bSendProgramToLaser THEN
+//	bRes_SendProgramtoLaser := MyLaser1.M_SendProgramtoLaser(filepath,LaserMemoryLocation);
+//	IF bRes_SendProgramtoLaser THEN
+//		bSendProgramToLaser := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bSendProgramToLaser := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bSaveCurrentLaserProgramtoPC THEN
-	bRes_SaveCurrentLaserProgramtoPC := MyLaser1.M_SaveCurrentLaserProgramtoPC(LaserProgramFolderPath, out_bool_SaveProgramToPC_Success => SaveCurrentLaserProgramToPCSuccess);
-	IF bRes_SaveCurrentLaserProgramtoPC THEN
-//		SaveCurrentLaserProgramToPCSuccess := MyLaser1
-		bSaveCurrentLaserProgramtoPC := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bSaveCurrentLaserProgramtoPC := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bSaveCurrentLaserProgramtoPC THEN
+//	bRes_SaveCurrentLaserProgramtoPC := MyLaser1.M_SaveCurrentLaserProgramtoPC(LaserProgramFolderPath, out_bool_SaveProgramToPC_Success => SaveCurrentLaserProgramToPCSuccess);
+//	IF bRes_SaveCurrentLaserProgramtoPC THEN
+////		SaveCurrentLaserProgramToPCSuccess := MyLaser1
+//		bSaveCurrentLaserProgramtoPC := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bSaveCurrentLaserProgramtoPC := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bGetCurrentProgram THEN
-	bRes_GetCurrentProgram := MyLaser1.M_GetCurrentProgram(strCurrentProgram => CurrentProgramName);
-	IF bRes_GetCurrentProgram THEN
-		bGetCurrentProgram := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bGetCurrentProgram := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bGetCurrentProgram THEN
+//	bRes_GetCurrentProgram := MyLaser1.M_GetCurrentProgram(strCurrentProgram => CurrentProgramName);
+//	IF bRes_GetCurrentProgram THEN
+//		bGetCurrentProgram := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bGetCurrentProgram := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bStartMarking THEN
-	bRes_StartMarking := MyLaser1.M_StartMarking();
-	IF bRes_StartMarking THEN
-		bStartMarking := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bStartMarking := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bStartMarking THEN
+//	bRes_StartMarking := MyLaser1.M_StartMarking();
+//	IF bRes_StartMarking THEN
+//		bStartMarking := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bStartMarking := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bStopMarking THEN
-	bRes_StopMarking := MyLaser1.M_StopMarking();
-	IF bRes_StopMarking THEN
-		bStopMarking := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bStopMarking := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bStopMarking THEN
+//	bRes_StopMarking := MyLaser1.M_StopMarking();
+//	IF bRes_StopMarking THEN
+//		bStopMarking := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bStopMarking := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bResetErrors THEN
-	bRes_Reset := MyLaser1.M_Reset();
-	IF bRes_Reset THEN
-		bResetErrors := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bResetErrors := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bResetErrors THEN
+//	bRes_Reset := MyLaser1.M_Reset();
+//	IF bRes_Reset THEN
+//		bResetErrors := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bResetErrors := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
+
+////IF bUpdateProgramBlockInTheLaser THEN
+////	bRes_UpdateProgramBlockInTheLaser := MyLaser1.M_UpdateSingleProgramBlockData(LaserMemoryLocation, _blockNumber, _blockData, _blockType, out_bool_UpdateData_Success => _bUpdateSingleBlockDataSuccess);
+////	IF bRes_UpdateProgramBlockInTheLaser THEN
+////		bUpdateProgramBlockInTheLaser := FALSE;
+////	ELSIF MyLaser1.P_bError THEN
+////		bUpdateProgramBlockInTheLaser := FALSE;
+////		MyLaser1.M_ClearError();
+////	END_IF
+////END_IF
 
 //IF bUpdateProgramBlockInTheLaser THEN
-//	bRes_UpdateProgramBlockInTheLaser := MyLaser1.M_UpdateSingleProgramBlockData(LaserMemoryLocation, _blockNumber, _blockData, _blockType, out_bool_UpdateData_Success => _bUpdateSingleBlockDataSuccess);
+//	bRes_UpdateProgramBlockInTheLaser := MyLaser1.M_UpdateSingleBlockMarkingInformation(_blockNumber, _blockData, _bool_markenabled);
 //	IF bRes_UpdateProgramBlockInTheLaser THEN
 //		bUpdateProgramBlockInTheLaser := FALSE;
 //	ELSIF MyLaser1.P_bError THEN
@@ -402,197 +511,187 @@ END_IF
 //	END_IF
 //END_IF
 
-IF bUpdateProgramBlockInTheLaser THEN
-	bRes_UpdateProgramBlockInTheLaser := MyLaser1.M_UpdateSingleBlockMarkingInformation(_blockNumber, _blockData, _bool_markenabled);
-	IF bRes_UpdateProgramBlockInTheLaser THEN
-		bUpdateProgramBlockInTheLaser := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bUpdateProgramBlockInTheLaser := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bUpdateProgramBlockMarkEnabledInTheLaser THEN
+//	bRes_UpdateProgramBlockMarkEnabledInTheLaser := MyLaser1.M_UpdateSingleProgramBlockMarkEnabled( LaserProgramMemoryLocation := LaserMemoryLocation, BlockNumber := _blockNumber, BlockType := _blockType ,MarkEnabled := _bool_markenabled ,out_bool_MarkEnabled_Success => _bUpdateSingleBlockMarkEnabled_Success);
+//	IF bRes_UpdateProgramBlockMarkEnabledInTheLaser THEN
+//		bUpdateProgramBlockMarkEnabledInTheLaser := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bUpdateProgramBlockMarkEnabledInTheLaser := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bUpdateProgramBlockMarkEnabledInTheLaser THEN
-	bRes_UpdateProgramBlockMarkEnabledInTheLaser := MyLaser1.M_UpdateSingleProgramBlockMarkEnabled( LaserProgramMemoryLocation := LaserMemoryLocation, BlockNumber := _blockNumber, BlockType := _blockType ,MarkEnabled := _bool_markenabled ,out_bool_MarkEnabled_Success => _bUpdateSingleBlockMarkEnabled_Success);
-	IF bRes_UpdateProgramBlockMarkEnabledInTheLaser THEN
-		bUpdateProgramBlockMarkEnabledInTheLaser := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bUpdateProgramBlockMarkEnabledInTheLaser := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bGetLaserStatus THEN
+//	bRes_GetLaserStatus := MyLaser1.M_GetLaserStatus( out_string_laserStatus => _string_laserstatus);
+//	IF bRes_GetLaserStatus THEN
+//		bGetLaserStatus := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bGetLaserStatus := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bGetLaserStatus THEN
-	bRes_GetLaserStatus := MyLaser1.M_GetLaserStatus( out_string_laserStatus => _string_laserstatus);
-	IF bRes_GetLaserStatus THEN
-		bGetLaserStatus := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bGetLaserStatus := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bGetLaserErrorStatus THEN
+//	bRes_GetLaserErrorStatus := MyLaser1.M_GetLaserErrorStatus( out_bool_IsLaserError => _bIsLaserError);
+//	IF bRes_GetLaserErrorStatus THEN
+//		bGetLaserErrorStatus := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bGetLaserErrorStatus := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bGetLaserErrorStatus THEN
-	bRes_GetLaserErrorStatus := MyLaser1.M_GetLaserErrorStatus( out_bool_IsLaserError => _bIsLaserError);
-	IF bRes_GetLaserErrorStatus THEN
-		bGetLaserErrorStatus := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bGetLaserErrorStatus := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bGetLaserActivatedStatus THEN
+//	bRes_GetLaserActivatedStatus := MyLaser1.M_GetLaserActivatedStatus( out_IsLaserActivated => _bIsLaserActivated);
+//	IF bRes_GetLaserActivatedStatus THEN
+//		bGetLaserActivatedStatus := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bGetLaserActivatedStatus := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bGetLaserActivatedStatus THEN
-	bRes_GetLaserActivatedStatus := MyLaser1.M_GetLaserActivatedStatus( out_IsLaserActivated => _bIsLaserActivated);
-	IF bRes_GetLaserActivatedStatus THEN
-		bGetLaserActivatedStatus := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bGetLaserActivatedStatus := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF bGetLaserMarkingStatus THEN
+//	bRes_GetLaserMarkingStatus := MyLaser1.M_GetLaserMarkingStatus( out_bool_IsLaserMarking => _bIsLaserMarking);
+//	IF bRes_GetLaserMarkingStatus THEN
+//		bGetLaserMarkingStatus := FALSE;
+//	ELSIF MyLaser1.P_bError THEN
+//		bGetLaserMarkingStatus := FALSE;
+//		MyLaser1.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bGetLaserMarkingStatus THEN
-	bRes_GetLaserMarkingStatus := MyLaser1.M_GetLaserMarkingStatus( out_bool_IsLaserMarking => _bIsLaserMarking);
-	IF bRes_GetLaserMarkingStatus THEN
-		bGetLaserMarkingStatus := FALSE;
-	ELSIF MyLaser1.P_bError THEN
-		bGetLaserMarkingStatus := FALSE;
-		MyLaser1.M_ClearError();
-	END_IF
-END_IF
+//IF _OneTimeArrayBuild THEN
+//	FOR intIndex2 := 0 TO 255 DO
+//		IF intIndex2 <= LastBlockToMark THEN
+//			BlockInfoArray[intIndex2].MarkEnabled := TRUE;
+//			_tempString := CONCAT('Block', INT_TO_STRING(intIndex2));
+//			BlockInfoArray[intIndex2].BlockText := _tempString;
+//		ELSE
+//			BlockInfoArray[intIndex2].MarkEnabled := FALSE;	
+//			BlockInfoArray[intIndex2].BlockText := '';
+//		END_IF
+//	END_FOR
+//	_OneTimeArrayBuild := FALSE;
+//END_IF
 
-IF _OneTimeArrayBuild THEN
-	FOR intIndex2 := 0 TO 255 DO
-		IF intIndex2 <= LastBlockToMark THEN
-			BlockInfoArray[intIndex2].MarkEnabled := TRUE;
-			_tempString := CONCAT('Block', INT_TO_STRING(intIndex2));
-			BlockInfoArray[intIndex2].BlockText := _tempString;
-		ELSE
-			BlockInfoArray[intIndex2].MarkEnabled := FALSE;	
-			BlockInfoArray[intIndex2].BlockText := '';
-		END_IF
-	END_FOR
-	_OneTimeArrayBuild := FALSE;
-END_IF
+//IF bUpdateAllMarkingInfo_MethodCall THEN
+//	bRes_UpdateAllMarkingInfo_MethodCall := MyLaser1.M_UpdateAllMarkingInformation(LastBlockToMark);
+//	bUpdateAllMarkingInfo_MethodCall := FALSE;
+//END_IF
+//IF MyLaser1.P_bError THEN
+//	bUpdateAllMarkingInfo_MethodCall := FALSE;
+//	MyLaser1.M_ClearError();
+//END_IF
 
-IF bUpdateAllMarkingInfo_MethodCall THEN
-	bRes_UpdateAllMarkingInfo_MethodCall := MyLaser1.M_UpdateAllMarkingInformation(LastBlockToMark);
-	bUpdateAllMarkingInfo_MethodCall := FALSE;
-END_IF
-IF MyLaser1.P_bError THEN
-	bUpdateAllMarkingInfo_MethodCall := FALSE;
-	MyLaser1.M_ClearError();
-END_IF
+//IF bUpdateAllMarkingInfo THEN
+//	CASE inst_intStep OF
+//		0: //Check for errors and Integer value which we are gonna run the update single block information
+//				IF MyLaser1.P_bError THEN
+//					inst_intStep := 0;
+//					bUpdateAllMarkingInfo := FALSE;
+//				ELSE
+//					inst_intStep := 10;
+//				END_IF
+//		10: // Run the M_UpdateSingleBlockMarkingInformation Command
+//				bRes_UpdateAllMarkInfo[intIndex] := MyLaser1.M_UpdateSingleBlockMarkingInformation(intIndex ,BlockInfoArray[intIndex].BlockText, BlockInfoArray[intIndex].MarkEnabled);
+//				IF bRes_UpdateAllMarkInfo[intIndex] THEN 
+//					inst_intStep := 20;
+//				ELSIF MyLaser1.P_bError THEN
+//					inst_intStep := 0;
+//					intIndex :=0;
+//					bUpdateAllMarkingInfo := FALSE;
+//				END_IF
+//		20: // Check if the M_UpdateSingleBlockMarkingInformation command failed or passed
+//				IF bRes_UpdateAllMarkInfo[LastBlockToMark] OR NOT bRes_UpdateAllMarkInfo[intIndex] OR (intIndex = LastBlockToMark) THEN //This means we reached the final element update
+//					bUpdateAllMarkingInfo := FALSE;
+//					intIndex :=0;
+//					inst_intStep := 0;
+//				ELSIF bRes_UpdateAllMarkInfo[intIndex] THEN
+//					inst_intStep := 0;
+//					intIndex := intIndex + 1;
+//				ELSIF MyLaser1.P_bError THEN
+//					bUpdateAllMarkingInfo := FALSE;
+//					MyLaser1.M_ClearError();	
+//				END_IF			
+//	END_CASE
+//END_IF
 
-IF bUpdateAllMarkingInfo THEN
-	CASE inst_intStep OF
-		0: //Check for errors and Integer value which we are gonna run the update single block information
-				IF MyLaser1.P_bError THEN
-					inst_intStep := 0;
-					bUpdateAllMarkingInfo := FALSE;
-				ELSE
-					inst_intStep := 10;
-				END_IF
-		10: // Run the M_UpdateSingleBlockMarkingInformation Command
-				bRes_UpdateAllMarkInfo[intIndex] := MyLaser1.M_UpdateSingleBlockMarkingInformation(intIndex ,BlockInfoArray[intIndex].BlockText, BlockInfoArray[intIndex].MarkEnabled);
-				IF bRes_UpdateAllMarkInfo[intIndex] THEN 
-					inst_intStep := 20;
-				ELSIF MyLaser1.P_bError THEN
-					inst_intStep := 0;
-					intIndex :=0;
-					bUpdateAllMarkingInfo := FALSE;
-				END_IF
-		20: // Check if the M_UpdateSingleBlockMarkingInformation command failed or passed
-				IF bRes_UpdateAllMarkInfo[LastBlockToMark] OR NOT bRes_UpdateAllMarkInfo[intIndex] OR (intIndex = LastBlockToMark) THEN //This means we reached the final element update
-					bUpdateAllMarkingInfo := FALSE;
-					intIndex :=0;
-					inst_intStep := 0;
-				ELSIF bRes_UpdateAllMarkInfo[intIndex] THEN
-					inst_intStep := 0;
-					intIndex := intIndex + 1;
-				ELSIF MyLaser1.P_bError THEN
-					bUpdateAllMarkingInfo := FALSE;
-					MyLaser1.M_ClearError();	
-				END_IF			
-	END_CASE
-END_IF
+//IF bGetLimitsFromDB THEN
+//	_inst_bDataTransferred := fbDataHandler.M_TransferData(in_strParametersDatabaseName);
+//	IF _inst_bDataTransferred THEN
+//		bGetLimitsFromDB := FALSE;
+//	ELSIF fbDataHandler.P_bError THEN
+//		bGetLimitsFromDB := FALSE;
+//		fbDataHandler.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bGetLimitsFromDB THEN
-	_inst_bDataTransferred := fbDataHandler.M_TransferData(in_strParametersDatabaseName);
-	IF _inst_bDataTransferred THEN
-		bGetLimitsFromDB := FALSE;
-	ELSIF fbDataHandler.P_bError THEN
-		bGetLimitsFromDB := FALSE;
-		fbDataHandler.M_ClearError();
-	END_IF
-END_IF
+//IF bGetLaserParamsFromDB_L1 THEN
+//	_inst_bLaserLimitsDataTransferred_L1 := fbDataHandler.M_TransferData(in_strParametersDBNameLaserLimits_L1);
+//	IF _inst_bLaserLimitsDataTransferred_L1 THEN
+//		bGetLaserParamsFromDB_L1 := FALSE;
+//		ELSIF fbDataHandler.P_bError THEN
+//			bGetLaserParamsFromDB_L1 := FALSE;
+//			fbDataHandler.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bGetLaserParamsFromDB_L1 THEN
-	_inst_bLaserLimitsDataTransferred_L1 := fbDataHandler.M_TransferData(in_strParametersDBNameLaserLimits_L1);
-	IF _inst_bLaserLimitsDataTransferred_L1 THEN
-		bGetLaserParamsFromDB_L1 := FALSE;
-		ELSIF fbDataHandler.P_bError THEN
-			bGetLaserParamsFromDB_L1 := FALSE;
-			fbDataHandler.M_ClearError();
-	END_IF
-END_IF
+//IF bGetLaserParamsFromDB_L2 THEN
+//	_inst_bLaserLimitsDataTransferred_L2 := fbDataHandler.M_TransferData(in_strParametersDBNameLaserLimits_L2);
+//	IF _inst_bLaserLimitsDataTransferred_L2 THEN
+//		bGetLaserParamsFromDB_L2 := FALSE;
+//		ELSIF fbDataHandler.P_bError THEN
+//			bGetLaserParamsFromDB_L2 := FALSE;
+//			fbDataHandler.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bGetLaserParamsFromDB_L2 THEN
-	_inst_bLaserLimitsDataTransferred_L2 := fbDataHandler.M_TransferData(in_strParametersDBNameLaserLimits_L2);
-	IF _inst_bLaserLimitsDataTransferred_L2 THEN
-		bGetLaserParamsFromDB_L2 := FALSE;
-		ELSIF fbDataHandler.P_bError THEN
-			bGetLaserParamsFromDB_L2 := FALSE;
-			fbDataHandler.M_ClearError();
-	END_IF
-END_IF
+//IF bGetLaserParamsFromDB_R1 THEN
+//	_inst_bLaserLimitsDataTransferred_R1 := fbDataHandler.M_TransferData(in_strParametersDBNameLaserLimits_R1);
+//	IF _inst_bLaserLimitsDataTransferred_R1 THEN
+//		bGetLaserParamsFromDB_R1 := FALSE;
+//		ELSIF fbDataHandler.P_bError THEN
+//			bGetLaserParamsFromDB_R1 := FALSE;
+//			fbDataHandler.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bGetLaserParamsFromDB_R1 THEN
-	_inst_bLaserLimitsDataTransferred_R1 := fbDataHandler.M_TransferData(in_strParametersDBNameLaserLimits_R1);
-	IF _inst_bLaserLimitsDataTransferred_R1 THEN
-		bGetLaserParamsFromDB_R1 := FALSE;
-		ELSIF fbDataHandler.P_bError THEN
-			bGetLaserParamsFromDB_R1 := FALSE;
-			fbDataHandler.M_ClearError();
-	END_IF
-END_IF
+//IF bGetLaserParamsFromDB_R2 THEN
+//	_inst_bLaserLimitsDataTransferred_R2 := fbDataHandler.M_TransferData(in_strParametersDBNameLaserLimits_R2);
+//	IF _inst_bLaserLimitsDataTransferred_R2 THEN
+//		bGetLaserParamsFromDB_R2 := FALSE;
+//		ELSIF fbDataHandler.P_bError THEN
+//			bGetLaserParamsFromDB_R2 := FALSE;
+//			fbDataHandler.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bGetLaserParamsFromDB_R2 THEN
-	_inst_bLaserLimitsDataTransferred_R2 := fbDataHandler.M_TransferData(in_strParametersDBNameLaserLimits_R2);
-	IF _inst_bLaserLimitsDataTransferred_R2 THEN
-		bGetLaserParamsFromDB_R2 := FALSE;
-		ELSIF fbDataHandler.P_bError THEN
-			bGetLaserParamsFromDB_R2 := FALSE;
-			fbDataHandler.M_ClearError();
-	END_IF
-END_IF
+//IF bPerformPriorOp_Smart THEN
+//	_inst_bPriorOp_Smart := fbDataHandler2.M_TransferData(in_strParametersDBName_SmartWater);
+//	IF _inst_bPriorOp_Smart THEN
+//		bPerformPriorOp_Smart := FALSE;
+//	ELSIF fbDataHandler2.P_bError THEN 
+//		bPerformPriorOp_Smart := FALSE;
+//		fbDataHandler2.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bPerformPriorOp_Smart THEN
-	_inst_bPriorOp_Smart := fbDataHandler2.M_TransferData(in_strParametersDBName_SmartWater);
-	IF _inst_bPriorOp_Smart THEN
-		bPerformPriorOp_Smart := FALSE;
-	ELSIF fbDataHandler2.P_bError THEN 
-		bPerformPriorOp_Smart := FALSE;
-		fbDataHandler2.M_ClearError();
-	END_IF
-END_IF
+//IF bPerformPriorOp_FFT THEN
+//	_inst_bPriorOp_FFT := fbDataHandler.M_TransferData(in_strParametersDBName_FFTLaser_L1);
+//	IF _inst_bPriorOp_FFT THEN
+//		bPerformPriorOp_FFT := FALSE;
+//	ELSIF fbDataHandler.P_bError THEN 
+//		bPerformPriorOp_FFT := FALSE;
+//		fbDataHandler.M_ClearError();
+//	END_IF
+//END_IF
 
-IF bPerformPriorOp_FFT THEN
-	_inst_bPriorOp_FFT := fbDataHandler.M_TransferData(in_strParametersDBName_FFTLaser_L1);
-	IF _inst_bPriorOp_FFT THEN
-		bPerformPriorOp_FFT := FALSE;
-	ELSIF fbDataHandler.P_bError THEN 
-		bPerformPriorOp_FFT := FALSE;
-		fbDataHandler.M_ClearError();
-	END_IF
-END_IF
-
-Temp_CR_LOOKUP_NestL1 := FIND('GV354-006:220705-141019_CR','_CR');
-iLengthDataMatrixNestL1 := LEN('GV354-006:220705-141019_CR');
-IF  (Temp_CR_LOOKUP_NestL1 > 0) THEN
-	ParamsArrayNestA := REPLACE('GV354-006:220705-141019_CR', concat(' CR ' , '0.023456'),6,iLengthDataMatrixNestL1 - 2);
-END_IF ]]></ST>
+//Temp_CR_LOOKUP_NestL1 := FIND('GV354-006:220705-141019_CR','_CR');
+//iLengthDataMatrixNestL1 := LEN('GV354-006:220705-141019_CR');
+//IF  (Temp_CR_LOOKUP_NestL1 > 0) THEN
+//	ParamsArrayNestA := REPLACE('GV354-006:220705-141019_CR', concat(' CR ' , '0.023456'),6,iLengthDataMatrixNestL1 - 2);
+//END_IF ]]></ST>
       </Implementation>
     </Action>
     <Action Name="A_Machine" Id="{f2ef6f5c-8a40-4c62-8311-b3186050d362}">
@@ -1380,7 +1479,7 @@ END_IF ]]></ST>
                     <v n="Comment">""</v>
                     <v n="Title">""</v>
                     <v n="Label">""</v>
-                    <v n="OutCommented">false</v>
+                    <v n="OutCommented">true</v>
                     <l2 n="NetworkItems" cet="BoxTreeBox">
                       <o>
                         <v n="BoxType">"FB_MESDataTracking"</v>
@@ -1522,6 +1621,157 @@ END_IF ]]></ST>
                     </l2>
                     <l2 n="Connectors" />
                     <v n="Id">144L</v>
+                  </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeBox">
+                      <o>
+                        <v n="BoxType">"FB_COHAP"</v>
+                        <o n="Instance" t="Operand">
+                          <v n="Operand">"MyCohapTest"</v>
+                          <v n="Type">"FB_COHAP"</v>
+                          <v n="Comment">""</v>
+                          <v n="SymbolComment">""</v>
+                          <v n="Address">"Constant_Address_Serialization_Value"</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <v n="LValue">false</v>
+                          <v n="Boolean">false</v>
+                          <v n="IsInstance">true</v>
+                          <v n="Id">169L</v>
+                        </o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems">
+                            <n />
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">true</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <n n="InputFlags" />
+                        <l2 n="InputItems" cet="BoxTreeOperand">
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"TRUE"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">true</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">159L</v>
+                            </o>
+                            <v n="Id">158L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"'Cohap_device_1'"</v>
+                              <v n="Type">"STRING(INT#14)"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">166L</v>
+                            </o>
+                            <v n="Id">165L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"FALSE"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">168L</v>
+                            </o>
+                            <v n="Id">167L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"FB_AdsDeviceAPI_0"</v>
+                              <v n="Type">"FB_AdsCommandRouter"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">172L</v>
+                            </o>
+                            <v n="Id">171L</v>
+                          </o>
+                        </l2>
+                        <o n="InputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>EN</v>
+                            <v>in_strUniqueId</v>
+                            <v>in_bDisableLogging</v>
+                            <v>fbApi</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>T_MaxString</v>
+                            <v>BOOL</v>
+                            <v>REFERENCE TO FB_CommandRouter</v>
+                          </l2>
+                        </o>
+                        <o n="OutputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>ENO</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                          </l2>
+                        </o>
+                        <v n="CallType" t="Operator">FunctionBlock</v>
+                        <v n="EN">true</v>
+                        <v n="ENO">true</v>
+                        <n n="STSnippet" />
+                        <v n="ContainsExtensibleInputs">false</v>
+                        <v n="ProvidesSTSnippet">false</v>
+                        <v n="Id">170L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">157L</v>
                   </o>
                 </l2>
                 <v n="BranchCounter">0</v>
