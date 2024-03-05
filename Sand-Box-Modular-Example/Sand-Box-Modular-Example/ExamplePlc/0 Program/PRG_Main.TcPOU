@@ -193,13 +193,13 @@ VAR
 	//Input Params
 	strMethodName : STRING;
 	RunCom_InpuParams : T_CohapParameterList;
-	RunCom_ExpOutParamList : ARRAY[1..10] OF ReturnParamKVP;
+	RunCom_ExpOutParamList : ARRAY[0..2] OF ReturnParamKVP;
 	//Output Params
 	RunCom_OutputParams : T_CohapParameterList;
 	
 	//DummyTest Dictionary Prep for RunCommand Execution
 	RC_DT_InpPar : T_CohapParameterList;
-	RC_DT_ExpOutPL : ARRAY[1..10] OF ReturnParamKVP;
+	RC_DT_ExpOutPL : ARRAY[0..2] OF ReturnParamKVP;
 	
 //	fbCohapHandler1: FB_COHAP;
 END_VAR
