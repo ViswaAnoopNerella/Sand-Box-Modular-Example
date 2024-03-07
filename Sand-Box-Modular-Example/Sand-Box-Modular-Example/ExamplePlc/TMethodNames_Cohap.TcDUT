@@ -7,6 +7,7 @@ STRUCT
 	M_GetAsicandChannelCardVersion : STRING := 'getSICAndChannelCardVersions';
 	M_GetDLLVersion : STRING := 'getDLLVersions';
 	M_TestDummy : STRING := 'TestDummy';
+	M_TestDummy2 : STRING := 'TestDummy2';
 	M_PowerUp : STRING := 'PowerUp';
 	M_PowerDown : STRING := 'PowerDown';
 	M_readSerialNumber : STRING := 'readSerialNumber';
