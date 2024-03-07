@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="TMethodNames_Cohap" Id="{b95cf753-0d18-4208-847a-8e335e6d67c0}">
+    <Declaration><![CDATA[TYPE TMethodNames_Cohap :
+STRUCT
+	M_init : STRING := 'init';
+	M_GetAsicandChannelCardVersion : STRING := 'getSICAndChannelCardVersions';
+	M_GetDLLVersion : STRING := 'getDLLVersions';
+	M_TestDummy : STRING := 'TestDummy';
+	M_PowerUp : STRING := 'PowerUp';
+	M_PowerDown : STRING := 'PowerDown';
+	M_readSerialNumber : STRING := 'readSerialNumber';
+	M_ReadDeviceOutput : STRING := 'ReadDeviceOutput';
+	M_initDUT : STRING := 'initDUT';
+	M_initialize : STRING := 'initialize';
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

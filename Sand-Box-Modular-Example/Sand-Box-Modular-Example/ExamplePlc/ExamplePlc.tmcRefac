@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="b95cf753-0d18-4208-847a-8e335e6d67c0">METHODNAMES_COHAP</Type>
+      <From>MethodNames_Cohap</From>
+      <To>TMethodNames_Cohap</To>
+    </RenamedType>
+    <RenamedSymbol>
+      <Type guid="b13f0be3-4c97-4edc-94e2-8c6f67cb8665">PRG_Main</Type>
+      <From>CohapMethods</From>
+      <To>CohapMethodStrings</To>
+    </RenamedSymbol>
+    <RenamedSymbol>
+      <Type guid="b13f0be3-4c97-4edc-94e2-8c6f67cb8665">PRG_Main</Type>
+      <From>CohapControls</From>
+      <To>CohapMethodControls</To>
+    </RenamedSymbol>
+  </Renames>
+</Refactors>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="TMethod_Controls" Id="{ebcf0cd4-e864-47bf-8ea1-4ff89a3d7c8d}">
+    <Declaration><![CDATA[TYPE TMethod_Controls :
+STRUCT
+		bRunImpMethods_Trigger : BOOL;
+		bRunImpMethods_Result : BOOL;
+		bSetCurrentDevice_Trigger : BOOL;
+		bSetCurrentDevice_Result : BOOL;
+		M_init_Trigger : BOOL;
+        M_init_Result : BOOL;
+        M_GetAsicandChannelCardVersion_Trigger : BOOL;
+        M_GetAsicandChannelCardVersion_Result : BOOL;
+        M_GetDLLVersion_Trigger : BOOL;
+        M_GetDLLVersion_Result : BOOL;
+        M_TestDummy_Trigger : BOOL;
+        M_TestDummy_Result : BOOL;
+        M_PowerUp_Trigger : BOOL;
+        M_PowerUp_Result : BOOL;
+        M_PowerDown_Trigger : BOOL;
+        M_PowerDown_Result : BOOL;
+        M_readSerialNumber_Trigger : BOOL;
+        M_readSerialNumber_Result : BOOL;
+        M_ReadDeviceOutput_Trigger : BOOL;
+        M_ReadDeviceOutput_Result : BOOL;
+        M_initDUT_Trigger : BOOL;
+        M_initDUT_Result : BOOL;
+        M_initialize_Trigger : BOOL;
+        M_initialize_Result : BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

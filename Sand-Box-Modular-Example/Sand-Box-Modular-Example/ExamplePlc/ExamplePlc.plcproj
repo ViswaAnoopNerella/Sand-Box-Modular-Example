@@ -96,7 +96,13 @@
     <Compile Include="1 Module\2 Devices\FB_ExampleDevice.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TMethodNames_Cohap.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TASK_Main.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TMethod_Controls.TcDUT">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
