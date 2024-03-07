@@ -268,6 +268,7 @@ END_VAR
 
 A_Machine();
 A_CohapLibraryTesting();
+A_CohapLDTesting();
 //A_Station1();
 //A_Station2();
 //A_Station3();
@@ -3040,6 +3041,138 @@ END_IF
 //					]
 //				}
 //			]]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="A_InitCohapMethodParams" Id="{338b2860-1dc4-47ff-9b38-e01ddb531ef1}">
+      <Implementation>
+        <ST><![CDATA[readSerialNumber_inpuparams[0].strKey := '';
+readSerialNumber_inpuparams[0].strValue := '';
+readSerialNumber_inpuparams[1].strKey := '';
+readSerialNumber_inpuparams[1].strValue := '';
+readSerialNumber_inpuparams[2].strKey := '';
+readSerialNumber_inpuparams[2].strValue := '';
+
+readSerialNumber_expoutparamlist[0].DataType := E_DataType.DT_STRING;
+readSerialNumber_expoutparamlist[0].VarName := '';
+readSerialNumber_expoutparamlist[1].DataType := E_DataType.DT_STRING;
+readSerialNumber_expoutparamlist[1].VarName := '';
+readSerialNumber_expoutparamlist[2].DataType := E_DataType.DT_STRING;
+readSerialNumber_expoutparamlist[2].VarName := '';
+
+
+ReadDeviceOutput_inpuparams[0].strKey := '';
+ReadDeviceOutput_inpuparams[0].strValue := '';
+ReadDeviceOutput_inpuparams[1].strKey := '';
+ReadDeviceOutput_inpuparams[1].strValue := '';
+ReadDeviceOutput_inpuparams[2].strKey := '';
+ReadDeviceOutput_inpuparams[2].strValue := '';
+
+ReadDeviceOutput_expoutparamlist[0].DataType := E_DataType.DT_STRING;
+ReadDeviceOutput_expoutparamlist[0].VarName := '';
+ReadDeviceOutput_expoutparamlist[1].DataType := E_DataType.DT_STRING;
+ReadDeviceOutput_expoutparamlist[1].VarName := '';
+ReadDeviceOutput_expoutparamlist[2].DataType := E_DataType.DT_STRING;
+ReadDeviceOutput_expoutparamlist[2].VarName := '';
+
+
+PowerUp_inpuparams[0].strKey := '';
+PowerUp_inpuparams[0].strValue := '';
+PowerUp_inpuparams[1].strKey := '';
+PowerUp_inpuparams[1].strValue := '';
+PowerUp_inpuparams[2].strKey := '';
+PowerUp_inpuparams[2].strValue := '';
+
+PowerUp_expoutparamlist[0].DataType := E_DataType.DT_STRING;
+PowerUp_expoutparamlist[0].VarName := '';
+PowerUp_expoutparamlist[1].DataType := E_DataType.DT_STRING;
+PowerUp_expoutparamlist[1].VarName := '';
+PowerUp_expoutparamlist[2].DataType := E_DataType.DT_STRING;
+PowerUp_expoutparamlist[2].VarName := '';
+
+PowerDown_inpuparams[0].strKey := '';
+PowerDown_inpuparams[0].strValue := '';
+PowerDown_inpuparams[1].strKey := '';
+PowerDown_inpuparams[1].strValue := '';
+PowerDown_inpuparams[2].strKey := '';
+PowerDown_inpuparams[2].strValue := '';
+
+PowerDown_expoutparamlist[0].DataType := E_DataType.DT_STRING;
+PowerDown_expoutparamlist[0].VarName := '';
+PowerDown_expoutparamlist[1].DataType := E_DataType.DT_STRING;
+PowerDown_expoutparamlist[1].VarName := '';
+PowerDown_expoutparamlist[2].DataType := E_DataType.DT_STRING;
+PowerDown_expoutparamlist[2].VarName := '';
+
+TestDummy_inpuparams[0].strKey := '';
+TestDummy_inpuparams[0].strValue := '';
+TestDummy_inpuparams[1].strKey := '';
+TestDummy_inpuparams[1].strValue := '';
+TestDummy_inpuparams[2].strKey := '';
+TestDummy_inpuparams[2].strValue := '';
+
+TestDummy_expoutparamlist[0].DataType := E_DataType.DT_STRING;
+TestDummy_expoutparamlist[0].VarName := '';
+TestDummy_expoutparamlist[1].DataType := E_DataType.DT_STRING;
+TestDummy_expoutparamlist[1].VarName := '';
+TestDummy_expoutparamlist[2].DataType := E_DataType.DT_STRING;
+TestDummy_expoutparamlist[2].VarName := '';
+
+init_inpuparams[0].strKey := '';
+init_inpuparams[0].strValue := '';
+init_inpuparams[1].strKey := '';
+init_inpuparams[1].strValue := '';
+init_inpuparams[2].strKey := '';
+init_inpuparams[2].strValue := '';
+
+init_expoutparamlist[0].DataType := E_DataType.DT_STRING;
+init_expoutparamlist[0].VarName := '';
+init_expoutparamlist[1].DataType := E_DataType.DT_STRING;
+init_expoutparamlist[1].VarName := '';
+init_expoutparamlist[2].DataType := E_DataType.DT_STRING;
+init_expoutparamlist[2].VarName := '';
+
+getSICAndChannelCardVersions_inpuparams[0].strKey := '';
+getSICAndChannelCardVersions_inpuparams[0].strValue := '';
+getSICAndChannelCardVersions_inpuparams[1].strKey := '';
+getSICAndChannelCardVersions_inpuparams[1].strValue := '';
+getSICAndChannelCardVersions_inpuparams[2].strKey := '';
+getSICAndChannelCardVersions_inpuparams[2].strValue := '';
+
+getSICAndChannelCardVersions_expoutparamlist[0].DataType := E_DataType.DT_STRING;
+getSICAndChannelCardVersions_expoutparamlist[0].VarName := '';
+getSICAndChannelCardVersions_expoutparamlist[1].DataType := E_DataType.DT_STRING;
+getSICAndChannelCardVersions_expoutparamlist[1].VarName := '';
+getSICAndChannelCardVersions_expoutparamlist[2].DataType := E_DataType.DT_STRING;
+getSICAndChannelCardVersions_expoutparamlist[2].VarName := '';
+
+getDLLVersions_inpuparams[0].strKey := '';
+getDLLVersions_inpuparams[0].strValue := '';
+getDLLVersions_inpuparams[1].strKey := '';
+getDLLVersions_inpuparams[1].strValue := '';
+getDLLVersions_inpuparams[2].strKey := '';
+getDLLVersions_inpuparams[2].strValue := '';
+
+getDLLVersions_expoutparamlist[0].DataType := E_DataType.DT_STRING;
+getDLLVersions_expoutparamlist[0].VarName := '';
+getDLLVersions_expoutparamlist[1].DataType := E_DataType.DT_STRING;
+getDLLVersions_expoutparamlist[1].VarName := '';
+getDLLVersions_expoutparamlist[2].DataType := E_DataType.DT_STRING;
+getDLLVersions_expoutparamlist[2].VarName := '';
+
+
+initDUT_inpuparams[0].strKey := '';
+initDUT_inpuparams[0].strValue := '';
+initDUT_inpuparams[1].strKey := '';
+initDUT_inpuparams[1].strValue := '';
+initDUT_inpuparams[2].strKey := '';
+initDUT_inpuparams[2].strValue := '';
+
+initDUT_expoutparamlist[0].DataType := E_DataType.DT_STRING;
+initDUT_expoutparamlist[0].VarName := '';
+initDUT_expoutparamlist[1].DataType := E_DataType.DT_STRING;
+initDUT_expoutparamlist[1].VarName := '';
+initDUT_expoutparamlist[2].DataType := E_DataType.DT_STRING;
+initDUT_expoutparamlist[2].VarName := '';]]></ST>
       </Implementation>
     </Action>
     <Action Name="A_LaserMarkingParams" Id="{23cacb87-0a2e-4564-9710-85ba7dafd933}">
