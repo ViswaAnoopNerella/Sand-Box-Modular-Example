@@ -264,6 +264,9 @@ VAR
 
 
 
+	TestDummyoutputParamsTest: T_ApiParameterList;
+	TestDummy2_intResponse: INT;
+	TestDummy2_floatResponse: LREAL;
 END_VAR
 
 
@@ -5686,7 +5689,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">154</v>
+                        <v n="VarId">166</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_TestDummy2_Trigger"</v>
@@ -5724,7 +5727,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">47L</v>
+                          <v n="Id">514L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -5799,7 +5802,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">154</v>
+                                <v n="VarId">166</v>
                                 <n n="Input" />
                                 <v n="Id">223L</v>
                               </o>
@@ -5929,7 +5932,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">48L</v>
+                        <v n="Id">515L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -5986,7 +5989,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">154</v>
+                              <v n="VarId">166</v>
                               <n n="Input" />
                               <v n="Id">224L</v>
                             </o>
@@ -6029,7 +6032,7 @@ A_CohapLDTesting();
                         <v n="Id">238L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">155</v>
+                        <v n="VarId">167</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -6059,7 +6062,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">154</v>
+                              <v n="VarId">166</v>
                               <n n="Input" />
                               <v n="Id">350L</v>
                             </o>
@@ -6128,7 +6131,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">155</v>
+                          <v n="VarId">167</v>
                           <n n="Input" />
                           <v n="Id">464L</v>
                         </o>
@@ -6181,7 +6184,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">155</v>
+                            <v n="VarId">167</v>
                             <n n="Input" />
                             <v n="Id">465L</v>
                           </o>
@@ -6217,7 +6220,7 @@ A_CohapLDTesting();
                     <v n="Id">35L</v>
                   </o>
                 </l2>
-                <v n="BranchCounter">154</v>
+                <v n="BranchCounter">166</v>
                 <v n="ValidIds">true</v>
               </o>
             </Data>
@@ -6369,17 +6372,17 @@ PowerDown_expoutparamlist[2].VarName := '';
 
 TestDummy_inpuparams[0].strKey := 'channel';
 TestDummy_inpuparams[0].strValue := '1';
-TestDummy_inpuparams[1].strKey := '';
-TestDummy_inpuparams[1].strValue := '';
+TestDummy_inpuparams[1].strKey := 'bInput';
+TestDummy_inpuparams[1].strValue := 'FALSE';
 TestDummy_inpuparams[2].strKey := '';
 TestDummy_inpuparams[2].strValue := '';
 
 TestDummy_expoutparamlist[0].DataType := E_DataType.DT_STRING;
 TestDummy_expoutparamlist[0].VarName := 'serialno';
-TestDummy_expoutparamlist[1].DataType := E_DataType.DT_STRING;
-TestDummy_expoutparamlist[1].VarName := '';
-TestDummy_expoutparamlist[2].DataType := E_DataType.DT_STRING;
-TestDummy_expoutparamlist[2].VarName := '';
+TestDummy_expoutparamlist[1].DataType := E_DataType.DT_DOUBLE;
+TestDummy_expoutparamlist[1].VarName := 'Voltage';
+TestDummy_expoutparamlist[2].DataType := E_DataType.DT_BOOL;
+TestDummy_expoutparamlist[2].VarName := 'MethodResponse';
 
 TestDummy2_inpuparams[0].strKey := 'channel';
 TestDummy2_inpuparams[0].strValue := '1';
