@@ -5218,7 +5218,7 @@ A_CohapLDTesting();
                               <v n="Id">566L</v>
                             </o>
                             <o>
-                              <v n="Operand">"TestDummy_outputparams"</v>
+                              <v n="Operand">"ReadDeviceOutput_outputparams"</v>
                               <v n="Type">"T_CohapParameterList"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5332,7 +5332,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"TestDummy_inpuparams"</v>
+                              <v n="Operand">"ReadDeviceOutput_inpuparams"</v>
                               <v n="Type">"T_CohapParameterList"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5351,7 +5351,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"TestDummy_expoutparamlist"</v>
+                              <v n="Operand">"ReadDeviceOutput_expoutparamlist"</v>
                               <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5702,7 +5702,7 @@ A_CohapLDTesting();
                         <v n="VarId">168</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"CohapMethodControls.M_TestDummy_Trigger"</v>
+                            <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Trigger"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -5743,7 +5743,7 @@ A_CohapLDTesting();
                           <l2 n="OutputItems" cet="Operand">
                             <n />
                             <o>
-                              <v n="Operand">"CohapMethodControls.M_TestDummy_Result"</v>
+                              <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Result"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5759,7 +5759,7 @@ A_CohapLDTesting();
                               <v n="Id">527L</v>
                             </o>
                             <o>
-                              <v n="Operand">"TestDummy_outputparams"</v>
+                              <v n="Operand">"readFastChannelData_outputparams"</v>
                               <v n="Type">"T_CohapParameterList"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5818,7 +5818,7 @@ A_CohapLDTesting();
                               </o>
                               <o t="BoxTreeOperand">
                                 <o n="Operand" t="Operand">
-                                  <v n="Operand">"CohapMethodControls.M_TestDummy_Result"</v>
+                                  <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Result"</v>
                                   <v n="Type">"BOOL"</v>
                                   <v n="Comment">""</v>
                                   <v n="SymbolComment">""</v>
@@ -5873,7 +5873,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"TestDummy_inpuparams"</v>
+                              <v n="Operand">"ReadDeviceOutput_inpuparams"</v>
                               <v n="Type">"T_CohapParameterList"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5892,7 +5892,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"TestDummy_expoutparamlist"</v>
+                              <v n="Operand">"ReadDeviceOutput_expoutparamlist"</v>
                               <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5948,7 +5948,7 @@ A_CohapLDTesting();
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"CohapMethodControls.M_TestDummy_Trigger"</v>
+                              <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Trigger"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -6005,7 +6005,7 @@ A_CohapLDTesting();
                             </o>
                             <o t="BoxTreeOperand">
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"CohapMethodControls.M_TestDummy_Result"</v>
+                                <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Result"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -6118,7 +6118,7 @@ A_CohapLDTesting();
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"CohapMethodControls.M_TestDummy_Trigger"</v>
+                              <v n="Operand">".2NE/"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
