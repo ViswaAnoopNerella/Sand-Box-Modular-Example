@@ -25,6 +25,8 @@ STRUCT
         M_readSerialNumber_Result : BOOL;
         M_ReadDeviceOutput_Trigger : BOOL;
         M_ReadDeviceOutput_Result : BOOL;
+		M_ReadFastChannelData_Trigger : BOOL;
+        M_ReadFastChannelData_Result : BOOL;
         M_initDUT_Trigger : BOOL;
         M_initDUT_Result : BOOL;
         M_initialize_Trigger : BOOL;

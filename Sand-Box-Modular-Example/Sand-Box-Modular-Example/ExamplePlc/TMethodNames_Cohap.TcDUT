@@ -12,6 +12,7 @@ STRUCT
 	M_PowerDown : STRING := 'PowerDown';
 	M_readSerialNumber : STRING := 'readSerialNumber';
 	M_ReadDeviceOutput : STRING := 'ReadDeviceOutput';
+	M_ReadFastChannelData : STRING := 'SENT_readFastChannelData';
 	M_initDUT : STRING := 'initDUT';
 	M_initialize : STRING := 'initialize';
 END_STRUCT
