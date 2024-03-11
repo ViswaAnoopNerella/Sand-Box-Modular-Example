@@ -261,12 +261,22 @@ VAR
 	initDUT_inpuparams : T_CohapParameterList;// := [(strKey: 'channel', strValue: '1'), (strKey: 'supplyVoltage', strValue: '5.0'), ()];
 	initDUT_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(VarName: 'SICVersion', DataType: DT_STRING), (VarName: 'COHAPChannelCardVersion', DataType: DT_STRING), ()];
 	initDUT_outputparams : T_CohapParameterList;// := [(), (), ()];
+	
+	//For Fast Channel Data
+	readFastChannelData_inputparams : T_CohapParameterList;
+	readFastChannelData_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;
+	readFastChannelData_outputparams : T_CohapParameterList;
+	
+//	//For Read Device Output
+//	readDeviceOutput_inputparams : T_CohapParameterList;
+//	readDeviceOutput_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;
+//	readDeviceOutput_outputparams : T_CohapParameterList;
+
+//	TestDummyoutputParamsTest: T_ApiParameterList;
+//	TestDummy2_intResponse: INT;
+//	TestDummy2_floatResponse: LREAL;
 
 
-
-	TestDummyoutputParamsTest: T_ApiParameterList;
-	TestDummy2_intResponse: INT;
-	TestDummy2_floatResponse: LREAL;
 END_VAR
 
 
@@ -6453,7 +6463,22 @@ initDUT_expoutparamlist[0].VarName := '';
 initDUT_expoutparamlist[1].DataType := E_DataType.DT_STRING;
 initDUT_expoutparamlist[1].VarName := '';
 initDUT_expoutparamlist[2].DataType := E_DataType.DT_STRING;
-initDUT_expoutparamlist[2].VarName := '';]]></ST>
+initDUT_expoutparamlist[2].VarName := '';
+
+
+readFastChannelData_inputparams[0].strKey := 'channel';
+readFastChannelData_inputparams[0].strValue := '1';
+readFastChannelData_inputparams[1].strKey := '';
+readFastChannelData_inputparams[1].strValue := '';
+readFastChannelData_inputparams[2].strKey := '';
+readFastChannelData_inputparams[2].strValue := '';
+
+readFastChannelData_expoutparamlist[0].DataType := E_DataType.DT_STRING;
+readFastChannelData_expoutparamlist[0].VarName := '';
+readFastChannelData_expoutparamlist[1].DataType := E_DataType.DT_STRING;
+readFastChannelData_expoutparamlist[1].VarName := '';
+readFastChannelData_expoutparamlist[2].DataType := E_DataType.DT_STRING;
+readFastChannelData_expoutparamlist[2].VarName := '';]]></ST>
       </Implementation>
     </Action>
     <Action Name="A_LaserMarkingParams" Id="{23cacb87-0a2e-4564-9710-85ba7dafd933}">
