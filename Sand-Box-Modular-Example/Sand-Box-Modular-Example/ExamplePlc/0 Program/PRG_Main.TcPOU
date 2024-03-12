@@ -6118,7 +6118,7 @@ A_CohapLDTesting();
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">".2NE/"</v>
+                              <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Trigger"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>

@@ -31,6 +31,10 @@
       <DefaultResolution>Sensata_Device_Comm, * (Sensata Technologies)</DefaultResolution>
       <Namespace>Sensata_Device_Comm</Namespace>
     </PlaceholderReference>
+    <PlaceholderReference Include="Sensata_Laser">
+      <DefaultResolution>Sensata_Laser, * (Sensata Technologies)</DefaultResolution>
+      <Namespace>Sensata_Laser</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Sensata_Utilities">
       <DefaultResolution>Sensata_Utilities, * (Sensata Technologies)</DefaultResolution>
       <Namespace>Sensata_Utilities</Namespace>
@@ -139,11 +143,6 @@
     <PlaceholderResolution Include="Tc3_Module">
       <Resolution>Tc3_Module, * (Beckhoff Automation GmbH)</Resolution>
     </PlaceholderResolution>
-  </ItemGroup>
-  <ItemGroup>
-    <LibraryReference Include="Sensata_LaserMarker,newest,Sensata Technologies">
-      <Namespace>Sensata_LaserMarker</Namespace>
-    </LibraryReference>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
