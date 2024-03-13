@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<TcEventSources Version="2">
+	<Source>
+		<GUID>{F42A2615-4671-4890-8112-57788FCC9F44}</GUID>
+		<Name LcId="1033">SensataLogMessage</Name>
+		<Event>
+			<Id>1</Id>
+			<Message LcId="1033">{0} --- {1}</Message>
+		</Event>
+		<Event>
+			<Id>2</Id>
+			<Message LcId="1033">{0} --- {1}</Message>
+		</Event>
+		<Event>
+			<Id>3</Id>
+			<Message LcId="1033">{0} --- {1}</Message>
+		</Event>
+	</Source>
+</TcEventSources>

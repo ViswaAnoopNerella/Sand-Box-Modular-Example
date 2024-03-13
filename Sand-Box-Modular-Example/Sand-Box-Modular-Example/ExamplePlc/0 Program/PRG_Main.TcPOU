@@ -5854,7 +5854,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"CohapMethodStrings.M_TestDummy"</v>
+                              <v n="Operand">"CohapMethodStrings.M_ReadFastChannelData"</v>
                               <v n="Type">"STRING"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5873,7 +5873,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ReadDeviceOutput_inpuparams"</v>
+                              <v n="Operand">"readFastChannelData_inputparams"</v>
                               <v n="Type">"T_CohapParameterList"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5892,7 +5892,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ReadDeviceOutput_expoutparamlist"</v>
+                              <v n="Operand">"readFastChannelData_expoutparamlist"</v>
                               <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -7411,10 +7411,10 @@ readSerialNumber_inpuparams[1].strValue := '';
 readSerialNumber_inpuparams[2].strKey := '';
 readSerialNumber_inpuparams[2].strValue := '';
 
-readSerialNumber_expoutparamlist[0].DataType := E_DataType.DT_UINT;
+readSerialNumber_expoutparamlist[0].DataType := E_DataType.DT_ULINT;
 readSerialNumber_expoutparamlist[0].VarName := 'serialnumber';
 readSerialNumber_expoutparamlist[1].DataType := E_DataType.DT_STRING;
-readSerialNumber_expoutparamlist[1].VarName := '';
+readSerialNumber_expoutparamlist[1].VarName := 'stringserialno';
 readSerialNumber_expoutparamlist[2].DataType := E_DataType.DT_STRING;
 readSerialNumber_expoutparamlist[2].VarName := '';
 
