@@ -193,13 +193,13 @@ VAR
 	//Input Params
 	strMethodName : STRING;
 	RunCom_InpuParams : T_CohapParameterList;
-	RunCom_ExpOutParamList : ARRAY[0..2] OF ReturnParamKVP;
+	RunCom_ExpOutParamList : ARRAY[0..5] OF ReturnParamKVP;
 	//Output Params
 	RunCom_OutputParams : T_CohapParameterList;
 	
 	//DummyTest Dictionary Prep for RunCommand Execution
 	RC_DT_InpPar : T_CohapParameterList;
-	RC_DT_ExpOutPL : ARRAY[0..2] OF ReturnParamKVP;
+	RC_DT_ExpOutPL : ARRAY[0..5] OF ReturnParamKVP;
 	
 	CohapMethodStrings : TMethodNames_Cohap;
 	CohapMethodControls : TMethod_Controls;
@@ -208,73 +208,59 @@ VAR
 ///////////////////////////////
 
 	// For readSerialNumber
-	readSerialNumber_inpuparams : T_CohapParameterList;// := [(strKey: 'channel', strValue: '1'), (), ()];
-	readSerialNumber_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(VarName: 'serialnumber', DataType: DT_UINT), (), ()];
-	readSerialNumber_outputparams : T_CohapParameterList;// := [(), (), ()];
+	readSerialNumber_inpuparams : T_CohapParameterList;
+	readSerialNumber_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
+	readSerialNumber_outputparams : T_CohapParameterList;
 	
 	// For ReadDeviceOutput
-	ReadDeviceOutput_inpuparams : T_CohapParameterList;// := [(strKey: 'Channel', strValue: '10'), (), ()];
-	ReadDeviceOutput_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(VarName: 'Pressure', DataType: DT_STRING), (VarName: 'Temp', DataType: DT_STRING), ()];
-	ReadDeviceOutput_outputparams : T_CohapParameterList;// := [(), (), ()];
+	ReadDeviceOutput_inpuparams : T_CohapParameterList;
+	ReadDeviceOutput_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
+	ReadDeviceOutput_outputparams : T_CohapParameterList;
 	
 	// For PowerUp
-	PowerUp_inpuparams : T_CohapParameterList;// := [(strKey: 'channel', strValue: '1'), (strKey: 'supplyVoltage', strValue: '5.0'), ()];
-	PowerUp_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(VarName: 'Vsupply', DataType: DT_DOUBLE), (VarName: 'current', DataType: DT_DOUBLE), ()];
-	PowerUp_outputparams : T_CohapParameterList;// := [(), (), ()];
+	PowerUp_inpuparams : T_CohapParameterList;
+	PowerUp_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
+	PowerUp_outputparams : T_CohapParameterList;
 	
 	// For PowerDown
-	PowerDown_inpuparams : T_CohapParameterList;// := [(strKey: 'channel', strValue: '10'), (), ()];
-	PowerDown_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(), (), ()];
-	PowerDown_outputparams : T_CohapParameterList;// := [(), (), ()];
-	
-	// For initialize
-//	initialize_inpuparams : T_CohapParameterList;// := [(), (), ()];
-//	initialize_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(), (), ()];
-//	initialize_outputparams : T_CohapParameterList;// := [(), (), ()];
+	PowerDown_inpuparams : T_CohapParameterList;
+	PowerDown_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
+	PowerDown_outputparams : T_CohapParameterList;
 	
 	// For TestDummy
-	TestDummy_inpuparams : T_CohapParameterList;// := [(strKey: 'channel', strValue: '10'), (), ()];
-	TestDummy_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(VarName: 'serialno', DataType: DT_STRING), (), ()];
-	TestDummy_outputparams : T_CohapParameterList;// := [(), (), ()];
+	TestDummy_inpuparams : T_CohapParameterList;
+	TestDummy_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
+	TestDummy_outputparams : T_CohapParameterList;
 	
 	// For TestDummy2
-	TestDummy2_inpuparams : T_CohapParameterList;// := [(strKey: 'channel', strValue: '10'), (), ()];
-	TestDummy2_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(VarName: 'serialno', DataType: DT_STRING), (), ()];
-	TestDummy2_outputparams : T_CohapParameterList;// := [(), (), ()];	
+	TestDummy2_inpuparams : T_CohapParameterList;
+	TestDummy2_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
+	TestDummy2_outputparams : T_CohapParameterList;
 	
 	// For init
-	init_inpuparams : T_CohapParameterList;// := [(strKey: 'VSupply', strValue: '5.0'), (), ()];
-	init_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(VarName: 'returnMsg', DataType: DT_STRING), (), ()];
-	init_outputparams : T_CohapParameterList;// := [(), (), ()];
+	init_inpuparams : T_CohapParameterList;
+	init_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
+	init_outputparams : T_CohapParameterList;
 	
 	// For getSICAndChannelCardVersions
-	getSICAndChannelCardVersions_inpuparams : T_CohapParameterList;// := [(strKey: 'channel', strValue: '1'), (), ()];
-	getSICAndChannelCardVersions_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(VarName: 'SICVersion', DataType: DT_STRING), (VarName: 'COHAPChannelCardVersion', DataType: DT_STRING), ()];
-	getSICAndChannelCardVersions_outputparams : T_CohapParameterList;// := [(), (), ()];
+	getSICAndChannelCardVersions_inpuparams : T_CohapParameterList;
+	getSICAndChannelCardVersions_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
+	getSICAndChannelCardVersions_outputparams : T_CohapParameterList;
 	
 	// For getDLLVersions
-	getDLLVersions_inpuparams : T_CohapParameterList;// := [(), (), ()];
-	getDLLVersions_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(VarName: 'DUT12133DLLVersion', DataType: DT_STRING), (VarName: 'MUPeT12133DLLVersion', DataType: DT_STRING), (VarName: 'HALDLLVersion', DataType: DT_STRING)];
-	getDLLVersions_outputparams : T_CohapParameterList;// := [(), (), ()];
+	getDLLVersions_inpuparams : T_CohapParameterList;
+	getDLLVersions_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
+	getDLLVersions_outputparams : T_CohapParameterList;
 	
 	// For initDUT
-	initDUT_inpuparams : T_CohapParameterList;// := [(strKey: 'channel', strValue: '1'), (strKey: 'supplyVoltage', strValue: '5.0'), ()];
-	initDUT_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;// := [(VarName: 'SICVersion', DataType: DT_STRING), (VarName: 'COHAPChannelCardVersion', DataType: DT_STRING), ()];
-	initDUT_outputparams : T_CohapParameterList;// := [(), (), ()];
+	initDUT_inpuparams : T_CohapParameterList;
+	initDUT_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
+	initDUT_outputparams : T_CohapParameterList;
 	
 	//For Fast Channel Data
 	readFastChannelData_inputparams : T_CohapParameterList;
-	readFastChannelData_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;
+	readFastChannelData_expoutparamlist : ARRAY[0..5] OF ReturnParamKVP;
 	readFastChannelData_outputparams : T_CohapParameterList;
-	
-//	//For Read Device Output
-//	readDeviceOutput_inputparams : T_CohapParameterList;
-//	readDeviceOutput_expoutparamlist : ARRAY[0..2] OF ReturnParamKVP;
-//	readDeviceOutput_outputparams : T_CohapParameterList;
-
-//	TestDummyoutputParamsTest: T_ApiParameterList;
-//	TestDummy2_intResponse: INT;
-//	TestDummy2_floatResponse: LREAL;
 
 
 END_VAR
@@ -1564,7 +1550,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"init_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -2105,7 +2091,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"getSICAndChannelCardVersions_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -2647,7 +2633,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"getDLLVersions_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -3188,7 +3174,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"PowerUp_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -3729,7 +3715,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"readSerialNumber_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -4270,7 +4256,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"PowerDown_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -4811,7 +4797,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"initDUT_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -5352,7 +5338,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"ReadDeviceOutput_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -5893,7 +5879,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"readFastChannelData_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -6434,7 +6420,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TestDummy_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -6975,7 +6961,7 @@ A_CohapLDTesting();
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
                               <v n="Operand">"TestDummy2_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..2] OF ReturnParamKVP"</v>
+                              <v n="Type">"ARRAY [0..5] OF ReturnParamKVP"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -7475,6 +7461,12 @@ TestDummy_expoutparamlist[1].DataType := E_DataType.DT_DOUBLE;
 TestDummy_expoutparamlist[1].VarName := 'Voltage';
 TestDummy_expoutparamlist[2].DataType := E_DataType.DT_BOOL;
 TestDummy_expoutparamlist[2].VarName := 'MethodResponse';
+TestDummy_expoutparamlist[3].DataType := E_DataType.DT_UINT;
+TestDummy_expoutparamlist[3].VarName := 'current';
+TestDummy_expoutparamlist[4].DataType := E_DataType.DT_STRING;
+TestDummy_expoutparamlist[4].VarName := 'P1status';
+TestDummy_expoutparamlist[5].DataType := E_DataType.DT_STRING;
+TestDummy_expoutparamlist[5].VarName := 'P2status';
 
 TestDummy2_inpuparams[0].strKey := 'channel';
 TestDummy2_inpuparams[0].strValue := '1';
@@ -7487,8 +7479,14 @@ TestDummy2_expoutparamlist[0].DataType := E_DataType.DT_INT;
 TestDummy2_expoutparamlist[0].VarName := 'output1';
 TestDummy2_expoutparamlist[1].DataType := E_DataType.DT_STRING;
 TestDummy2_expoutparamlist[1].VarName := 'output2';
-TestDummy2_expoutparamlist[2].DataType := E_DataType.DT_STRING;
-TestDummy2_expoutparamlist[2].VarName := '';
+TestDummy2_expoutparamlist[2].DataType := E_DataType.DT_ULINT;
+TestDummy2_expoutparamlist[2].VarName := 'fastchannel1';
+TestDummy2_expoutparamlist[3].DataType := E_DataType.DT_ULINT;
+TestDummy2_expoutparamlist[3].VarName := 'fastchannel2';
+TestDummy2_expoutparamlist[4].DataType := E_DataType.DT_STRING;
+TestDummy2_expoutparamlist[4].VarName := 'fastchannel3';
+TestDummy2_expoutparamlist[5].DataType := E_DataType.DT_INT;
+TestDummy2_expoutparamlist[5].VarName := 'fastchannel4';
 
 init_inpuparams[0].strKey := 'VSupply';
 init_inpuparams[0].strValue := '5.0';
