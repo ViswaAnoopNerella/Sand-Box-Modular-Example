@@ -193,13 +193,13 @@ VAR
 	//Input Params
 	strMethodName : STRING;
 	RunCom_InpuParams : T_CohapParameterList;
-	RunCom_ExpOutParamList : ARRAY[0..9] OF ReturnParamKVP;
+	RunCom_ExpOutParamList : ARRAY[0..9] OF ReturnParamsInfo;
 	//Output Params
 	RunCom_OutputParams : T_CohapParameterList;
 	
 	//DummyTest Dictionary Prep for RunCommand Execution
 	RC_DT_InpPar : T_CohapParameterList;
-	RC_DT_ExpOutPL : ARRAY[0..9] OF ReturnParamKVP;
+	RC_DT_ExpOutPL : ARRAY[0..9] OF ReturnParamsInfo;
 	
 	CohapMethodStrings : TMethodNames_Cohap;
 	CohapMethodControls : TMethod_Controls;
@@ -209,62 +209,62 @@ VAR
 
 	// For readSerialNumber
 	readSerialNumber_inpuparams : T_CohapParameterList;
-	readSerialNumber_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	readSerialNumber_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	readSerialNumber_outputparams : T_CohapParameterList;
 	
 	// For ReadDeviceOutput
 	ReadDeviceOutput_inpuparams : T_CohapParameterList;
-	ReadDeviceOutput_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	ReadDeviceOutput_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	ReadDeviceOutput_outputparams : T_CohapParameterList;
+
 	
 	// For PowerUp
 	PowerUp_inpuparams : T_CohapParameterList;
-	PowerUp_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	PowerUp_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	PowerUp_outputparams : T_CohapParameterList;
 	
 	// For PowerDown
 	PowerDown_inpuparams : T_CohapParameterList;
-	PowerDown_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	PowerDown_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	PowerDown_outputparams : T_CohapParameterList;
 	
 	// For TestDummy
 	TestDummy_inpuparams : T_CohapParameterList;
-	TestDummy_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	TestDummy_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	TestDummy_outputparams : T_CohapParameterList;
 	
 	// For TestDummy2
 	TestDummy2_inpuparams : T_CohapParameterList;
-	TestDummy2_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	TestDummy2_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	TestDummy2_outputparams : T_CohapParameterList;
 	
 	// For init
 	init_inpuparams : T_CohapParameterList;
-	init_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	init_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	init_outputparams : T_CohapParameterList;
 	
 	// For getSICAndChannelCardVersions
 	getSICAndChannelCardVersions_inpuparams : T_CohapParameterList;
-	getSICAndChannelCardVersions_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	getSICAndChannelCardVersions_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	getSICAndChannelCardVersions_outputparams : T_CohapParameterList;
 	
 	// For getDLLVersions
 	getDLLVersions_inpuparams : T_CohapParameterList;
-	getDLLVersions_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	getDLLVersions_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	getDLLVersions_outputparams : T_CohapParameterList;
 	
 	// For initDUT
 	initDUT_inpuparams : T_CohapParameterList;
-	initDUT_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	initDUT_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	initDUT_outputparams : T_CohapParameterList;
 	
 	//For Fast Channel Data
 	readFastChannelData_inputparams : T_CohapParameterList;
-	readFastChannelData_expoutparamlist : ARRAY[0..9] OF ReturnParamKVP;
+	readFastChannelData_expoutparamlist : ARRAY[0..9] OF ReturnParamsInfo;
 	readFastChannelData_outputparams : T_CohapParameterList;
 
 
 END_VAR
-
 
 ]]></Declaration>
     <Implementation>
@@ -414,7 +414,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">42</v>
+                        <v n="VarId">172</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.bRunImpMethods_Trigger"</v>
@@ -437,10 +437,10 @@ A_CohapLDTesting();
                         <v n="Id">311L</v>
                       </o>
                       <o t="BoxTreeBox">
-                        <v n="BoxType">"MyCohapTest.M_RunImpMethods"</v>
+                        <v n="BoxType">"MyCohapTest.M_RunStartupMethods"</v>
                         <o n="Instance" t="Operand">
                           <v n="Operand">""</v>
-                          <v n="Type">"MyCohapTest.M_RunImpMethods"</v>
+                          <v n="Type">"MyCohapTest.M_RunStartupMethods"</v>
                           <v n="Comment">""</v>
                           <v n="SymbolComment">""</v>
                           <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -452,7 +452,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">19L</v>
+                          <v n="Id">599L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -511,7 +511,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">42</v>
+                                <v n="VarId">172</v>
                                 <n n="Input" />
                                 <v n="Id">312L</v>
                               </o>
@@ -563,7 +563,7 @@ A_CohapLDTesting();
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
-                            <v>M_RunImpMethods</v>
+                            <v>M_RunStartupMethods</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
@@ -576,7 +576,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">20L</v>
+                        <v n="Id">600L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -633,7 +633,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">42</v>
+                              <v n="VarId">172</v>
                               <n n="Input" />
                               <v n="Id">313L</v>
                             </o>
@@ -676,7 +676,7 @@ A_CohapLDTesting();
                         <v n="Id">319L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">43</v>
+                        <v n="VarId">173</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -706,7 +706,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">42</v>
+                              <v n="VarId">172</v>
                               <n n="Input" />
                               <v n="Id">320L</v>
                             </o>
@@ -775,7 +775,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">43</v>
+                          <v n="VarId">173</v>
                           <n n="Input" />
                           <v n="Id">330L</v>
                         </o>
@@ -828,7 +828,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">43</v>
+                            <v n="VarId">173</v>
                             <n n="Input" />
                             <v n="Id">331L</v>
                           </o>
@@ -1356,7 +1356,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">122</v>
+                        <v n="VarId">240</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_init_Trigger"</v>
@@ -1394,7 +1394,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">144L</v>
+                          <v n="Id">651L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -1414,22 +1414,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">146L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"init_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">147L</v>
                             </o>
                           </l2>
                         </o>
@@ -1469,7 +1453,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">122</v>
+                                <v n="VarId">240</v>
                                 <n n="Input" />
                                 <v n="Id">294L</v>
                               </o>
@@ -1530,8 +1514,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"init_inpuparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(init_inpuparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -1549,8 +1533,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"init_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(init_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -1566,31 +1550,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">154L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(init_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">654L</v>
+                            </o>
+                            <v n="Id">653L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -1599,7 +1602,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">145L</v>
+                        <v n="Id">652L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -1656,7 +1659,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">122</v>
+                              <v n="VarId">240</v>
                               <n n="Input" />
                               <v n="Id">295L</v>
                             </o>
@@ -1699,7 +1702,7 @@ A_CohapLDTesting();
                         <v n="Id">301L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">123</v>
+                        <v n="VarId">241</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -1729,7 +1732,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">122</v>
+                              <v n="VarId">240</v>
                               <n n="Input" />
                               <v n="Id">342L</v>
                             </o>
@@ -1798,7 +1801,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">123</v>
+                          <v n="VarId">241</v>
                           <n n="Input" />
                           <v n="Id">424L</v>
                         </o>
@@ -1851,7 +1854,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">123</v>
+                            <v n="VarId">241</v>
                             <n n="Input" />
                             <v n="Id">425L</v>
                           </o>
@@ -1897,7 +1900,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">126</v>
+                        <v n="VarId">248</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_GetAsicandChannelCardVersion_Trigger"</v>
@@ -1935,7 +1938,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">131L</v>
+                          <v n="Id">659L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -1955,22 +1958,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">133L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"getSICAndChannelCardVersions_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">134L</v>
                             </o>
                           </l2>
                         </o>
@@ -2010,7 +1997,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">126</v>
+                                <v n="VarId">248</v>
                                 <n n="Input" />
                                 <v n="Id">285L</v>
                               </o>
@@ -2071,8 +2058,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"getSICAndChannelCardVersions_inpuparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(getSICAndChannelCardVersions_inpuparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -2090,8 +2077,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"getSICAndChannelCardVersions_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(getSICAndChannelCardVersions_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -2107,31 +2094,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">141L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(getSICAndChannelCardVersions_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">662L</v>
+                            </o>
+                            <v n="Id">661L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -2140,7 +2146,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">132L</v>
+                        <v n="Id">660L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -2197,7 +2203,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">126</v>
+                              <v n="VarId">248</v>
                               <n n="Input" />
                               <v n="Id">286L</v>
                             </o>
@@ -2240,7 +2246,7 @@ A_CohapLDTesting();
                         <v n="Id">292L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">127</v>
+                        <v n="VarId">249</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -2270,7 +2276,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">126</v>
+                              <v n="VarId">248</v>
                               <n n="Input" />
                               <v n="Id">343L</v>
                             </o>
@@ -2339,7 +2345,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">127</v>
+                          <v n="VarId">249</v>
                           <n n="Input" />
                           <v n="Id">429L</v>
                         </o>
@@ -2392,7 +2398,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">127</v>
+                            <v n="VarId">249</v>
                             <n n="Input" />
                             <v n="Id">430L</v>
                           </o>
@@ -2439,7 +2445,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">130</v>
+                        <v n="VarId">244</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_GetDLLVersion_Trigger"</v>
@@ -2477,7 +2483,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">118L</v>
+                          <v n="Id">655L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -2497,22 +2503,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">120L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"getDLLVersions_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">121L</v>
                             </o>
                           </l2>
                         </o>
@@ -2552,7 +2542,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">130</v>
+                                <v n="VarId">244</v>
                                 <n n="Input" />
                                 <v n="Id">276L</v>
                               </o>
@@ -2613,8 +2603,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"getDLLVersions_inpuparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(getDLLVersions_inpuparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -2632,8 +2622,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"getDLLVersions_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(getDLLVersions_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -2649,31 +2639,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">128L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(getDLLVersions_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">658L</v>
+                            </o>
+                            <v n="Id">657L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -2682,7 +2691,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">119L</v>
+                        <v n="Id">656L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -2739,7 +2748,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">130</v>
+                              <v n="VarId">244</v>
                               <n n="Input" />
                               <v n="Id">277L</v>
                             </o>
@@ -2782,7 +2791,7 @@ A_CohapLDTesting();
                         <v n="Id">283L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">131</v>
+                        <v n="VarId">245</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -2812,7 +2821,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">130</v>
+                              <v n="VarId">244</v>
                               <n n="Input" />
                               <v n="Id">344L</v>
                             </o>
@@ -2881,7 +2890,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">131</v>
+                          <v n="VarId">245</v>
                           <n n="Input" />
                           <v n="Id">434L</v>
                         </o>
@@ -2934,7 +2943,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">131</v>
+                            <v n="VarId">245</v>
                             <n n="Input" />
                             <v n="Id">435L</v>
                           </o>
@@ -2980,7 +2989,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">134</v>
+                        <v n="VarId">252</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_PowerUp_Trigger"</v>
@@ -3018,7 +3027,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">105L</v>
+                          <v n="Id">663L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -3038,22 +3047,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">107L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"PowerUp_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">108L</v>
                             </o>
                           </l2>
                         </o>
@@ -3093,7 +3086,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">134</v>
+                                <v n="VarId">252</v>
                                 <n n="Input" />
                                 <v n="Id">267L</v>
                               </o>
@@ -3154,8 +3147,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"PowerUp_inpuparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(PowerUp_inpuparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -3173,8 +3166,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"PowerUp_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(PowerUp_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -3190,31 +3183,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">115L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(PowerUp_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">666L</v>
+                            </o>
+                            <v n="Id">665L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -3223,7 +3235,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">106L</v>
+                        <v n="Id">664L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -3280,7 +3292,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">134</v>
+                              <v n="VarId">252</v>
                               <n n="Input" />
                               <v n="Id">268L</v>
                             </o>
@@ -3323,7 +3335,7 @@ A_CohapLDTesting();
                         <v n="Id">274L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">135</v>
+                        <v n="VarId">253</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -3353,7 +3365,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">134</v>
+                              <v n="VarId">252</v>
                               <n n="Input" />
                               <v n="Id">345L</v>
                             </o>
@@ -3422,7 +3434,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">135</v>
+                          <v n="VarId">253</v>
                           <n n="Input" />
                           <v n="Id">439L</v>
                         </o>
@@ -3475,7 +3487,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">135</v>
+                            <v n="VarId">253</v>
                             <n n="Input" />
                             <v n="Id">440L</v>
                           </o>
@@ -3521,7 +3533,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">138</v>
+                        <v n="VarId">256</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_readSerialNumber_Trigger"</v>
@@ -3559,7 +3571,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">92L</v>
+                          <v n="Id">667L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -3579,22 +3591,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">94L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"readSerialNumber_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">95L</v>
                             </o>
                           </l2>
                         </o>
@@ -3634,7 +3630,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">138</v>
+                                <v n="VarId">256</v>
                                 <n n="Input" />
                                 <v n="Id">258L</v>
                               </o>
@@ -3695,8 +3691,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"readSerialNumber_inpuparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(readSerialNumber_inpuparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -3714,8 +3710,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"readSerialNumber_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(readSerialNumber_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -3731,31 +3727,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">102L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(readSerialNumber_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">670L</v>
+                            </o>
+                            <v n="Id">669L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -3764,7 +3779,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">93L</v>
+                        <v n="Id">668L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -3821,7 +3836,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">138</v>
+                              <v n="VarId">256</v>
                               <n n="Input" />
                               <v n="Id">259L</v>
                             </o>
@@ -3864,7 +3879,7 @@ A_CohapLDTesting();
                         <v n="Id">265L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">139</v>
+                        <v n="VarId">257</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -3894,7 +3909,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">138</v>
+                              <v n="VarId">256</v>
                               <n n="Input" />
                               <v n="Id">346L</v>
                             </o>
@@ -3963,7 +3978,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">139</v>
+                          <v n="VarId">257</v>
                           <n n="Input" />
                           <v n="Id">444L</v>
                         </o>
@@ -4016,7 +4031,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">139</v>
+                            <v n="VarId">257</v>
                             <n n="Input" />
                             <v n="Id">445L</v>
                           </o>
@@ -4062,7 +4077,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">142</v>
+                        <v n="VarId">260</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_PowerDown_Trigger"</v>
@@ -4100,7 +4115,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">79L</v>
+                          <v n="Id">671L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -4120,22 +4135,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">81L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"PowerDown_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">82L</v>
                             </o>
                           </l2>
                         </o>
@@ -4175,7 +4174,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">142</v>
+                                <v n="VarId">260</v>
                                 <n n="Input" />
                                 <v n="Id">249L</v>
                               </o>
@@ -4236,8 +4235,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"PowerDown_inpuparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(PowerDown_inpuparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -4255,8 +4254,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"PowerDown_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(PowerDown_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -4272,31 +4271,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">89L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(PowerDown_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">674L</v>
+                            </o>
+                            <v n="Id">673L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -4305,7 +4323,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">80L</v>
+                        <v n="Id">672L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -4362,7 +4380,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">142</v>
+                              <v n="VarId">260</v>
                               <n n="Input" />
                               <v n="Id">250L</v>
                             </o>
@@ -4405,7 +4423,7 @@ A_CohapLDTesting();
                         <v n="Id">256L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">143</v>
+                        <v n="VarId">261</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -4435,7 +4453,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">142</v>
+                              <v n="VarId">260</v>
                               <n n="Input" />
                               <v n="Id">347L</v>
                             </o>
@@ -4504,7 +4522,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">143</v>
+                          <v n="VarId">261</v>
                           <n n="Input" />
                           <v n="Id">449L</v>
                         </o>
@@ -4557,7 +4575,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">143</v>
+                            <v n="VarId">261</v>
                             <n n="Input" />
                             <v n="Id">450L</v>
                           </o>
@@ -4603,7 +4621,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">146</v>
+                        <v n="VarId">264</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_initDUT_Trigger"</v>
@@ -4641,7 +4659,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">53L</v>
+                          <v n="Id">675L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -4661,22 +4679,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">55L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"initDUT_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">56L</v>
                             </o>
                           </l2>
                         </o>
@@ -4716,7 +4718,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">146</v>
+                                <v n="VarId">264</v>
                                 <n n="Input" />
                                 <v n="Id">240L</v>
                               </o>
@@ -4777,8 +4779,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"initDUT_inpuparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(initDUT_inpuparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -4796,8 +4798,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"initDUT_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(initDUT_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -4813,31 +4815,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">63L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(initDUT_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">678L</v>
+                            </o>
+                            <v n="Id">677L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -4846,7 +4867,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">54L</v>
+                        <v n="Id">676L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -4903,7 +4924,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">146</v>
+                              <v n="VarId">264</v>
                               <n n="Input" />
                               <v n="Id">241L</v>
                             </o>
@@ -4946,7 +4967,7 @@ A_CohapLDTesting();
                         <v n="Id">247L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">147</v>
+                        <v n="VarId">265</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -4976,7 +4997,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">146</v>
+                              <v n="VarId">264</v>
                               <n n="Input" />
                               <v n="Id">348L</v>
                             </o>
@@ -5045,7 +5066,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">147</v>
+                          <v n="VarId">265</v>
                           <n n="Input" />
                           <v n="Id">454L</v>
                         </o>
@@ -5098,7 +5119,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">147</v>
+                            <v n="VarId">265</v>
                             <n n="Input" />
                             <v n="Id">455L</v>
                           </o>
@@ -5144,7 +5165,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">170</v>
+                        <v n="VarId">268</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_ReadDeviceOutput_Trigger"</v>
@@ -5182,7 +5203,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">564L</v>
+                          <v n="Id">679L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -5202,22 +5223,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">566L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"ReadDeviceOutput_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">567L</v>
                             </o>
                           </l2>
                         </o>
@@ -5257,7 +5262,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">170</v>
+                                <v n="VarId">268</v>
                                 <n n="Input" />
                                 <v n="Id">570L</v>
                               </o>
@@ -5318,8 +5323,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ReadDeviceOutput_inpuparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(ReadDeviceOutput_inpuparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -5337,8 +5342,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ReadDeviceOutput_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(ReadDeviceOutput_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -5354,31 +5359,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">577L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(ReadDeviceOutput_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">640L</v>
+                            </o>
+                            <v n="Id">639L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -5387,7 +5411,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">565L</v>
+                        <v n="Id">680L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -5444,7 +5468,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">170</v>
+                              <v n="VarId">268</v>
                               <n n="Input" />
                               <v n="Id">581L</v>
                             </o>
@@ -5487,7 +5511,7 @@ A_CohapLDTesting();
                         <v n="Id">585L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">171</v>
+                        <v n="VarId">269</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -5517,7 +5541,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">170</v>
+                              <v n="VarId">268</v>
                               <n n="Input" />
                               <v n="Id">589L</v>
                             </o>
@@ -5586,7 +5610,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">171</v>
+                          <v n="VarId">269</v>
                           <n n="Input" />
                           <v n="Id">592L</v>
                         </o>
@@ -5639,7 +5663,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">171</v>
+                            <v n="VarId">269</v>
                             <n n="Input" />
                             <v n="Id">598L</v>
                           </o>
@@ -5685,7 +5709,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">168</v>
+                        <v n="VarId">272</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Trigger"</v>
@@ -5723,7 +5747,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">525L</v>
+                          <v n="Id">681L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -5743,22 +5767,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">527L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"readFastChannelData_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">528L</v>
                             </o>
                           </l2>
                         </o>
@@ -5798,7 +5806,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">168</v>
+                                <v n="VarId">272</v>
                                 <n n="Input" />
                                 <v n="Id">531L</v>
                               </o>
@@ -5859,8 +5867,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"readFastChannelData_inputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(readFastChannelData_inputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -5878,8 +5886,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"readFastChannelData_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(readFastChannelData_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -5895,31 +5903,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">538L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(readFastChannelData_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">636L</v>
+                            </o>
+                            <v n="Id">635L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -5928,7 +5955,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">526L</v>
+                        <v n="Id">682L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -5985,7 +6012,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">168</v>
+                              <v n="VarId">272</v>
                               <n n="Input" />
                               <v n="Id">542L</v>
                             </o>
@@ -6028,7 +6055,7 @@ A_CohapLDTesting();
                         <v n="Id">546L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">169</v>
+                        <v n="VarId">273</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -6058,7 +6085,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">168</v>
+                              <v n="VarId">272</v>
                               <n n="Input" />
                               <v n="Id">550L</v>
                             </o>
@@ -6127,7 +6154,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">169</v>
+                          <v n="VarId">273</v>
                           <n n="Input" />
                           <v n="Id">553L</v>
                         </o>
@@ -6180,7 +6207,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">169</v>
+                            <v n="VarId">273</v>
                             <n n="Input" />
                             <v n="Id">559L</v>
                           </o>
@@ -6226,7 +6253,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">0</v>
+                        <v n="VarId">236</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_TestDummy_Trigger"</v>
@@ -6264,7 +6291,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">197L</v>
+                          <v n="Id">649L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -6284,22 +6311,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">199L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"TestDummy_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">200L</v>
                             </o>
                           </l2>
                         </o>
@@ -6339,7 +6350,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">0</v>
+                                <v n="VarId">236</v>
                                 <n n="Input" />
                                 <v n="Id">214L</v>
                               </o>
@@ -6400,8 +6411,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"TestDummy_inpuparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(TestDummy_inpuparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -6419,8 +6430,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"TestDummy_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(TestDummy_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -6436,31 +6447,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">211L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(TestDummy_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">632L</v>
+                            </o>
+                            <v n="Id">631L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -6469,7 +6499,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">198L</v>
+                        <v n="Id">650L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -6526,7 +6556,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">0</v>
+                              <v n="VarId">236</v>
                               <n n="Input" />
                               <v n="Id">215L</v>
                             </o>
@@ -6569,7 +6599,7 @@ A_CohapLDTesting();
                         <v n="Id">221L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">1</v>
+                        <v n="VarId">237</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -6599,7 +6629,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">0</v>
+                              <v n="VarId">236</v>
                               <n n="Input" />
                               <v n="Id">349L</v>
                             </o>
@@ -6668,7 +6698,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">1</v>
+                          <v n="VarId">237</v>
                           <n n="Input" />
                           <v n="Id">459L</v>
                         </o>
@@ -6721,7 +6751,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">1</v>
+                            <v n="VarId">237</v>
                             <n n="Input" />
                             <v n="Id">460L</v>
                           </o>
@@ -6767,7 +6797,7 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">166</v>
+                        <v n="VarId">232</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_TestDummy2_Trigger"</v>
@@ -6805,7 +6835,7 @@ A_CohapLDTesting();
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">514L</v>
+                          <v n="Id">647L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -6825,22 +6855,6 @@ A_CohapLDTesting();
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
                               <v n="Id">42L</v>
-                            </o>
-                            <o>
-                              <v n="Operand">"TestDummy2_outputparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">"Constant_Address_Serialization_Value"</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">49L</v>
                             </o>
                           </l2>
                         </o>
@@ -6880,7 +6894,7 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">166</v>
+                                <v n="VarId">232</v>
                                 <n n="Input" />
                                 <v n="Id">223L</v>
                               </o>
@@ -6941,8 +6955,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"TestDummy2_inpuparams"</v>
-                              <v n="Type">"T_CohapParameterList"</v>
+                              <v n="Operand">"ADR(TestDummy2_inpuparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -6960,8 +6974,8 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"TestDummy2_expoutparamlist"</v>
-                              <v n="Type">"ARRAY [0..9] OF ReturnParamKVP"</v>
+                              <v n="Operand">"ADR(TestDummy2_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">"Constant_Address_Serialization_Value"</v>
@@ -6977,31 +6991,50 @@ A_CohapLDTesting();
                             </o>
                             <v n="Id">50L</v>
                           </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(TestDummy2_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">628L</v>
+                            </o>
+                            <v n="Id">627L</v>
+                          </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>EN</v>
                             <v>strMethod</v>
-                            <v>aInputParam</v>
-                            <v>aExpectedOutputParamsList</v>
+                            <v>arrInputParam</v>
+                            <v>arrExpectedOutputParamsList</v>
+                            <v>arroutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>STRING</v>
-                            <v>T_CohapParameterList</v>
-                            <v>ARRAY [0..2] OF ReturnParamKVP</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
                             <v>ENO</v>
                             <v>M_RunCommand</v>
-                            <v>aoutputParam</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
                             <v>BOOL</v>
-                            <v>T_CohapParameterList</v>
                           </l2>
                         </o>
                         <v n="CallType" t="Operator">Method</v>
@@ -7010,7 +7043,7 @@ A_CohapLDTesting();
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">515L</v>
+                        <v n="Id">648L</v>
                       </o>
                       <o t="BoxTreeAssign">
                         <o n="OutputItems" t="OutputItemList">
@@ -7067,7 +7100,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">166</v>
+                              <v n="VarId">232</v>
                               <n n="Input" />
                               <v n="Id">224L</v>
                             </o>
@@ -7110,7 +7143,7 @@ A_CohapLDTesting();
                         <v n="Id">238L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">167</v>
+                        <v n="VarId">233</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -7140,7 +7173,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">166</v>
+                              <v n="VarId">232</v>
                               <n n="Input" />
                               <v n="Id">350L</v>
                             </o>
@@ -7209,7 +7242,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">167</v>
+                          <v n="VarId">233</v>
                           <n n="Input" />
                           <v n="Id">464L</v>
                         </o>
@@ -7262,7 +7295,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">167</v>
+                            <v n="VarId">233</v>
                             <n n="Input" />
                             <v n="Id">465L</v>
                           </o>
@@ -7298,7 +7331,7 @@ A_CohapLDTesting();
                     <v n="Id">35L</v>
                   </o>
                 </l2>
-                <v n="BranchCounter">170</v>
+                <v n="BranchCounter">272</v>
                 <v n="ValidIds">true</v>
               </o>
             </Data>
@@ -7504,6 +7537,27 @@ TestDummy2_expoutparamlist[8].DataType := E_DataType.DT_STRING;
 TestDummy2_expoutparamlist[8].VarName := 'fastchannel7';
 TestDummy2_expoutparamlist[9].DataType := E_DataType.DT_INT;
 TestDummy2_expoutparamlist[9].VarName := 'fastchannel8';
+
+//TestDummy2_outputparams[0].strKey := '';
+//TestDummy2_outputparams[0].strValue := '';
+//TestDummy2_outputparams[1].strKey := '';
+//TestDummy2_outputparams[1].strValue := '';
+//TestDummy2_outputparams[2].strKey := '';
+//TestDummy2_outputparams[2].strValue := '';
+//TestDummy2_outputparams[3].strKey := '';
+//TestDummy2_outputparams[3].strValue := '';
+//TestDummy2_outputparams[4].strKey := '';
+//TestDummy2_outputparams[4].strValue := '';
+//TestDummy2_outputparams[5].strKey := '';
+//TestDummy2_outputparams[5].strValue := '';
+//TestDummy2_outputparams[6].strKey := '';
+//TestDummy2_outputparams[6].strValue := '';
+//TestDummy2_outputparams[7].strKey := '';
+//TestDummy2_outputparams[7].strValue := '';
+//TestDummy2_outputparams[8].strKey := '';
+//TestDummy2_outputparams[8].strValue := '';
+//TestDummy2_outputparams[9].strKey := '';
+//TestDummy2_outputparams[9].strValue := '';
 
 init_inpuparams[0].strKey := 'VSupply';
 init_inpuparams[0].strValue := '5.0';
