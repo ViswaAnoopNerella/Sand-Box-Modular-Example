@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_Test" Id="{c1bbfc22-bd03-4efe-9a03-d02a5c4a7f1f}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	temperature : REAL;
+	Pressure : REAL;
+	
+	startCommand : BOOL;
+	stopCommand : BOOL;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
