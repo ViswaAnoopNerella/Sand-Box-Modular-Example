@@ -263,7 +263,41 @@ VAR
 	readFastChannelData_expoutparamlist : ARRAY[0..9] OF ST_ReturnParamsInfo;
 	readFastChannelData_outputparams : T_CohapParameterList;
 
-
+	// For T1 Step 1 Calibration
+	t1Step1_inpuparams : T_CohapParameterList;
+	t1Step1_expoutparamlist : ARRAY[0..9] OF ST_ReturnParamsInfo;
+	t1Step1_outputparams : T_CohapParameterList;
+	
+	// For T1 Step 2 Calibration
+	t1Step2_inpuparams : T_CohapParameterList;
+	t1Step2_expoutparamlist : ARRAY[0..9] OF ST_ReturnParamsInfo;
+	t1Step2_outputparams : T_CohapParameterList;
+	
+	// For T1 Step 3 Calibration
+	t1Step3_inpuparams : T_CohapParameterList;
+	t1Step3_expoutparamlist : ARRAY[0..9] OF ST_ReturnParamsInfo;
+	t1Step3_outputparams : T_CohapParameterList;
+	
+	// For T2 Step 1 Calibration
+	t2Step1_inpuparams : T_CohapParameterList;
+	t2Step1_expoutparamlist : ARRAY[0..9] OF ST_ReturnParamsInfo;
+	t2Step1_outputparams : T_CohapParameterList;
+	
+	// For T2 Step 2 Calibration
+	t2Step2_inpuparams : T_CohapParameterList;
+	t2Step2_expoutparamlist : ARRAY[0..9] OF ST_ReturnParamsInfo;
+	t2Step2_outputparams : T_CohapParameterList;
+	
+	// For T2 Step 3 Calibration
+	t2Step3_inpuparams : T_CohapParameterList;
+	t2Step3_expoutparamlist : ARRAY[0..9] OF ST_ReturnParamsInfo;
+	t2Step3_outputparams : T_CohapParameterList;
+	
+	// InitLot Device12133 class in Mech Device Lib Calibration
+	InitLot_inputparams : T_CohapParameterList;
+	InitLot_expoutparamlist : ARRAY[0..9] OF ST_ReturnParamsInfo;
+	InitLot_outputparams : T_CohapParameterList;
+	
 END_VAR
 
 ]]></Declaration>
@@ -5710,10 +5744,555 @@ A_CohapLDTesting();
                     <v n="OutCommented">false</v>
                     <l2 n="NetworkItems">
                       <o t="BoxTreeDemux">
-                        <v n="VarId">296</v>
+                        <v n="VarId">306</v>
                         <o n="Input" t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
                             <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Trigger"</v>
+                            <v n="Type">"BOOL"</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">"Constant_Address_Serialization_Value"</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <v n="LValue">false</v>
+                            <v n="Boolean">true</v>
+                            <v n="IsInstance">false</v>
+                            <v n="Id">744L</v>
+                          </o>
+                          <v n="Id">743L</v>
+                        </o>
+                        <v n="Id">742L</v>
+                      </o>
+                      <o t="BoxTreeBox">
+                        <v n="BoxType">"MyCohapTest.M_RunCommand"</v>
+                        <o n="Instance" t="Operand">
+                          <v n="Operand">""</v>
+                          <v n="Type">"MyCohapTest.M_RunCommand"</v>
+                          <v n="Comment">""</v>
+                          <v n="SymbolComment">""</v>
+                          <v n="Address">"Constant_Address_Serialization_Value"</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <v n="LValue">false</v>
+                          <v n="Boolean">false</v>
+                          <v n="IsInstance">true</v>
+                          <v n="Id">745L</v>
+                        </o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <n />
+                            <o>
+                              <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Result"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">747L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">true</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <n n="InputFlags" />
+                        <l2 n="InputItems">
+                          <o t="BoxTreeBox">
+                            <v n="BoxType">"AND"</v>
+                            <o n="Instance" t="Operand">
+                              <n n="Operand" />
+                              <v n="Type">""</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">true</v>
+                              <v n="Id">748L</v>
+                            </o>
+                            <o n="OutputItems" t="OutputItemList">
+                              <l2 n="OutputItems" />
+                            </o>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <n n="InputFlags" />
+                            <l2 n="InputItems">
+                              <o t="BoxTreeDemux">
+                                <v n="VarId">306</v>
+                                <n n="Input" />
+                                <v n="Id">750L</v>
+                              </o>
+                              <o t="BoxTreeOperand">
+                                <o n="Operand" t="Operand">
+                                  <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Result"</v>
+                                  <v n="Type">"BOOL"</v>
+                                  <v n="Comment">""</v>
+                                  <v n="SymbolComment">""</v>
+                                  <v n="Address">"Constant_Address_Serialization_Value"</v>
+                                  <o n="Flags" t="Flags">
+                                    <v n="Flags">1</v>
+                                    <v n="Fixed">true</v>
+                                    <v n="Extensible">false</v>
+                                  </o>
+                                  <v n="LValue">false</v>
+                                  <v n="Boolean">true</v>
+                                  <v n="IsInstance">false</v>
+                                  <v n="Id">752L</v>
+                                </o>
+                                <v n="Id">751L</v>
+                              </o>
+                            </l2>
+                            <o n="InputParam" t="ParamList">
+                              <l2 n="Names" />
+                              <l2 n="Types" />
+                            </o>
+                            <o n="OutputParam" t="ParamList">
+                              <l2 n="Names" />
+                              <l2 n="Types" />
+                            </o>
+                            <v n="CallType" t="Operator">And</v>
+                            <n n="EN" />
+                            <n n="ENO" />
+                            <n n="STSnippet" />
+                            <v n="ContainsExtensibleInputs">false</v>
+                            <v n="ProvidesSTSnippet">false</v>
+                            <v n="Id">749L</v>
+                          </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"CohapMethodStrings.M_ReadFastChannelData"</v>
+                              <v n="Type">"STRING"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">754L</v>
+                            </o>
+                            <v n="Id">753L</v>
+                          </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(readFastChannelData_inputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [GVL_DeviceComm.intPARAM_LIST_LOWER_BOUND..GVL_DeviceComm.intPARAM_LIST_UPPER_BOUND] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">756L</v>
+                            </o>
+                            <v n="Id">755L</v>
+                          </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(readFastChannelData_expoutparamlist)"</v>
+                              <v n="Type">"POINTER TO ARRAY [0..9] OF ST_ReturnParamsInfo"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">758L</v>
+                            </o>
+                            <v n="Id">757L</v>
+                          </o>
+                          <o t="BoxTreeOperand">
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(readFastChannelData_outputparams)"</v>
+                              <v n="Type">"POINTER TO ARRAY [GVL_DeviceComm.intPARAM_LIST_LOWER_BOUND..GVL_DeviceComm.intPARAM_LIST_UPPER_BOUND] OF ST_CohapParam"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">760L</v>
+                            </o>
+                            <v n="Id">759L</v>
+                          </o>
+                        </l2>
+                        <o n="InputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>EN</v>
+                            <v>in_strMethod</v>
+                            <v>in_arrInputParam</v>
+                            <v>in_arrExpectedOutputParamsList</v>
+                            <v>in_arroutputParam</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>STRING</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                            <v>POINTER TO ARRAY [0..9] OF ST_ReturnParamsInfo</v>
+                            <v>POINTER TO T_CohapParameterList</v>
+                          </l2>
+                        </o>
+                        <o n="OutputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>ENO</v>
+                            <v>M_RunCommand</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                          </l2>
+                        </o>
+                        <v n="CallType" t="Operator">Method</v>
+                        <v n="EN">true</v>
+                        <v n="ENO">true</v>
+                        <n n="STSnippet" />
+                        <v n="ContainsExtensibleInputs">false</v>
+                        <v n="ProvidesSTSnippet">false</v>
+                        <v n="Id">746L</v>
+                      </o>
+                      <o t="BoxTreeAssign">
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <o>
+                              <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Trigger"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">3</v>
+                                <v n="Fixed">true</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">true</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">766L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <o n="RValue" t="BoxTreeBox">
+                          <v n="BoxType">"AND"</v>
+                          <o n="Instance" t="Operand">
+                            <n n="Operand" />
+                            <v n="Type">""</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">""</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <v n="LValue">false</v>
+                            <v n="Boolean">false</v>
+                            <v n="IsInstance">true</v>
+                            <v n="Id">761L</v>
+                          </o>
+                          <o n="OutputItems" t="OutputItemList">
+                            <l2 n="OutputItems" />
+                          </o>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <n n="InputFlags" />
+                          <l2 n="InputItems">
+                            <o t="BoxTreeDemux">
+                              <v n="VarId">306</v>
+                              <n n="Input" />
+                              <v n="Id">763L</v>
+                            </o>
+                            <o t="BoxTreeOperand">
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Result"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">"Constant_Address_Serialization_Value"</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">true</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">true</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">765L</v>
+                              </o>
+                              <v n="Id">764L</v>
+                            </o>
+                          </l2>
+                          <o n="InputParam" t="ParamList">
+                            <l2 n="Names" />
+                            <l2 n="Types" />
+                          </o>
+                          <o n="OutputParam" t="ParamList">
+                            <l2 n="Names" />
+                            <l2 n="Types" />
+                          </o>
+                          <v n="CallType" t="Operator">And</v>
+                          <n n="EN" />
+                          <n n="ENO" />
+                          <n n="STSnippet" />
+                          <v n="ContainsExtensibleInputs">false</v>
+                          <v n="ProvidesSTSnippet">false</v>
+                          <v n="Id">762L</v>
+                        </o>
+                        <v n="Id">767L</v>
+                      </o>
+                      <o t="BoxTreeDemux">
+                        <v n="VarId">307</v>
+                        <o n="Input" t="BoxTreeBox">
+                          <v n="BoxType">"AND"</v>
+                          <o n="Instance" t="Operand">
+                            <n n="Operand" />
+                            <v n="Type">""</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">""</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <v n="LValue">false</v>
+                            <v n="Boolean">false</v>
+                            <v n="IsInstance">true</v>
+                            <v n="Id">769L</v>
+                          </o>
+                          <o n="OutputItems" t="OutputItemList">
+                            <l2 n="OutputItems" />
+                          </o>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <n n="InputFlags" />
+                          <l2 n="InputItems">
+                            <o t="BoxTreeDemux">
+                              <v n="VarId">306</v>
+                              <n n="Input" />
+                              <v n="Id">771L</v>
+                            </o>
+                            <o t="BoxTreeOperand">
+                              <o n="Operand" t="Operand">
+                                <v n="Operand">"MyCohapTest.P_bError"</v>
+                                <v n="Type">"BOOL"</v>
+                                <v n="Comment">""</v>
+                                <v n="SymbolComment">""</v>
+                                <v n="Address">"Constant_Address_Serialization_Value"</v>
+                                <o n="Flags" t="Flags">
+                                  <v n="Flags">0</v>
+                                  <v n="Fixed">true</v>
+                                  <v n="Extensible">false</v>
+                                </o>
+                                <v n="LValue">false</v>
+                                <v n="Boolean">true</v>
+                                <v n="IsInstance">false</v>
+                                <v n="Id">773L</v>
+                              </o>
+                              <v n="Id">772L</v>
+                            </o>
+                          </l2>
+                          <o n="InputParam" t="ParamList">
+                            <l2 n="Names" />
+                            <l2 n="Types" />
+                          </o>
+                          <o n="OutputParam" t="ParamList">
+                            <l2 n="Names" />
+                            <l2 n="Types" />
+                          </o>
+                          <v n="CallType" t="Operator">And</v>
+                          <n n="EN" />
+                          <n n="ENO" />
+                          <n n="STSnippet" />
+                          <v n="ContainsExtensibleInputs">false</v>
+                          <v n="ProvidesSTSnippet">false</v>
+                          <v n="Id">770L</v>
+                        </o>
+                        <v n="Id">768L</v>
+                      </o>
+                      <o t="BoxTreeAssign">
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <o>
+                              <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Trigger"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">3</v>
+                                <v n="Fixed">true</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">true</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">775L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <o n="RValue" t="BoxTreeDemux">
+                          <v n="VarId">307</v>
+                          <n n="Input" />
+                          <v n="Id">774L</v>
+                        </o>
+                        <v n="Id">776L</v>
+                      </o>
+                      <o t="BoxTreeBox">
+                        <v n="BoxType">"MyCohapTest.M_ClearError"</v>
+                        <o n="Instance" t="Operand">
+                          <v n="Operand">""</v>
+                          <v n="Type">"MyCohapTest.M_ClearError"</v>
+                          <v n="Comment">""</v>
+                          <v n="SymbolComment">""</v>
+                          <v n="Address">"Constant_Address_Serialization_Value"</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <v n="LValue">false</v>
+                          <v n="Boolean">false</v>
+                          <v n="IsInstance">true</v>
+                          <v n="Id">777L</v>
+                        </o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <n />
+                            <o>
+                              <v n="Operand">""</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">"Constant_Address_Serialization_Value"</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">779L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">true</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <n n="InputFlags" />
+                        <l2 n="InputItems" cet="BoxTreeDemux">
+                          <o>
+                            <v n="VarId">307</v>
+                            <n n="Input" />
+                            <v n="Id">780L</v>
+                          </o>
+                        </l2>
+                        <o n="InputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>EN</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                          </l2>
+                        </o>
+                        <o n="OutputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>ENO</v>
+                            <v>M_ClearError</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                          </l2>
+                        </o>
+                        <v n="CallType" t="Operator">Method</v>
+                        <v n="EN">true</v>
+                        <v n="ENO">true</v>
+                        <n n="STSnippet" />
+                        <v n="ContainsExtensibleInputs">false</v>
+                        <v n="ProvidesSTSnippet">false</v>
+                        <v n="Id">778L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">741L</v>
+                  </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">"Call InitLot
+"</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems">
+                      <o t="BoxTreeDemux">
+                        <v n="VarId">0</v>
+                        <o n="Input" t="BoxTreeOperand">
+                          <o n="Operand" t="Operand">
+                            <v n="Operand">"CohapMethodControls.M_initLot_Trigger"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -5754,7 +6333,7 @@ A_CohapLDTesting();
                           <l2 n="OutputItems" cet="Operand">
                             <n />
                             <o>
-                              <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Result"</v>
+                              <v n="Operand">"CohapMethodControls.M_initLot_Result"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5807,13 +6386,13 @@ A_CohapLDTesting();
                             <n n="InputFlags" />
                             <l2 n="InputItems">
                               <o t="BoxTreeDemux">
-                                <v n="VarId">296</v>
+                                <v n="VarId">0</v>
                                 <n n="Input" />
                                 <v n="Id">531L</v>
                               </o>
                               <o t="BoxTreeOperand">
                                 <o n="Operand" t="Operand">
-                                  <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Result"</v>
+                                  <v n="Operand">"CohapMethodControls.M_initLot_Result"</v>
                                   <v n="Type">"BOOL"</v>
                                   <v n="Comment">""</v>
                                   <v n="SymbolComment">""</v>
@@ -5849,7 +6428,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"CohapMethodStrings.M_ReadFastChannelData"</v>
+                              <v n="Operand">"CohapMethodStrings.M_InitLot"</v>
                               <v n="Type">"STRING"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5868,7 +6447,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ADR(readFastChannelData_inputparams)"</v>
+                              <v n="Operand">"ADR(InitLot_inputparams)"</v>
                               <v n="Type">"POINTER TO ARRAY [GVL_DeviceComm.intPARAM_LIST_LOWER_BOUND..GVL_DeviceComm.intPARAM_LIST_UPPER_BOUND] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5887,7 +6466,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ADR(readFastChannelData_expoutparamlist)"</v>
+                              <v n="Operand">"ADR(InitLot_expoutparamlist)"</v>
                               <v n="Type">"POINTER TO ARRAY [0..9] OF ST_ReturnParamsInfo"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5906,7 +6485,7 @@ A_CohapLDTesting();
                           </o>
                           <o t="BoxTreeOperand">
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ADR(readFastChannelData_outputparams)"</v>
+                              <v n="Operand">"ADR(InitLot_outputparams)"</v>
                               <v n="Type">"POINTER TO ARRAY [GVL_DeviceComm.intPARAM_LIST_LOWER_BOUND..GVL_DeviceComm.intPARAM_LIST_UPPER_BOUND] OF ST_CohapParam"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -5962,7 +6541,7 @@ A_CohapLDTesting();
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Trigger"</v>
+                              <v n="Operand">"CohapMethodControls.M_initLot_Trigger"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -6013,13 +6592,13 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">296</v>
+                              <v n="VarId">0</v>
                               <n n="Input" />
                               <v n="Id">542L</v>
                             </o>
                             <o t="BoxTreeOperand">
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Result"</v>
+                                <v n="Operand">"CohapMethodControls.M_initLot_Result"</v>
                                 <v n="Type">"BOOL"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
@@ -6056,7 +6635,7 @@ A_CohapLDTesting();
                         <v n="Id">546L</v>
                       </o>
                       <o t="BoxTreeDemux">
-                        <v n="VarId">297</v>
+                        <v n="VarId">1</v>
                         <o n="Input" t="BoxTreeBox">
                           <v n="BoxType">"AND"</v>
                           <o n="Instance" t="Operand">
@@ -6086,7 +6665,7 @@ A_CohapLDTesting();
                           <n n="InputFlags" />
                           <l2 n="InputItems">
                             <o t="BoxTreeDemux">
-                              <v n="VarId">296</v>
+                              <v n="VarId">0</v>
                               <n n="Input" />
                               <v n="Id">550L</v>
                             </o>
@@ -6132,7 +6711,7 @@ A_CohapLDTesting();
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <o>
-                              <v n="Operand">"CohapMethodControls.M_ReadFastChannelData_Trigger"</v>
+                              <v n="Operand">"CohapMethodControls.M_initLot_Trigger"</v>
                               <v n="Type">"BOOL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -6155,7 +6734,7 @@ A_CohapLDTesting();
                           <v n="Extensible">false</v>
                         </o>
                         <o n="RValue" t="BoxTreeDemux">
-                          <v n="VarId">297</v>
+                          <v n="VarId">1</v>
                           <n n="Input" />
                           <v n="Id">553L</v>
                         </o>
@@ -6208,7 +6787,7 @@ A_CohapLDTesting();
                         <n n="InputFlags" />
                         <l2 n="InputItems" cet="BoxTreeDemux">
                           <o>
-                            <v n="VarId">297</v>
+                            <v n="VarId">1</v>
                             <n n="Input" />
                             <v n="Id">559L</v>
                           </o>
@@ -7332,7 +7911,7 @@ A_CohapLDTesting();
                     <v n="Id">35L</v>
                   </o>
                 </l2>
-                <v n="BranchCounter">304</v>
+                <v n="BranchCounter">306</v>
                 <v n="ValidIds">true</v>
               </o>
             </Data>
@@ -7632,7 +8211,17 @@ readFastChannelData_expoutparamlist[1].strVarName := 'FastChannel2Data';
 readFastChannelData_expoutparamlist[2].enumDataType := E_DataType.DT_STRING;
 readFastChannelData_expoutparamlist[2].strVarName := 'FastChannel1Status';
 readFastChannelData_expoutparamlist[3].enumDataType := E_DataType.DT_STRING;
-readFastChannelData_expoutparamlist[3].strVarName := 'FastChannel2Status';]]></ST>
+readFastChannelData_expoutparamlist[3].strVarName := 'FastChannel2Status';
+
+
+InitLot_inputparams[0].strKey := 'deviceID';
+InitLot_inputparams[0].strValue := '52EMB01-01';
+InitLot_inputparams[1].strKey := 'lotID';
+InitLot_inputparams[1].strValue := '123';
+InitLot_inputparams[2].strKey := 'equipmentID';
+InitLot_inputparams[2].strValue := '1';
+InitLot_inputparams[3].strKey := 'testKind';
+InitLot_inputparams[3].strValue := '1';]]></ST>
       </Implementation>
     </Action>
     <Action Name="A_LaserMarkingParams" Id="{23cacb87-0a2e-4564-9710-85ba7dafd933}">

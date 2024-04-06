@@ -15,6 +15,8 @@ STRUCT
 	M_ReadFastChannelData : STRING := 'SENT_readFastChannelData';
 	M_initDUT : STRING := 'initDUT';
 	M_initialize : STRING := 'initialize';
+	
+	M_InitLot : STRING := 'InitLot';
 END_STRUCT
 END_TYPE
 ]]></Declaration>

@@ -33,6 +33,8 @@ STRUCT
         M_initDUT_Result : BOOL;
         M_initialize_Trigger : BOOL;
         M_initialize_Result : BOOL;
+		M_initLot_Trigger : BOOL;
+		M_initLot_Result : BOOL;
 END_STRUCT
 END_TYPE
 ]]></Declaration>
