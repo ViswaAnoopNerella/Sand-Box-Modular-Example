@@ -35,6 +35,19 @@ STRUCT
         M_initialize_Result : BOOL;
 		M_initLot_Trigger : BOOL;
 		M_initLot_Result : BOOL;
+		
+		M_t1PreCal_Trigger : BOOL;
+		M_t1PreCal_Result : BOOL;
+		M_t1Step2_Trigger : BOOL;
+		M_t1Step2_Result : BOOL;
+		M_t1Step3_Trigger : BOOL;
+		M_t1Step3_Result : BOOL;
+		M_t2Step1_Trigger : BOOL;
+		M_t2Step1_Result : BOOL;
+		M_t2Step2_Trigger : BOOL;
+		M_t2Step2_Result : BOOL;
+		M_t2Step3_Trigger : BOOL;
+		M_t2Step3_Result : BOOL;
 END_STRUCT
 END_TYPE
 ]]></Declaration>
