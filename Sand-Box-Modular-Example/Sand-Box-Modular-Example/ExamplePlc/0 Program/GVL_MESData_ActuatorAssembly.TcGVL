@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <GVL Name="GVL_MESData" Id="{ace350db-2872-42e4-a504-7f56e0818136}">
+  <GVL Name="GVL_MESData_ActuatorAssembly" Id="{291a24ab-1728-41bd-8371-f45e7988f16b}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	//Lot Information
@@ -23,6 +23,8 @@ VAR_GLOBAL
 	OperatorBarcode : STRING;
 	OperatorInfoResponse : STRING;	
 	OperatorInfoResponseMessages : ARRAY[1..100] OF STRING;
+	
+	//machine settings
 	
 	//Start Lot Information 1
 	StartLotResponse : STRING;
@@ -104,6 +106,8 @@ VAR_GLOBAL
 	MESResolutionNotes : STRING;
 	MESDateTimeResolved : DATE;
 	MESUpdateEventID : LINT;
+	
+	
 	
 END_VAR]]></Declaration>
   </GVL>
