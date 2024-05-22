@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_MESData" Id="{ace350db-2872-42e4-a504-7f56e0818136}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	//Lot Information
+	LotBarcode : STRING;// := '80600600+57805702+23330166A+200';
+	
+	LotNo : STRING;
+	ProductNo : STRING;
+	OrderNo : STRING;
+	Quantity : INT;
+	OperatorID : STRING;
+	ShiftLeader : STRING;
+	MachineID : STRING;
+	LotIdent : INT;
+	PiecesLeft : INT;
+	PiecesOK : INT;
+	PiecesNOK : INT;
+	LotInfoResponseMessages : ARRAY[1..100] OF STRING;
+	
+	//Operator Information 1
+	OperatorBarcode : STRING;
+	OperatorInfoResponse : STRING;	
+	OperatorInfoResponseMessages : ARRAY[1..100] OF STRING;
+	
+	//Start Lot Information 1
+	StartLotResponse : STRING;
+	StartLotResponseMessages : ARRAY[1..100] OF STRING;
+	
+	//Prod Lot Components 1, 2 , 3
+	Comp1_ident: LINT;          // Equivalent to private long ident;
+   	Comp1_ident2: INT;          // Equivalent to private int ident2;
+    Comp1_seria: STRING;        // Equivalent to private string seria;
+    Comp1_quan: INT;            // Equivalent to private int quan;
+    Comp1_result: INT;        // Equivalent to private short result;
+    Comp1_resultText: STRING;   // Equivalent to private string resultText;
+    Comp1_actualQuan: INT;      // Equivalent to private int actualQuan;
+    Comp1_item: STRING;         // Equivalent to private string item;
+	
+	Comp2_ident: LINT;          // Equivalent to private long ident;
+   	Comp2_ident2: INT;          // Equivalent to private int ident2;
+    Comp2_seria: STRING;        // Equivalent to private string seria;
+    Comp2_quan: INT;            // Equivalent to private int quan;
+    Comp2_result: INT;        // Equivalent to private short result;
+    Comp2_resultText: STRING;   // Equivalent to private string resultText;
+    Comp2_actualQuan: INT;      // Equivalent to private int actualQuan;
+    Comp2_item: STRING;         // Equivalent to private string item;
+	
+	Comp3_ident: LINT;          // Equivalent to private long ident;
+   	Comp3_ident2: INT;          // Equivalent to private int ident2;
+    Comp3_seria: STRING;        // Equivalent to private string seria;
+    Comp3_quan: INT;            // Equivalent to private int quan;
+    Comp3_result: INT;        // Equivalent to private short result;
+    Comp3_resultText: STRING;   // Equivalent to private string resultText;
+    Comp3_actualQuan: INT;      // Equivalent to private int actualQuan;
+    Comp3_item: STRING;         // Equivalent to private string item;
+	
+	//ComponentsValidation 1, 2, 3
+	ComponentValidation1Response : BOOL;
+	ComponentValidation2Response : BOOL;
+	ComponentValidation3Response : BOOL;
+	
+	//Get Machine Settings 1
+	MachineSettingStructure : STRING;
+	in_MachSetResult : BOOL;
+	in_MachSetStructResponse : T_MaxString;
+	
+	//AddScrapCompByReason1
+	
+	//ScrapInfo
+	ScrapCode : INT;
+	ScrapCount : INT;
+	ScrapCodeDescr : STRING;
+	
+	//Response 
+	AddScrapComponentByReasonResponse : BOOL;
+	
+	//EndComponentLot1
+	UsedComponentQuantity : INT;
+	ComponentLotFinished : BOOL;
+	//Response 
+	EndLotComponentResponse : BOOL;
+	
+	
+	//GetMachineDefects
+	GetMachineDefects1Success : BOOL;
+	Scrap1_ScrapCode : INT;
+	Scrap1_ScrapCount : INT;
+	Scrap1_ScrapCodeDescr : STRING;	
+	
+	//AddMESMachineEvent
+	MESMachineID : STRING;
+	MESStationID : INT;
+	MESEventCode : STRING;
+	MESEventMessage : STRING;
+	MESEventType : INT;
+	MESEventOperatorID : STRING;
+	
+	MESResponseEventID : LINT;
+	
+	//UpdateMESMachineEvent
+	MESIsResolvedStatus : BOOL;
+	MESResolutionNotes : STRING;
+	MESDateTimeResolved : DATE;
+	MESUpdateEventID : LINT;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

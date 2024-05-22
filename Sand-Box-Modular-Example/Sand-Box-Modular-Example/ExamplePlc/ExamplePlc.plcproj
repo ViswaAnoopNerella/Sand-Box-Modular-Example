@@ -27,6 +27,14 @@
       <DefaultResolution>Sensata_Data, * (Sensata Technologies)</DefaultResolution>
       <Namespace>Sensata_Data</Namespace>
     </PlaceholderReference>
+    <PlaceholderReference Include="Sensata_Device_Comm">
+      <DefaultResolution>Sensata_Device_Comm, * (Sensata Technologies)</DefaultResolution>
+      <Namespace>Sensata_Device_Comm</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Sensata_Laser">
+      <DefaultResolution>Sensata_Laser, * (Sensata Technologies)</DefaultResolution>
+      <Namespace>Sensata_Laser</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Sensata_Utilities">
       <DefaultResolution>Sensata_Utilities, * (Sensata Technologies)</DefaultResolution>
       <Namespace>Sensata_Utilities</Namespace>
@@ -68,11 +76,23 @@
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
+    <Compile Include="0 Program\GVL_MESData.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="0 Program\GVL_MESData_ActuatorAssembly.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="0 Program\GVL_PriorOp.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
     <Compile Include="0 Program\GVL_ProductLimits.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="0 Program\GVL_Test.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
@@ -88,7 +108,13 @@
     <Compile Include="1 Module\2 Devices\FB_ExampleDevice.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TMethodNames_Cohap.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TASK_Main.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TMethod_Controls.TcDUT">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -104,11 +130,11 @@
     <PlaceholderResolution Include="Sensata_Data">
       <Resolution>Sensata_Data, * (Sensata Technologies)</Resolution>
     </PlaceholderResolution>
+    <PlaceholderResolution Include="Sensata_Device_Comm">
+      <Resolution>Sensata_Device_Comm, * (Sensata Technologies)</Resolution>
+    </PlaceholderResolution>
     <PlaceholderResolution Include="Sensata_Utilities">
       <Resolution>Sensata_Utilities, * (Sensata Technologies)</Resolution>
-    </PlaceholderResolution>
-    <PlaceholderResolution Include="Standard">
-      <Resolution>Tc2_Standard, * (Beckhoff Automation GmbH)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="Tc2_Standard">
       <Resolution>Tc2_Standard, * (Beckhoff Automation GmbH)</Resolution>
@@ -125,14 +151,6 @@
     <PlaceholderResolution Include="Tc3_Module">
       <Resolution>Tc3_Module, * (Beckhoff Automation GmbH)</Resolution>
     </PlaceholderResolution>
-    <PlaceholderResolution Include="UML State Chart Types">
-      <Resolution>UML Statechart Types, * (3S - Smart Software Solutions GmbH)</Resolution>
-    </PlaceholderResolution>
-  </ItemGroup>
-  <ItemGroup>
-    <LibraryReference Include="Sensata_LaserMarker,newest,Sensata Technologies">
-      <Namespace>Sensata_LaserMarker</Namespace>
-    </LibraryReference>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
